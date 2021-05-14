@@ -10,6 +10,7 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
   <link rel="stylesheet" href="./style.css">
+  <script type="text/javascript" src="validar.js"></script>
 </head>
 <body>
   <div class="container">
@@ -23,17 +24,17 @@
        </div>
       </div>
        <div class="thumbnail"><img src="img_log/logo.png" /></div>
-    <form class="register-form">
+    <form class="register-form" onclick="validar()">
       <input type="text" placeholder="Nombre de usuario" />
       <input type="password" placeholder="Contraseña" />
       <input type="text" placeholder="correo@ejemplo.com" />
-           <button>CREAR</button>
+           <button type="button">CREAR</button>
       <p class="message">¿Ya tienes cuenta? <a href="#">REGISTRAR</a></p>
     </form>
     <form class="login-form">
       <input type="text" placeholder="Nombre de usuario" />
       <input type="password" placeholder="Contraseña" />
-      <button>INICIAR</button>
+      <button type="submit">INICIAR</button>
       <p class="message">¿No tienes una cuenta? <a href="#">Crear cuenta</a></p>
     </form>
   </div>
