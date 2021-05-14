@@ -28,3 +28,8 @@ function validar(){
             }
     return true;
 };
+
+function validarinicio(){
+    alert('hola mundo');
+    return false;
+};
