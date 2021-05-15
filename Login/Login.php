@@ -10,7 +10,7 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
   <link rel="stylesheet" href="./style.css">
-  <script type="text/javascript" src="validar.js"></script>
+  <script type="text/php" src="validar.php"></script>
 </head>
 <body>
   <div class="container">
@@ -24,18 +24,20 @@
        </div>
       </div>
        <div class="thumbnail"><img src="img_log/logo.png" /></div>
-      <form class="register-form" action="contacto/enviar" method="post">
-      <input type="text" placeholder="Nombre de usuario" id="usuario"/>
-      <input type="text" placeholder="correo@ejemplo.com" id="correo"/> 
-      <input type="password" placeholder="Contraseña" id="contraseña"/>
-      <button type="button" onclick="validar()">CREAR</button>
+      <form class="register-form" action="validar.php" method="post">
+      <input type="text" placeholder="Nombre de usuario" name="usuarioN" id="usuarioN"/>
+      <input type="text" placeholder="correo@ejemplo.com" name="correoN" id="correoN"/> 
+      <input type="password" placeholder="Contraseña" name="contraseñaN" id="contraseñaN"/>
+      <button type="submit" name="crear" onclick="validarform()">CREAR</button>
       <p class="message">¿Ya tienes cuenta? <a href="#">Iniciar sesión</a></p>
+
     </form>
-    <form class="login-form">
-      <input type="text" placeholder="Nombre de usuario" />
-      <input type="password" placeholder="Contraseña" />
-      <button type="button">INICIAR</button>
+    <form class="login-form" action="validar.php" method="post">
+      <input type="text" placeholder="Nombre de usuario" name="usuario" id="usuario" />
+      <input type="password" placeholder="Contraseña" name="contraseña" id="contraseña"/>
+      <button type="submit">INICIAR</button>
       <p class="message">¿No tienes una cuenta? <a href="#">Crear cuenta</a></p>
+     
     </form>
   </div>
     <!-- partial -->
