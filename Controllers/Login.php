@@ -21,8 +21,8 @@
 		}
 
 		public function loginUser(){
-			//dep($_POST);
-			if($_POST){
+			dep($_POST);
+			/*if($_POST){
 				if(empty($_POST['txtEmail']) || empty($_POST['txtPassword'])){
 					$arrResponse = array('status' => false, 'msg' => 'Error de datos' );
 				}else{
@@ -46,7 +46,7 @@
 					}
 				}
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
-			}
+			}*/
 			die();
 		}
 
