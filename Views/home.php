@@ -5,6 +5,6 @@
   <title>PC BOX</title>
 </head>
 <body>
-    <p>Mini Framework V1.0 - <a href="https://tiendavirtual69.herokuapp.com/Dashboard">Ir a panel administrativo</a></p>
+    <p>Mini Framework V1.0 - <a href="https://tiendavirtual.herokuapp.com/Dashboard">LOGIN</a></p>
 </body>
 </html>
