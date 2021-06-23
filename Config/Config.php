@@ -8,7 +8,7 @@
 
 	//Datos de conexión a Base de Datos
 	const DB_HOST = "dfkpczjgmpvkugnb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
-	const DB_NAME = "xs74953pb0hvmidl";
+	const DB_NAME = "db_tiendavirtual";
 	const DB_USER = "y0k79cxzb1n7lj9r";
 	const DB_PASSWORD = "gk6clc7wdkfdevfw";
 	const DB_CHARSET = "utf8";
