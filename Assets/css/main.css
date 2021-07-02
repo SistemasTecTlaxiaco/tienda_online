@@ -2626,7 +2626,7 @@ fieldset:disabled a.btn {
 .btn-primary:hover {
   color: #FFF;
   background-color: #007065;
-  border-color: #00635a;
+  border-color: #F26B33;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2643,7 +2643,7 @@ fieldset:disabled a.btn {
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #FFF;
-  background-color: #00635a;
+  background-color: #F26B33;
   border-color: #00564e;
 }
 
@@ -5341,7 +5341,7 @@ a.badge:hover, a.badge:focus {
 
 a.badge-primary:hover, a.badge-primary:focus {
   color: #FFF;
-  background-color: #00635a;
+  background-color: #F26B33;
 }
 
 a.badge-primary:focus, a.badge-primary.focus {
@@ -6972,7 +6972,7 @@ a.close.disabled {
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #00635a !important;
+  background-color: #F26B33 !important;
 }
 
 .bg-secondary {
@@ -12007,7 +12007,7 @@ body.stop-scrolling {
 }
 
 .sweet-alert button:active {
-  background-color: #00635a;
+  background-color: #F26B33;
 }
 
 .sweet-alert button.cancel {
@@ -14821,12 +14821,12 @@ be a descendant of the grid when it is being dragged.
 
 ::-moz-selection {
   color: #FFF;
-  background-color: #00635a;
+  background-color: #F26B33;
 }
 
 ::selection {
   color: #FFF;
-  background-color: #00635a;
+  background-color: #F26B33;
 }
 
 @media (min-width: 768px) {
@@ -14993,7 +14993,7 @@ be a descendant of the grid when it is being dragged.
 
 .app-sidebar__toggle:focus, .app-sidebar__toggle:hover {
   color: #fff;
-  background-color: #00635a;
+  background-color: #F26B33;
   text-decoration: none;
 }
 
