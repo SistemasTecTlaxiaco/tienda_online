@@ -10428,7 +10428,7 @@ button.bg-dark:focus {
 }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: #004a43 !important;
+  color: #e67001 !important;
 }
 
 .text-secondary {
@@ -10452,7 +10452,7 @@ a.text-success:hover, a.text-success:focus {
 }
 
 a.text-info:hover, a.text-info:focus {
-  color: #0f6674 !important;
+  color: #aa6203 !important;
 }
 
 .text-warning {
@@ -14959,7 +14959,7 @@ be a descendant of the grid when it is being dragged.
             flex: 0 0 auto;
     display: block;
     width: 230px;
-    background-color: #007d71;
+    background-color: #F26B33;
   }
 }
 
@@ -15277,7 +15277,7 @@ be a descendant of the grid when it is being dragged.
 
 .treeview.is-expanded [data-toggle='treeview'] {
   border-left-color: #F26B33;
-  background: #0d1214;
+  background: #000000;
 }
 
 .treeview.is-expanded .treeview-menu {
@@ -16381,7 +16381,7 @@ be a descendant of the grid when it is being dragged.
 
 .login-content .logo {
   margin-bottom: 40px;
-  font-family: "Niconne";
+  font-family: "ROBOTO";
   color: #fff;
 }
 
