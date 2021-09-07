@@ -20,6 +20,11 @@
 	//Simbolo de moneda
 	const SMONEY = "$";
 
+	//Datos envio de correo
+	const NOMBRE_REMITENTE = "Tienda virtual PC-BOX";
+	const EMAIL_REMITENTE = "no-reply@empresa.com";
+	const NOMBRE_EMPESA = "PC BOX";
+	const WEB_EMPRESA = "https://tiendapcbox.herokuapp.com/";
 	
 
 
