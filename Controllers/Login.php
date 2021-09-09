@@ -46,6 +46,7 @@
 						}
 					}
 				}
+				//sleep(1);
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
 			die();
@@ -53,7 +54,7 @@
 
 		public function resetPass(){
 			if($_POST){
-				//error_reporting(0);
+				error_reporting(0);
 				if(empty($_POST['txtEmailReset'])){
 					$arrResponse = array('status' => false, 'msg' => 'Error de datos' );
 				}else{
@@ -92,6 +93,7 @@
 						}
 					}
 				}
+				//sleep(3);
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
 			die();
