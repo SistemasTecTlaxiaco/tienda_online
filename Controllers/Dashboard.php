@@ -9,6 +9,7 @@
 			{
 				header('Location: '.base_url().'/login');
 			}
+			//getPermisos(1);
 		}
 
 		public function dashboard()
