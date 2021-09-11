@@ -112,7 +112,7 @@ function fntRolesUsuario(){
     request.onreadystatechange = function(){
         if(request.readyState == 4 && request.status == 200){
             document.querySelector('#listRolid').innerHTML = request.responseText;
-            document.querySelector('#listRolid').value = 1;
+            //document.querySelector('#listRolid').value = 1;
             $('#listRolid').selectpicker('render');
         }
     }
@@ -219,12 +219,7 @@ function fntDelUsuario(idpersona){
                     if(objData.status)
                     {
                         swal("Eliminar!", objData.msg , "success");
-                        tableUsuarios.api().ajax.reload(function(){
-                            /*fntRolesUsuario();
-                            fntViewUsuario();
-                            fntEditUsuario();
-                            fntDelUsuario();*/
-                        });
+                        tableUsuarios.api().ajax.reload();
                     }else{
                         swal("Atención!", objData.msg , "error");
                     }
