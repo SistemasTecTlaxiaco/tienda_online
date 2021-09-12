@@ -15,6 +15,11 @@
     <link rel="stylesheet" type="text/css" href="<?= media(); ?>/css/style.css">
   </head>
   <body class="app sidebar-mini">
+  <div id="divLoading" >
+      <div>
+        <img src="<?= media(); ?>/images/loading.svg" alt="Loading">
+      </div>
+    </div>
     <!-- Navbar-->
     <header class="app-header"><a class="app-header__logo" href="<?= base_url(); ?>/dashboard">Tienda Virtual</a>
      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"><i class="fas fa-bars"></i></a>

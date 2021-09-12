@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 return false;
             } 
         } 
-
+        divLoading.style.display = "flex";
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         var ajaxUrl = base_url+'/Usuarios/setUsuario'; 
         var formData = new FormData(formUsuario);
@@ -95,6 +95,8 @@ document.addEventListener('DOMContentLoaded', function(){
                     swal("Error", objData.msg , "error");
                 }
             }
+            divLoading.style.display = "none";
+            return false;
         }
 
         }
