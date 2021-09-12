@@ -51,8 +51,9 @@ document.addEventListener('DOMContentLoaded', function(){
         "order":[[0,"desc"]]  
     });
 
-    var formUsuario = document.querySelector("#formUsuario");
-    formUsuario.onsubmit = function(e) {
+    if(document.querySelector("#formUsuario")){
+        var formUsuario = document.querySelector("#formUsuario");
+        formUsuario.onsubmit = function(e) {
         e.preventDefault();
         var strIdentificacion = document.querySelector('#txtIdentificacion').value;
         var strNombre = document.querySelector('#txtNombre').value;
@@ -96,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         }
 
+        }
     }
 }, false);
 
@@ -104,6 +106,7 @@ window.addEventListener('load', function() {
 }, false);
 
 function fntRolesUsuario(){
+    if(document.querySelector('#listRolid')){
     var ajaxUrl = base_url+'/Roles/getSelectRoles';
     var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
     request.open("GET",ajaxUrl,true);
@@ -112,10 +115,11 @@ function fntRolesUsuario(){
     request.onreadystatechange = function(){
         if(request.readyState == 4 && request.status == 200){
             document.querySelector('#listRolid').innerHTML = request.responseText;
-            //document.querySelector('#listRolid').value = 1;
+            document.querySelector('#listRolid').value = 1;
             $('#listRolid').selectpicker('render');
         }
     }
+}
     
 }
 
@@ -240,4 +244,8 @@ function openModal()
     document.querySelector('#titleModal').innerHTML = "Nuevo Usuario";
     document.querySelector("#formUsuario").reset();
     $('#modalFormUsuario').modal('show');
+}
+
+function openModalPerfil(){
+    $('#modalFormPerfil').modal('show');
 }
