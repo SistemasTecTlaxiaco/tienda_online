@@ -171,6 +171,54 @@ if(document.querySelector("#formPerfil")){
     }
 }
 
+//Actualizar Datos Fiscales
+if(document.querySelector("#formDataFiscal")){
+    let formDataFiscal = document.querySelector("#formDataFiscal");
+    formDataFiscal.onsubmit = function(e) {
+        e.preventDefault();
+        let strNit = document.querySelector('#txtNit').value;
+        let strNombreFiscal = document.querySelector('#txtNombreFiscal').value;
+        let strDirFiscal = document.querySelector('#txtDirFiscal').value;
+       
+        if(strNit == '' || strNombreFiscal == '' || strDirFiscal == '' )
+        {
+            swal("Atención", "Todos los campos son obligatorios." , "error");
+            return false;
+        }
+        divLoading.style.display = "flex";
+        let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        let ajaxUrl = base_url+'/Usuarios/putDFical'; 
+        let formData = new FormData(formDataFiscal);
+        request.open("POST",ajaxUrl,true);
+        request.send(formData);
+        request.onreadystatechange = function(){
+            if(request.readyState != 4 ) return; 
+            if(request.status == 200){
+                let objData = JSON.parse(request.responseText);
+                if(objData.status)
+                {
+                    $('#modalFormPerfil').modal("hide");
+                    swal({
+                        title: "",
+                        text: objData.msg,
+                        type: "success",
+                        confirmButtonText: "Aceptar",
+                        closeOnConfirm: false,
+                    }, function(isConfirm) {
+                        if (isConfirm) {
+                            location.reload();
+                        }
+                    });
+                }else{
+                    swal("Error", objData.msg , "error");
+                }
+            }
+            divLoading.style.display = "none";
+            return false;
+        }
+    }
+}
+
 }, false);
 
 
