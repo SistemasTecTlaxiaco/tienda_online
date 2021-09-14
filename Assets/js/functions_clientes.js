@@ -121,9 +121,38 @@ document.addEventListener('DOMContentLoaded', function(){
 
         }
     }
-
-
  }, false);
+
+ function fntViewInfo(idpersona){
+   let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+    let ajaxUrl = base_url+'/Clientes/getCliente/'+idpersona;
+    request.open("GET",ajaxUrl,true);
+    request.send();
+    request.onreadystatechange = function(){
+        if(request.readyState == 4 && request.status == 200){
+            let objData = JSON.parse(request.responseText);
+            if(objData.status)
+            {
+                document.querySelector("#celIdentificacion").innerHTML = objData.data.identificacion;
+                document.querySelector("#celNombre").innerHTML = objData.data.nombres;
+                document.querySelector("#celApellido").innerHTML = objData.data.apellidos;
+                document.querySelector("#celTelefono").innerHTML = objData.data.telefono;
+                document.querySelector("#celEmail").innerHTML = objData.data.email_user;
+                document.querySelector("#celIde").innerHTML = objData.data.nit;
+                document.querySelector("#celNomFiscal").innerHTML = objData.data.nombrefiscal;
+                document.querySelector("#celDirFiscal").innerHTML = objData.data.direccionfiscal;
+                document.querySelector("#celFechaRegistro").innerHTML = objData.data.fechaRegistro; 
+                $('#modalViewCliente').modal('show');
+            }else{
+                swal("Error", objData.msg , "error");
+            }
+        }
+    }
+}
+
+
+
+
 function openModal()
 {
     rowTable = "";

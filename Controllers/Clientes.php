@@ -126,6 +126,25 @@
 			die();
 		}
 
+
+		public function getCliente($idpersona){
+			//if($_SESSION['permisosMod']['r']){
+				$idusuario = intval($idpersona);
+				if($idusuario > 0)
+				{
+					$arrData = $this->model->selectCliente($idusuario);
+					if(empty($arrData))
+					{
+						$arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
+					}else{
+						$arrResponse = array('status' => true, 'data' => $arrData);
+					}
+					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+				}
+			//}
+			die();
+		}
+
 		
 	
     }
