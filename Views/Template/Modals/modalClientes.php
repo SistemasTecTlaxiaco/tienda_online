@@ -11,53 +11,57 @@
       <div class="modal-body">
             <form id="formCliente" name="formCliente" class="form-horizontal">
               <input type="hidden" id="idUsuario" name="idUsuario" value="">
-              <p class="text-primary">Todos los campos son obligatorios.</p>
+              <p class="text-primary">Los campos con asterisco (<spam class="required">*</spam>) son obligatorios.</p>
 
+            
               <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="txtIdentificacion">Identificación</label>
+              <div class="form-group col-md-4">
+                  <label for="txtIdentificacion">Identificación (<spam class="required">*</spam>)</label>
                   <input type="text" class="form-control" id="txtIdentificacion" name="txtIdentificacion" required="">
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="txtNombre">Nombres</label>
+                <div class="form-group col-md-4">
+                  <label for="txtNombre">Nombres (<spam class="required">*</spam>)</label>
                   <input type="text" class="form-control valid validText" id="txtNombre" name="txtNombre" required="">
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="txtApellido">Apellidos</label>
+                <div class="form-group col-md-4">
+                  <label for="txtApellido">Apellidos (<spam class="required">*</spam>)</label>
                   <input type="text" class="form-control valid validText" id="txtApellido" name="txtApellido" required="">
                 </div>
               </div>
               <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="txtTelefono">Teléfono</label>
+                <div class="form-group col-md-4">
+                  <label for="txtTelefono">Teléfono (<spam class="required">*</spam>)</label>
                   <input type="text" class="form-control valid validNumber" id="txtTelefono" name="txtTelefono" required="" onkeypress="return controlTag(event);">
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="txtEmail">Email</label>
+                <div class="form-group col-md-4">
+                  <label for="txtEmail">Email (<spam class="required">*</spam>)</label>
                   <input type="email" class="form-control valid validEmail" id="txtEmail" name="txtEmail" required="">
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="listRolid">Tipo usuario</label>
-                    <select class="form-control" data-live-search="true" id="listRolid" name="listRolid" required >
-                    </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="listStatus">Status</label>
-                    <select class="form-control selectpicker" id="listStatus" name="listStatus" required >
-                        <option value="1">Activo</option>
-                        <option value="2">Inactivo</option>
-                    </select>
-                </div>
-             </div>
-             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                   <label for="txtPassword">Password</label>
                   <input type="password" class="form-control" id="txtPassword" name="txtPassword" >
                 </div>
+              </div>
+              <hr>
+              <p class="text-primary">Datos Fiscales.</p>
+              <div class="form-row">
+
+              <div class="col-md-6">
+                  <label>Identificación Tributaria (<spam class="required">*</spam>)</label>
+                  <input class="form-control" type="text" id="txtNit" name="txtNit" required="">
+              </div>
+              <div class="col-md-6">
+                  <label>Nombre fiscal (<spam class="required">*</spam>)</label>
+                  <input class="form-control" type="text" id="txtNombreFiscal" name="txtNombreFiscal" required="">
+              </div>
+              <div class="form-group col-md-12">
+                  <label>Dirección fiscal (<spam class="required">*</spam>)</label>
+                  <input class="form-control" type="text" id="txtDirFiscal" name="txtDirFiscal" required="">
+              </div>
+
+             </div>
+             <div class="form-row">
+               
              </div>
               <div class="tile-footer">
                 <button id="btnActionForm" class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i><span id="btnText">Guardar</span></button>&nbsp;&nbsp;&nbsp;

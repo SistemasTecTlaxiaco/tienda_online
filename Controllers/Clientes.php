@@ -25,5 +25,10 @@
 			$data['page_functions_js'] = "functions_clientes.js";
 			$this->views->getView($this,"clientes",$data);
 		}
+
+		public function setCliente(){
+			dep($_POST);
+			die();
+		}
     }
 ?>
