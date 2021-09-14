@@ -62,7 +62,7 @@
 																				$strDirFiscal );
 						}
 					}else{
-						/*$option = 2;
+						$option = 2;
 						$strPassword =  empty($_POST['txtPassword']) ? "" : hash("SHA256",$_POST['txtPassword']);
 						if($_SESSION['permisosMod']['u']){
 							$request_user = $this->model->updateCliente($idUsuario,
@@ -75,19 +75,19 @@
 																		$strNit,
 																		$strNomFiscal, 
 																		$strDirFiscal);
-						}*/
+						}
 					}
 	
 					if($request_user > 0 )
 					{
 						if($option == 1){
 							$arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente.');
-							$nombreUsuario = $strNombre.' '.$strApellido;
+							/*$nombreUsuario = $strNombre.' '.$strApellido;
 							$dataUsuario = array('nombreUsuario' => $nombreUsuario,
 												 'email' => $strEmail,
 												 'password' => $strPassword,
 												 'asunto' => 'Bienvenido a tu tienda en línea');
-							sendEmail($dataUsuario,'email_bienvenida');
+							sendEmail($dataUsuario,'email_bienvenida');*/
 						}else{
 							$arrResponse = array('status' => true, 'msg' => 'Datos Actualizados correctamente.');
 						}
