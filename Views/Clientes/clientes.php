@@ -22,17 +22,16 @@
               <div class="tile">
                 <div class="tile-body">
                   <div class="table-responsive">
-                    <table class="table table-hover table-bordered" id="tableUsuarios">
+                    <table class="table table-hover table-bordered" id="tableClientes">
                       <thead>
                         <tr>
-                          <th>ID</th>
+                        <th>ID</th>
+                          <th>Identificación</th>
                           <th>Nombres</th>
                           <th>Apellidos</th>
                           <th>Email</th>
-                          <td>Telefono</td>
-                          <td>Rol</td>
-                          <td>Status</td>
-                          <td>Acciones</td>
+                          <th>Teléfono</th>
+                          <th>Acciones</th>
                         </tr>
                       </thead>
                       <tbody>
