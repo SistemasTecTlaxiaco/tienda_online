@@ -68,23 +68,13 @@ document.addEventListener('DOMContentLoaded', function(){
                 let objData = JSON.parse(request.responseText);
                 if(objData.status)
                 {
-                  /* if(rowTable == ""){
-                        tableCategorias.api().ajax.reload();
-                    }else{
-                        htmlStatus = intStatus == 1 ? 
-                            '<span class="badge badge-success">Activo</span>' : 
-                            '<span class="badge badge-danger">Inactivo</span>';
-                        rowTable.cells[1].textContent = strNombre;
-                        rowTable.cells[2].textContent = strDescripcion;
-                        rowTable.cells[3].innerHTML = htmlStatus;
-                        rowTable = "";
-                    }*/
-
+                  
+                    
                     $('#modalFormCategorias').modal("hide");
                     formCategoria.reset();
                     swal("Categoria", objData.msg ,"success");
                    // tableCategorias.api().ajax.reload();
-                    //removePhoto();
+                    removePhoto();
                 }else{
                     swal("Error", objData.msg , "error");
                 }              
