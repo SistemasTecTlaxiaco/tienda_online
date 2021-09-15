@@ -1,5 +1,5 @@
 let tableClientes; 
-//let rowTable = "";
+let rowTable = "";
 let divLoading = document.querySelector("#divLoading");
 document.addEventListener('DOMContentLoaded', function(){
    
@@ -95,16 +95,17 @@ document.addEventListener('DOMContentLoaded', function(){
                     if(rowTable == ""){
                         tableUsuarios.api().ajax.reload();
                     }else{
-                        htmlStatus = intStatus == 1 ? 
+                       /* htmlStatus = intStatus == 1 ? 
                         '<span class="badge badge-success">Activo</span>' : 
-                        '<span class="badge badge-danger">Inactivo</span>';
-                        rowTable.cells[1].textContent = strNombre;
-                        rowTable.cells[2].textContent = strApellido;
-                        rowTable.cells[3].textContent = strEmail;
-                        rowTable.cells[4].textContent = intTelefono;
-                        rowTable.cells[5].textContent = strNit;
-                        rowTable.cells[5].textContent = strNomFiscal;
-                        rowTable.cells[5].textContent = strDirFiscal;
+                        '<span class="badge badge-danger">Inactivo</span>';*/
+                        rowTable.cells[1].textContent = strIdentificacion;
+                        rowTable.cells[2].textContent = strNombre;
+                        rowTable.cells[3].textContent = strApellido;
+                        rowTable.cells[4].textContent = strEmail;
+                        rowTable.cells[5].textContent = intTelefono;
+                        /*rowTable.cells[6].textContent = strNit;
+                        rowTable.cells[7].textContent = strNomFiscal;
+                        rowTable.cells[8].textContent = strDirFiscal;*/
                         rowTable="";
                     }
                     $('#modalFormCliente').modal("hide");
