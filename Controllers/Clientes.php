@@ -5,7 +5,7 @@
 		{
 			parent::__construct();
 			session_start();
-			//session_regenerate_id(true);
+			session_regenerate_id(true);
 			if(empty($_SESSION['login']))
 			{
 				header('Location: '.base_url().'/login');
@@ -64,7 +64,7 @@
 					}else{
 						$option = 2;
 						$strPassword =  empty($_POST['txtPassword']) ? "" : hash("SHA256",$_POST['txtPassword']);
-						//if($_SESSION['permisosMod']['u']){
+						if($_SESSION['permisosMod']['u']){
 							$request_user = $this->model->updateCliente($idUsuario,
 																		$strIdentificacion, 
 																		$strNombre,
@@ -75,7 +75,7 @@
 																		$strNit,
 																		$strNomFiscal, 
 																		$strDirFiscal);
-						//}
+						}
 					}
 	
 					if($request_user > 0 )
@@ -104,7 +104,7 @@
 		
 		public function getClientes()
 		{
-			//if($_SESSION['permisosMod']['r']){
+			if($_SESSION['permisosMod']['r']){
 				$arrData = $this->model->selectClientes();
 				for ($i=0; $i < count($arrData); $i++) {
 					$btnView = '';
@@ -122,13 +122,13 @@
 					$arrData[$i]['options'] = '<div class="text-center">'.$btnView.' '.$btnEdit.' '.$btnDelete.'</div>';
 				}
 				echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
-			//}
+			}
 			die();
 		}
 
 
 		public function getCliente($idpersona){
-			//if($_SESSION['permisosMod']['r']){
+			if($_SESSION['permisosMod']['r']){
 				$idusuario = intval($idpersona);
 				if($idusuario > 0)
 				{
@@ -141,14 +141,14 @@
 					}
 					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 				}
-			//}
+			}
 			die();
 		}
 
 		public function delCliente()
 		{
 			if($_POST){
-				//if($_SESSION['permisosMod']['d']){
+				if($_SESSION['permisosMod']['d']){
 					$intIdpersona = intval($_POST['idUsuario']);
 					$requestDelete = $this->model->deleteCliente($intIdpersona);
 					if($requestDelete)
@@ -158,7 +158,7 @@
 						$arrResponse = array('status' => false, 'msg' => 'Error al eliminar al cliente.');
 					}
 					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
-				//}
+				}
 			}
 			die();
 		}
