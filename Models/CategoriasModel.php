@@ -39,6 +39,14 @@
 			return $return;
 		}
 
+        public function selectCategorias()
+		{
+			$sql = "SELECT * FROM categoria 
+					WHERE status != 2 ";  /*diferente de 2 porque en la base de datos el inactivo es 2*/
+			$request = $this->select_all($sql);
+			return $request;
+		}
+
 
 
 
