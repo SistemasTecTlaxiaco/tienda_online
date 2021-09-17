@@ -89,7 +89,10 @@
               <td>Estado:</td>
               <td id="celEstado"></td>
             </tr>
-            
+            <tr>
+              <td>Foto:</td>
+              <td id="imgCategoria"></td>
+            </tr>
           </tbody>
         </table>
       </div>

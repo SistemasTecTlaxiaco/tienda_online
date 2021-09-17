@@ -118,6 +118,26 @@
 			die();
 		}
 
+		public function getCategoria(int $idcategoria)
+		{
+			//if($_SESSION['permisosMod']['r']){
+				$intIdcategoria = intval($idcategoria);
+				if($intIdcategoria > 0)
+				{
+					$arrData = $this->model->selectCategoria($intIdcategoria);
+					if(empty($arrData))
+					{
+						$arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
+					}else{
+						$arrData['url_portada'] = media().'/images/uploads/'.$arrData['portada'];
+						$arrResponse = array('status' => true, 'data' => $arrData);
+					}
+					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+				}
+			//}
+			die();
+		}
+
 
 
 
