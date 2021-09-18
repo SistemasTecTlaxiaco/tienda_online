@@ -79,6 +79,11 @@
         return $move;
     }
 
+    function deleteFile(string $name){
+        unlink('Assets/images/uploads/'.$name);
+    }
+
+
 
 
 

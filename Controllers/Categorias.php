@@ -57,7 +57,13 @@
 						
 					}else{
 						//Actualizar
-						
+							//if($_SESSION['permisosMod']['u']){
+								if($nombre_foto == ''){
+									if($_POST['foto_actual'] != 'portada_categoria.png' && $_POST['foto_remove'] == 0 ){
+										$imgPortada = $_POST['foto_actual'];
+									}
+								}
+							//}
 							
 							$request_cateria = $this->model->updateCategoria($intIdcategoria,$strCategoria, $strDescipcion,$imgPortada,$intStatus);
 							$option = 2;
@@ -71,8 +77,12 @@
 							if($nombre_foto != ''){ uploadImage($foto,$imgPortada); }
 						}else{
 							$arrResponse = array('status' => true, 'msg' => 'Datos Actualizados correctamente.');
-							//if($nombre_foto != ''){ uploadImage($foto,$imgPortada); }
-
+							if($nombre_foto != ''){ uploadImage($foto,$imgPortada); }
+							
+							if(($nombre_foto == '' && $_POST['foto_remove'] == 1 && $_POST['foto_actual'] != 'portada_categoria.png')
+								|| ($nombre_foto != '' && $_POST['foto_actual'] != 'portada_categoria.png')){
+								deleteFile($_POST['foto_actual']);
+							}
 							
 						}
 					}else if($request_cateria == 'exist'){
@@ -85,10 +95,11 @@
 			}
 			die();
 		}
-
+	
+   
         public function getCategorias()
 		{
-			
+			if($_SESSION['permisosMod']['r']){
 				$arrData = $this->model->selectCategorias();
 				for ($i=0; $i < count($arrData); $i++) {
 					$btnView = '';
@@ -114,7 +125,7 @@
 					$arrData[$i]['options'] = '<div class="text-center">'.$btnView.' '.$btnEdit.' '.$btnDelete.'</div>';
 				}
 				echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
-			//}
+			}
 			die();
 		}
 

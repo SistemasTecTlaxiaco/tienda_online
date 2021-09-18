@@ -184,7 +184,7 @@ function fntEditInfo(element,idcategoria){
                 document.querySelector("#txtNombre").value = objData.data.nombre;
                 document.querySelector("#txtDescripcion").value = objData.data.descripcion;
                 document.querySelector('#foto_actual').value = objData.data.portada;
-                //document.querySelector("#foto_remove").value= 0;
+                document.querySelector("#foto_remove").value= 0;
 
                 if(objData.data.status == 1){
                     document.querySelector("#listStatus").value = 1;
