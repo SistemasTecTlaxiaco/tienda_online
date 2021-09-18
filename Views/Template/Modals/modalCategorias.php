@@ -11,6 +11,8 @@
       <div class="modal-body">
             <form id="formCategoria" name="formCategoria" class="form-horizontal">
               <input type="hidden" id="idCategoria" name="idCategoria" value="">
+              <input type="hidden" id="foto_actual" name="foto_actual" value="">
+              <input type="hidden" id="foto_remove" name="foto_remove" value="0"> <!--2-->
               <p class="text-primary">Los campos con asterisco (<span class="required">*</span>) son obligatorios.</p>
               
               <div class="row">
