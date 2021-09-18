@@ -214,7 +214,43 @@ function fntEditInfo(element,idcategoria){
     }
 }
 
+function fntDelInfo(idcategoria){
+    swal({
+        title: "Eliminar Categoría",
+        text: "¿Realmente quiere eliminar al categoría?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, eliminar!",
+        cancelButtonText: "No, cancelar!",
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function(isConfirm) {
+        
+        if (isConfirm) 
+        {
+            let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+            let ajaxUrl = base_url+'/Categorias/delCategoria';
+            let strData = "idCategoria="+idcategoria;
+            request.open("POST",ajaxUrl,true);
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.send(strData);
+            request.onreadystatechange = function(){
+                if(request.readyState == 4 && request.status == 200){
+                    let objData = JSON.parse(request.responseText);
+                    if(objData.status)
+                    {
+                        swal("Eliminar!", objData.msg , "success");
+                        tableCategorias.api().ajax.reload();
+                    }else{
+                        swal("Atención!", objData.msg , "error");
+                    }
+                }
+            }
+        }
 
+    });
+
+}
 
 function removePhoto(){
     document.querySelector('#foto').value ="";

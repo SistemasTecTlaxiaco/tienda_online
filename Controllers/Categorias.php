@@ -149,6 +149,27 @@
 			die();
 		}
 
+		public function delCategoria()
+		{
+			if($_POST){
+				//if($_SESSION['permisosMod']['d']){
+					$intIdcategoria = intval($_POST['idCategoria']);
+					$requestDelete = $this->model->deleteCategoria($intIdcategoria);
+					if($requestDelete == 'ok')
+					{
+						$arrResponse = array('status' => true, 'msg' => 'Se ha eliminado la categoría');
+					}else if($requestDelete == 'exist'){
+						$arrResponse = array('status' => false, 'msg' => 'No es posible eliminar una categoría con productos asociados.');
+					}else{
+						$arrResponse = array('status' => false, 'msg' => 'Error al eliminar la categoría.');
+					}
+					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+				//}
+			}
+			die();
+		}
+
+
 
 
 

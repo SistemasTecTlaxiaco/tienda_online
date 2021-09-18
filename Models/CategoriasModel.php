@@ -42,7 +42,7 @@
         public function selectCategorias()
 		{
 			$sql = "SELECT * FROM categoria 
-					WHERE status != 2 ";  /*diferente de 2 porque en la base de datos el inactivo es 2*/
+					WHERE status != 0 ";  /*diferente de 2 porque en la base de datos el inactivo es 2*/
 			$request = $this->select_all($sql);
 			return $request;
 		}
@@ -78,6 +78,29 @@
 			}
 		    return $request;			
 		}
+
+		public function deleteCategoria(int $idcategoria)
+		{
+			$this->intIdcategoria = $idcategoria;
+			$sql = "SELECT * FROM producto WHERE categoriaid = $this->intIdcategoria";
+			$request = $this->select_all($sql);
+			if(empty($request))
+			{
+				$sql = "UPDATE categoria SET status = ? WHERE idcategoria = $this->intIdcategoria ";
+				$arrData = array(0);
+				$request = $this->update($sql,$arrData);
+				if($request)
+				{
+					$request = 'ok';	
+				}else{
+					$request = 'error';
+				}
+			}else{
+				$request = 'exist';
+			}
+			return $request;
+		}	
+
 
 
 
