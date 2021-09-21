@@ -7,7 +7,7 @@
 	date_default_timezone_set('America/Mexico_City');
 
 	//Datos de conexión a Base de Datos
-	const DB_HOST = "localhost:3307";
+	const DB_HOST = "";
 	const DB_NAME = "db_tiendavirtual";
 	const DB_USER = "root";
 	const DB_PASSWORD = "";
