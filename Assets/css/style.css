@@ -24,8 +24,8 @@
 	background: #007bff;
 	color: #FFF;
 }
-.notBlock{
-	display: none;
+.textcenter{
+	text-align: center
 }
 
 /*Estilos login*/
@@ -78,7 +78,7 @@
 	width: 100%;
 	height: 100%;
 }
-.upimg, .notBlock{
+.upimg, .notblock{
 	display: none !important;
 }
 .errorArchivo{

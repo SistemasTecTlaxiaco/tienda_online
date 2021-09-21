@@ -27,8 +27,9 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="control-label">Código <span class="required">*</span></label>
-                        <input class="form-control" id="txtCodigo" name="txtCodigo" type="text" placeholder="Código de barra" required="">
-                        <br>
+                        <input class="form-control" id="txtCodigo" name="txtCodigo" type="text" 
+                        placeholder="Código de barra" required="">
+                        <br>           
                         <div id="divBarCode" class="notblock textcenter">
                             <div id="printCode">
                                 <svg id="barcode"></svg> 
