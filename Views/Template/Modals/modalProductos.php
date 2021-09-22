@@ -27,9 +27,8 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label class="control-label">Código <span class="required">*</span></label>
-                        <input class="form-control" id="txtCodigo" name="txtCodigo" type="text" 
-                        placeholder="Código de barra" required="">
-                        <br>           
+                        <input class="form-control" id="txtCodigo" name="txtCodigo" type="text" placeholder="Código de barra" required="">
+                        <br>
                         <div id="divBarCode" class="notblock textcenter">
                             <div id="printCode">
                                 <svg id="barcode"></svg> 
@@ -83,7 +82,7 @@
                      </div>
                      <hr>
                      <div id="containerImages">
-                         <!-- <div id="div24">
+                         <div id="div24">
                              <div class="prevImage">
                                  <img src="<?= media(); ?>/images/uploads/producto1.jpg">
                              </div>
@@ -98,7 +97,7 @@
                              <input type="file" name="foto" id="img1" class="inputUploadfile">
                              <label for="img1" class="btnUploadfile"><i class="fas fa-upload "></i></label>
                              <button class="btnDeleteImage" type="button" onclick="fntDelItem('div24')"><i class="fas fa-trash-alt"></i></button>
-                         </div> -->
+                         </div> 
                         
                      </div>
                  </div>
@@ -165,3 +164,4 @@
     </div>
   </div>
 </div>
+

@@ -130,4 +130,45 @@
 	width: 200px;
 	margin: auto;
 }
+/* Upload fotos*/
+#containerImages{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
+}
+#containerImages >  div{
+	margin-right: 10px;
+	margin-bottom: 8px;
+}
+.prevImage{
+	border: 1px solid #CCC;
+	width: 120px;
+	height: 148px;
+	justify-content: center;
+	align-items: center;
+}
 
+.prevImage img{
+	width: 100%;
+}
+.inputUploadfile{
+	display: none;
+}
+.btnUploadfile, .btnDeleteImage{
+	border: 0;
+	background-color: #009688;
+	text-align: center;
+	padding: 2px 3px;
+	color: #FFF;
+	font-size: 9pt;
+	cursor: pointer;
+	width: 100%;
+}
+.btnDeleteImage{
+	background-color: #dc3545;	
+}
+.prevImage{
+	width: 30px;
+	height: 30px;
+}
