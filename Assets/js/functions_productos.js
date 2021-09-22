@@ -119,7 +119,22 @@ window.addEventListener('load', function(){
             }
         }
     }
-
+    if(document.querySelector(".btnAddImage")){
+        let btnAddImage =  document.querySelector(".btnAddImage");
+        btnAddImage.onclick = function(e){
+         let key = Date.now();
+        let newElement = document.createElement("div");
+        newElement.id= "div"+key;
+         newElement.innerHTML = ` 
+             <div class="prevImage"></div>
+             <input type="file" name="foto" id="img${key}" class="inputUploadfile">
+             <label for="img${key}" class="btnUploadfile"><i class="fas fa-upload "></i></label>
+             <button class="btnDeleteImage notblock" type="button" onclick="fntDelItem('#div${key}')"><i class="fas fa-trash-alt"></i></button>`;
+         document.querySelector("#containerImages").appendChild(newElement);
+         document.querySelector("#div"+key+" .btnUploadfile").click();
+         fntInputFile();
+        }
+    }
     fntCategorias();   
 }, false);
 

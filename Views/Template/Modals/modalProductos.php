@@ -70,12 +70,12 @@
                        </div> 
                     </div>  
                 </div>
-              </div>
-              
+              </div>           
+            
               <div class="tile-footer">
                  <div class="form-group col-md-12">
                      <div id="containerGallery">
-                         <span>Agregar foto (440 x 545)</span>
+                         <span>Galeria de fotos</span>
                          <button class="btnAddImage btn btn-info btn-sm" type="button">
                              <i class="fas fa-plus"></i>
                          </button>
