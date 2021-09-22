@@ -8,7 +8,7 @@ $(document).on('focusin', function(e) {
 
 window.addEventListener('load', function(){
 
-    tableCategorias = $('#tableProductos').dataTable( {
+    tableProductos = $('#tableProductos').dataTable( {
         "aProcessing":true,
         "aServerSide":true,
         "language": {
@@ -74,6 +74,43 @@ window.addEventListener('load', function(){
         "iDisplayLength": 10,
         "order":[[0,"desc"]]  
     });
+
+    if(this.document.querySelector("#formProductos")){
+        let formProductos = document.querySelector("#formProductos");
+        formProductos.onsubmit = function(e) {
+            e.preventDefault();
+            let strNombre = document.querySelector('#txtNombre').value;
+            let intCodigo = document.querySelector('#txtCodigo').value;
+            let strPrecio = document.querySelector('#txtPrecio').value;
+            let intStock = document.querySelector('#txtStock').value;
+            let intStatus = document.querySelector('#listStatus').value;
+            if(strNombre == '' || intCodigo == '' || strPrecio == '' || intStock == '' )
+            {
+                swal("Atención", "Todos los campos son obligatorios." , "error");
+                return false;
+            }
+            if(intCodigo.length < 5){
+                swal("Atención", "El código debe ser mayor que 5 dígitos." , "error");
+                return false;
+            }
+            divLoading.style.display = "flex";
+            tinyMCE.triggerSave();
+            let request = (window.XMLHttpRequest) ? 
+                new XMLHttpRequest() : 
+                new ActiveXObject('Microsoft.XMLHTTP');
+            let ajaxUrl = base_url+'/Productos/setProducto'; 
+            let formData = new FormData(formProductos);
+            request.open("POST",ajaxUrl,true);
+            request.send(formData);
+            request.onreadystatechange = function(){
+                if(request.readyState == 4 && request.status == 200){
+                      console.log(request.responseText);
+                }
+                    divLoading.style.display = "none";
+            }
+        }
+    }
+
     fntCategorias();   
 }, false);
 
