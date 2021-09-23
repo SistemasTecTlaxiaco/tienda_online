@@ -119,8 +119,7 @@
 		}
 
 		public function getProducto($idproducto){
-			if($_SESSION['permisosMod']['r']){
-				$idproducto = intval($idproducto);
+				$idproducto = intval($idproducto);				
 				if($idproducto > 0){
 					$arrData = $this->model->selectProducto($idproducto);
 					if(empty($arrData)){
@@ -134,12 +133,14 @@
 						}
 						$arrData['images'] = $arrImg;
 						$arrResponse = array('status' => true, 'data' => $arrData);
-					}
+					}	
 					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+					die();
 				}
-			}
-			die();
+				
 		}
+
+
 
 		public function setImage(){
 			//dep($_POST);
