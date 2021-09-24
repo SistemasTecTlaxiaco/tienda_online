@@ -312,11 +312,9 @@ function fntEditInfo(element,idProducto){
         if(request.readyState == 4 && request.status == 200){
             let objData = JSON.parse(request.responseText);
             if(objData.status)
-            {     
-                let htmlImage = "";           
+            {
+                let htmlImage = "";
                 let objProducto = objData.data;
-                console.log(objProducto);
-                
                 document.querySelector("#idProducto").value = objProducto.idproducto;
                 document.querySelector("#txtNombre").value = objProducto.nombre;
                 document.querySelector("#txtDescripcion").value = objProducto.descripcion;
@@ -328,8 +326,8 @@ function fntEditInfo(element,idProducto){
                 tinymce.activeEditor.setContent(objProducto.descripcion); 
                 $('#listCategoria').selectpicker('render');
                 $('#listStatus').selectpicker('render');
-                fntBarcode(); 
-                
+                fntBarcode();
+
                 if(objProducto.images.length > 0){
                     let objProductos = objProducto.images;
                     for (let p = 0; p < objProductos.length; p++) {
@@ -344,6 +342,7 @@ function fntEditInfo(element,idProducto){
                 }
                 document.querySelector("#containerImages").innerHTML = htmlImage; 
                 document.querySelector("#divBarCode").classList.remove("notblock");
+                document.querySelector("#containerGallery").classList.remove("notblock");           
                 $('#modalFormProductos').modal('show');
             }else{
                 swal("Error", objData.msg , "error");

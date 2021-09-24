@@ -119,7 +119,8 @@
 		}
 
 		public function getProducto($idproducto){
-				$idproducto = intval($idproducto);				
+			if($_SESSION['permisosMod']['r']){
+				$idproducto = intval($idproducto);
 				if($idproducto > 0){
 					$arrData = $this->model->selectProducto($idproducto);
 					if(empty($arrData)){
@@ -133,19 +134,14 @@
 						}
 						$arrData['images'] = $arrImg;
 						$arrResponse = array('status' => true, 'data' => $arrData);
-					}	
+					}
 					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
-					die();
 				}
-				
+			}
+			die();
 		}
 
-
-
 		public function setImage(){
-			//dep($_POST);
-			//dep($_FILES);
-
 			if($_POST){
 				if(empty($_POST['idproducto'])){
 					$arrResponse = array('status' => false, 'msg' => 'Error de dato.');
@@ -165,7 +161,6 @@
 			}
 			die();
 		}
-		
 
 		public function delFile(){
 			if($_POST){
@@ -202,79 +197,6 @@
 					}
 					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 				}
-			}
-			die();
-		}
-
-		  public function setCategoria(){
-
-			if($_POST){
-				if(empty($_POST['txtNombre']) || empty($_POST['txtDescripcion']) || empty($_POST['listStatus']) )
-				{
-					$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
-				}else{
-					
-					$intIdcategoria = intval($_POST['idCategoria']);
-					$strCategoria =  strClean($_POST['txtNombre']);
-					$strDescipcion = strClean($_POST['txtDescripcion']);
-					$intStatus = intval($_POST['listStatus']);
-
-                    $foto   	 	= $_FILES['foto'];
-					$nombre_foto 	= $foto['name'];
-					$type 		 	= $foto['type'];
-					$url_temp    	= $foto['tmp_name'];
-                    $imgPortada 	= 'portada_categoria.png';
-					$request_cateria = "";
-					if($nombre_foto != ''){
-						$imgPortada = 'img_'.md5(date('d-m-Y H:m:s')).'.jpg';
-
-					}
-                    
-                    if($intIdcategoria == 0)
-					{
-						//Crear
-						if($_SESSION['permisosMod']['w']){
-							$request_cateria = $this->model->inserCategoria($strCategoria, $strDescipcion,$imgPortada,$intStatus);
-							$option = 1;
-						}
-						
-					}else{
-						//Actualizar
-							if($_SESSION['permisosMod']['u']){
-								if($nombre_foto == ''){
-									if($_POST['foto_actual'] != 'portada_categoria.png' && $_POST['foto_remove'] == 0 ){
-										$imgPortada = $_POST['foto_actual'];
-									}
-								}
-							}
-							
-							$request_cateria = $this->model->updateCategoria($intIdcategoria,$strCategoria, $strDescipcion,$imgPortada,$intStatus);
-							$option = 2;
-					}
-
-					if($request_cateria > 0 )
-					{
-						if($option == 1)
-						{
-							$arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente.');
-							if($nombre_foto != ''){ uploadImage($foto,$imgPortada); }
-						}else{
-							$arrResponse = array('status' => true, 'msg' => 'Datos Actualizados correctamente.');
-							if($nombre_foto != ''){ uploadImage($foto,$imgPortada); }
-							
-							if(($nombre_foto == '' && $_POST['foto_remove'] == 1 && $_POST['foto_actual'] != 'portada_categoria.png')
-								|| ($nombre_foto != '' && $_POST['foto_actual'] != 'portada_categoria.png')){
-								deleteFile($_POST['foto_actual']);
-							}
-							
-						}
-					}else if($request_cateria == 'exist'){
-						$arrResponse = array('status' => false, 'msg' => '¡Atención! La categoría ya existe.');
-					}else{
-						$arrResponse = array("status" => false, "msg" => 'No es posible almacenar los datos.');
-					}
-				}
-				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
 			die();
 		}
