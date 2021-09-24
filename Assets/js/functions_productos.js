@@ -389,6 +389,7 @@ function fntDelInfo(idProducto){
 
 }
 
+
 function fntCategorias(){
     if(document.querySelector('#listCategoria')){
         let ajaxUrl = base_url+'/Categorias/getSelectCategorias';
