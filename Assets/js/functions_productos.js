@@ -68,7 +68,7 @@ tableProductos = $('#tableProductos').dataTable( {
     ],
     "resonsieve":"true",
     "bDestroy": true,
-    "iDisplayLength": 2,
+    "iDisplayLength": 10,
     "order":[[0,"desc"]]  
 });
 window.addEventListener('load', function() {
@@ -388,8 +388,6 @@ function fntDelInfo(idProducto){
     });
 
 }
-
-
 
 function fntCategorias(){
     if(document.querySelector('#listCategoria')){

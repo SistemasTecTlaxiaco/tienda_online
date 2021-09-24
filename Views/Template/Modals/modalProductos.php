@@ -70,19 +70,19 @@
                        </div> 
                     </div>  
                 </div>
-              </div>           
-            
+              </div>
+              
               <div class="tile-footer">
                  <div class="form-group col-md-12">
                      <div id="containerGallery">
-                         <span>Agregar foto(440 x 545)</span>
+                         <span>Agregar foto (440 x 545)</span>
                          <button class="btnAddImage btn btn-info btn-sm" type="button">
                              <i class="fas fa-plus"></i>
                          </button>
                      </div>
                      <hr>
                      <div id="containerImages">
-                         <!--<div id="div24">
+                         <!-- <div id="div24">
                              <div class="prevImage">
                                  <img src="<?= media(); ?>/images/uploads/producto1.jpg">
                              </div>
@@ -97,7 +97,7 @@
                              <input type="file" name="foto" id="img1" class="inputUploadfile">
                              <label for="img1" class="btnUploadfile"><i class="fas fa-upload "></i></label>
                              <button class="btnDeleteImage" type="button" onclick="fntDelItem('div24')"><i class="fas fa-trash-alt"></i></button>
-                         </div> --->
+                         </div> -->
                         
                      </div>
                  </div>
