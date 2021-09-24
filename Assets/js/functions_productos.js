@@ -68,7 +68,7 @@ tableProductos = $('#tableProductos').dataTable( {
     ],
     "resonsieve":"true",
     "bDestroy": true,
-    "iDisplayLength": 10,
+    "iDisplayLength": 2,
     "order":[[0,"desc"]]  
 });
 window.addEventListener('load', function() {
