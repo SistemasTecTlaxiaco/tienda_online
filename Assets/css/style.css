@@ -34,9 +34,8 @@
 	text-align: left;
 }
 .bootstrap-select > .dropdown-toggle{
-	border: 1px solid  #CCC;
+	border: 1px solid #CCC;
 }
-
 /*Estilos login*/
 #divLoading{
 	position: fixed;
@@ -59,6 +58,7 @@
 	font-size: 13pt;
 	font-weight: bold;
 }
+/* style portada categoría */
 .prevPhoto {
     display: flex;
     justify-content: space-between;
@@ -73,7 +73,6 @@
     background-position: center center;
     margin: auto;
 }
-/*Style portada categoria*/
 .prevPhoto label{
 	cursor: pointer;
 	width: 100%;
@@ -130,6 +129,7 @@
 	width: 200px;
 	margin: auto;
 }
+
 /* Upload fotos*/
 #containerImages{
 	display: flex;
@@ -137,7 +137,7 @@
 	align-items: center;
 	flex-wrap: wrap;
 }
-#containerImages >  div{
+#containerImages > div{
 	margin-right: 10px;
 	margin-bottom: 8px;
 }
@@ -145,10 +145,10 @@
 	border: 1px solid #CCC;
 	width: 120px;
 	height: 148px;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-
 .prevImage img{
 	width: 100%;
 }
@@ -166,14 +166,13 @@
 	width: 100%;
 }
 .btnDeleteImage{
-	background-color: #dc3545;	
+	background-color: #dc3545;
 }
-.prevImage{
+.prevImage .loading{
 	width: 30px;
 	height: 30px;
 }
 #celFotos img{
 	width: 150px;
 	margin: 10px;
-	
 }

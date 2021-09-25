@@ -1,9 +1,6 @@
 <?php 
     headerAdmin($data); 
-
-    if($_SESSION['permisosMod']['u']){
     getModal('modalProductos',$data);
-    }
 ?>
     <main class="app-content">
       <div class="app-title">
@@ -28,12 +25,11 @@
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Codigo</th>
+                          <th>Código</th>
                           <th>Nombre</th>
                           <th>Stock</th>
                           <th>Precio</th>
                           <th>Estado</th>
-                          <th>Descripción</th>                   
                           <th>Acciones</th>
                         </tr>
                       </thead>

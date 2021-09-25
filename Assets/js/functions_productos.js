@@ -390,6 +390,7 @@ function fntDelInfo(idProducto){
 }
 
 
+
 function fntCategorias(){
     if(document.querySelector('#listCategoria')){
         let ajaxUrl = base_url+'/Categorias/getSelectCategorias';
@@ -434,5 +435,5 @@ function openModal()
     document.querySelector("#containerGallery").classList.add("notblock");
     document.querySelector("#containerImages").innerHTML = "";
     $('#modalFormProductos').modal('show');
-    
+
 }
