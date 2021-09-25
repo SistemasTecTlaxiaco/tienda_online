@@ -1,6 +1,9 @@
 <?php 
     headerAdmin($data); 
+
+    if($_SESSION['permisosMod']['u']){
     getModal('modalProductos',$data);
+    }
 ?>
     <main class="app-content">
       <div class="app-title">
