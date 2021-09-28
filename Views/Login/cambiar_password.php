@@ -24,7 +24,7 @@
       <div class="login-box flipped">
         <div id="divLoading" >
           <div>
-            <!--<img src="<?//= media(); ?>/images/loading.svg" alt="Loading">-->
+            <img src="<?//= media(); ?>/images/loading.svg" alt="Loading">
           </div>
         </div>
         <form id="formCambiarPass" name="formCambiarPass" class="forget-form" action="">

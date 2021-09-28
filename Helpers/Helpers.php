@@ -31,6 +31,62 @@
         $view_modal = "Views/Template/Modals/{$nameModal}.php";
         require_once $view_modal;        
     }
+
+    //Envio de correos
+    function sendEmail($data,$template)
+    {
+        $asunto = $data['asunto'];
+        $emailDestino = $data['email'];
+        $empresa = NOMBRE_REMITENTE;
+        $remitente = EMAIL_REMITENTE;
+        //ENVIO DE CORREO
+        $de = "MIME-Version: 1.0\r\n";
+        $de .= "Content-type: text/html; charset=UTF-8\r\n";
+        $de .= "From: {$empresa} <{$remitente}>\r\n";
+        ob_start();
+        require_once("Views/Template/Email/".$template.".php");
+        $mensaje = ob_get_clean();
+        $send = mail($emailDestino, $asunto, $mensaje, $de);
+        return $send;
+    }
+
+    function getPermisos(int $idmodulo){
+        require_once ("Models/PermisosModel.php");
+        $objPermisos = new PermisosModel();
+        $idrol = $_SESSION['userData']['idrol'];
+        $arrPermisos = $objPermisos->permisosModulo($idrol);
+        $permisos = '';
+        $permisosMod = '';
+        if(count($arrPermisos) > 0 ){
+            $permisos = $arrPermisos;
+            $permisosMod = isset($arrPermisos[$idmodulo]) ? $arrPermisos[$idmodulo] : "";
+        }
+        $_SESSION['permisos'] = $permisos;
+        $_SESSION['permisosMod'] = $permisosMod;
+    }
+
+    function sessionUser(int $idpersona){
+        require_once ("Models/LoginModel.php");
+        $objLogin = new LoginModel();
+        $request = $objLogin->sessionLogin($idpersona);
+        return $request;
+    }
+
+    function uploadImage(array $data, string $name){
+        $url_temp = $data['tmp_name'];
+        $destino    = 'Assets/images/uploads/'.$name;        
+        $move = move_uploaded_file($url_temp, $destino);
+        return $move;
+    }
+
+    function deleteFile(string $name){
+        unlink('Assets/images/uploads/'.$name);
+    }
+
+
+
+
+
     //Elimina exceso de espacios entre palabras
     function strClean($strCadena){
         $string = preg_replace(['/\s+/','/^\s|\s$/'],[' ',''], $strCadena);

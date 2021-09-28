@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function(){
             swal("Atención", "Todos los campos son obligatorios." , "error");
             return false;
         }
+        divLoading.style.display = "flex";
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         var ajaxUrl = base_url+'/Roles/setRol'; 
         var formData = new FormData(formRol);
@@ -63,6 +64,8 @@ document.addEventListener('DOMContentLoaded', function(){
                     swal("Error", objData.msg , "error");
                 }              
             } 
+            divLoading.style.display = "none";
+            return false;
         }
 
         
@@ -98,6 +101,7 @@ function fntEditRol(idrol){
             document.querySelector('#btnText').innerHTML ="Actualizar";
 
             var idrol = idrol;
+            //divLoading.style.display = "flex";
             var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
             var ajaxUrl  = base_url+'/Roles/getRol/'+idrol;
             request.open("GET",ajaxUrl ,true);

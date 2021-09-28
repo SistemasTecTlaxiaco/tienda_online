@@ -56,11 +56,15 @@
 
 		public function selectUsuarios()
 		{
-			$sql = "SELECT p.idpersona,p.identificacion,p.nombres,p.apellidos,p.telefono,p.email_user,p.status,r.nombrerol 
+			$whereAdmin = "";
+			if($_SESSION['idUser'] != 1 ){
+				$whereAdmin = " and p.idpersona != 1 ";
+			}
+			$sql = "SELECT p.idpersona,p.identificacion,p.nombres,p.apellidos,p.telefono,p.email_user,p.status,r.idrol,r.nombrerol 
 					FROM persona p 
 					INNER JOIN rol r
 					ON p.rolid = r.idrol
-					WHERE p.status != 0 ";
+					WHERE p.status != 0 ".$whereAdmin;
 					$request = $this->select_all($sql);
 					return $request;
 		}
@@ -131,6 +135,49 @@
 			$arrData = array(0);
 			$request = $this->update($sql,$arrData);
 			return $request;
+		}
+
+		public function updatePerfil(int $idUsuario, string $identificacion, string $nombre, string $apellido, int $telefono, string $password){
+			$this->intIdUsuario = $idUsuario;
+			$this->strIdentificacion = $identificacion;
+			$this->strNombre = $nombre;
+			$this->strApellido = $apellido;
+			$this->intTelefono = $telefono;
+			$this->strPassword = $password;
+
+			if($this->strPassword != "")
+			{
+				$sql = "UPDATE persona SET identificacion=?, nombres=?, apellidos=?, telefono=?, password=? 
+						WHERE idpersona = $this->intIdUsuario ";
+				$arrData = array($this->strIdentificacion,
+								$this->strNombre,
+								$this->strApellido,
+								$this->intTelefono,
+								$this->strPassword);
+			}else{
+				$sql = "UPDATE persona SET identificacion=?, nombres=?, apellidos=?, telefono=? 
+						WHERE idpersona = $this->intIdUsuario ";
+				$arrData = array($this->strIdentificacion,
+								$this->strNombre,
+								$this->strApellido,
+								$this->intTelefono);
+			}
+			$request = $this->update($sql,$arrData);
+		    return $request;
+		}
+
+		public function updateDataFiscal(int $idUsuario, string $strNit, string $strNomFiscal, string $strDirFiscal){
+			$this->intIdUsuario = $idUsuario;
+			$this->strNit = $strNit;
+			$this->strNomFiscal = $strNomFiscal;
+			$this->strDirFiscal = $strDirFiscal;
+			$sql = "UPDATE persona SET nit=?, nombrefiscal=?, direccionfiscal=? 
+						WHERE idpersona = $this->intIdUsuario ";
+			$arrData = array($this->strNit,
+							$this->strNomFiscal,
+							$this->strDirFiscal);
+			$request = $this->update($sql,$arrData);
+		    return $request;
 		}
 	}
  ?>

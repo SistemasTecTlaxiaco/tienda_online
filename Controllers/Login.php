@@ -4,6 +4,7 @@
 		public function __construct()
 		{
 			session_start();
+			//session_regenerate_id(true);
 			if(isset($_SESSION['login']))
 			{
 				header('Location: '.base_url().'/dashboard');
@@ -46,6 +47,7 @@
 						}
 					}
 				}
+				//sleep(1);
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
 			die();
@@ -53,7 +55,7 @@
 
 		public function resetPass(){
 			if($_POST){
-				//error_reporting(0);
+				error_reporting(0);
 				if(empty($_POST['txtEmailReset'])){
 					$arrResponse = array('status' => false, 'msg' => 'Error de datos' );
 				}else{
@@ -70,15 +72,29 @@
 						$url_recovery = base_url().'/login/confirmUser/'.$strEmail.'/'.$token;
 						$requestUpdate = $this->model->setTokenUser($idpersona,$token);
 
+						$dataUsuario = array('nombreUsuario' => $nombreUsuario,
+												'email' => $strEmail,
+												'asunto' => 'recuperar cuenta - '.NOMBRE_REMITENTE,
+												'url_recovery' => $url_recovery);
+						
+						//$this->model->setTokenUser($idpersona,$token);
+
 						if($requestUpdate){
+							$sendEmail = sendEmail($dataUsuario, 'email_cambioPassword');
+							if($sendEmail){
 								$arrResponse = array('status' => true, 
-												 'msg' => 'Se ha enviado un email a tu cuenta de correo para cambiar tu contraseña.');
+								'msg' => 'Se ha enviado un email a tu cuenta de correo para cambiar tu contraseña.');
 							}else{
-							$arrResponse = array('status' => false, 
+								$arrResponse = array('status' => false, 
+								'msg' => 'No es posible realizar el proceso, intenta más tarde.' );
+							}
+							}else{
+								$arrResponse = array('status' => false, 
 												 'msg' => 'No es posible realizar el proceso, intenta más tarde.' );
 						}
 					}
 				}
+				//sleep(3);
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
 			die();
