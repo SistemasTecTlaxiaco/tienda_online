@@ -18,6 +18,14 @@
         $view_footer = "Views/Template/footer_admin.php";
         require_once ($view_footer);
     }
+    function headerTienda($data=""){
+        $view_header = "Views/Template/header_tienda.php";
+        require_once ($view_header);
+    }
+    function footerTienda($data=""){
+        $view_footer = "Views/Template/footer_tienda.php";
+        require_once ($view_footer);
+    }
 	//Muestra información formateada
 	function dep($data)
     {
