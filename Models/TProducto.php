@@ -165,6 +165,9 @@ trait TProducto{
 								$arrImg[$i]['url_image'] = media().'/images/uploads/'.$arrImg[$i]['img'];
 							}
 						}
+						else{
+							$arrImg[0]['url_image'] = media().'/images/uploads/product.png';
+						}
 						$request[$c]['images'] = $arrImg;
 					}
 				}
