@@ -76,6 +76,9 @@
 					$intStatus = intval($_POST['listStatus']);
 					$request_producto = "";
 
+					$ruta = strtolower(clear_cadena($strNombre));
+					$ruta = str_replace(" ","-",$ruta);
+
 					if($idProducto == 0)
 					{
 						$option = 1;
@@ -85,7 +88,8 @@
 																		$strCodigo, 
 																		$intCategoriaId,
 																		$strPrecio, 
-																		$intStock, 
+																		$intStock,
+																		$ruta, 
 																		$intStatus );
 						}
 					}else{
@@ -98,6 +102,7 @@
 																		$intCategoriaId,
 																		$strPrecio, 
 																		$intStock, 
+																		$ruta,
 																		$intStatus);
 						}
 					}
