@@ -68,7 +68,7 @@
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
-					<a href="#" class="logo">
+					<a href="<?= base_url(); ?>" class="logo">
 						<img src="<?= media()?>/tienda/images/icons/logo.png" alt="Tienda virtual">
 					</a>
 
