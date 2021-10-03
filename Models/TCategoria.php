@@ -4,7 +4,7 @@
         private $con;
         public function getCategoriasT(string $categorias){
             $this->con = new Mysql();
-            $sql = "SELECT idcategoria, nombre, descripcion, portada
+            $sql = "SELECT idcategoria, nombre, descripcion, portada, ruta
                 FROM categoria WHERE status != 0 AND idcategoria IN ($categorias)";
             $request = $this->con->select_all($sql);
             if(count($request) > 0){
