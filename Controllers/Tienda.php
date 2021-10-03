@@ -22,11 +22,15 @@
 			if(empty($params)){
 				header("Location:".base_url());
 			}else{
+				$arrParams = explode(",",$params);
+				$idcategoria = intval($arrParams[0]);
+				$ruta = strClean($arrParams[1]);
+				$infoCategoria = $this->getProductosCategoriaT($idcategoria,$ruta);
 				$categoria = strClean($params);
-				$data['page_tag'] = NOMBRE_EMPESA." - ".$categoria;
-				$data['page_title'] = $categoria;
+				$data['page_tag'] = NOMBRE_EMPESA." - ".$infoCategoria['categoria'];
+				$data['page_title'] = $infoCategoria['categoria'];
 				$data['page_name'] = "categoria";
-				$data['productos'] = $this->getProductosCategoriaT($categoria);
+				$data['productos'] = $infoCategoria['productos'];
 				$this->views->getView($this,"categoria",$data);
 			}
 		}
