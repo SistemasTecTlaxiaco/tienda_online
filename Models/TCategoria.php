@@ -1,7 +1,7 @@
 <?php
     require_once("Libraries/Core/Mysql.php");
     trait TCategoria{
-        public $con;
+        private $con;
         public function getCategoriasT(string $categorias){
             $this->con = new Mysql();
             $sql = "SELECT idcategoria, nombre, descripcion, portada
