@@ -26,6 +26,10 @@
 	const NOMBRE_EMPESA = "PC BOX";
 	const WEB_EMPRESA = "https://tiendapcbox.herokuapp.com/";
 	
+	const CAT_SLIDER="1,2,3";
+	const CAT_BANNER="4,5,6";
+	
+	
 
 
  ?>
