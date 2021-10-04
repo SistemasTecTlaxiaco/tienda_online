@@ -21,10 +21,10 @@
 	define ('SMONEY',"$");
 
 	//Datos envio de correo
-	define NOMBRE_REMITENTE = "Tienda virtual PC-BOX";
-	define EMAIL_REMITENTE = "no-reply@empresa.com";
-	define NOMBRE_EMPESA = "PC BOX";
-	define WEB_EMPRESA = "https://tiendapcbox.herokuapp.com/";
+	define ('NOMBRE_REMITENTE', "Tienda virtual PC-BOX");
+	define ('EMAIL_REMITENTE', "no-reply@empresa.com");
+	define ('NOMBRE_EMPESA',  "PC BOX");
+	define ('WEB_EMPRESA', "https://tiendapcbox.herokuapp.com/");
 	
 
 
