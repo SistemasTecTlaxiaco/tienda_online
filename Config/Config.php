@@ -1,30 +1,30 @@
 <?php 
 	//define('BASE_URL', 'http://localhost/tienda_virtual/');
-	const BASE_URL = "http://localhost/tienda_online";
+	define BASE_URL = "http://localhost/tienda_online";
 	
 	//Zona horaria
 	date_default_timezone_set('America/Mexico_City');
 
 	//Datos de conexión a Base de Datos
-	const DB_HOST = "";
-	const DB_NAME = "db_tiendavirtual";
-	const DB_USER = "root";
-	const DB_PASSWORD = "";
-	const DB_CHARSET = "utf8";
+	define ('DB_HOST', 'dfkpczjgmpvkugnb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com');
+	define ('DB_NAME', 'xs74953pb0hvmidl');
+	define ('DB_USER', 'y0k79cxzb1n7lj9r');
+	define ('DB_PASSWORD', 'gk6clc7wdkfdevfw');
+	define ('DB_CHARSET', 'utf8');
 	//define("BASE_URL", "http://localhost/tienda_virtual/");
 
 	//Deliminadores decimal y millar Ej. 24,1989.00
-	const SPD = ".";
-	const SPM = ",";
+	define ('SPD',".");
+	define ('SPM',",");
 
 	//Simbolo de moneda
-	const 'SMONEY',"$";
+	define ('SMONEY',"$");
 
 	//Datos envio de correo
-	const NOMBRE_REMITENTE = "Tienda virtual PC-BOX";
-	const EMAIL_REMITENTE = "no-reply@empresa.com";
-	const NOMBRE_EMPESA = "PC BOX";
-	const WEB_EMPRESA = "https://tiendapcbox.herokuapp.com/";
+	define NOMBRE_REMITENTE = "Tienda virtual PC-BOX";
+	define EMAIL_REMITENTE = "no-reply@empresa.com";
+	define NOMBRE_EMPESA = "PC BOX";
+	define WEB_EMPRESA = "https://tiendapcbox.herokuapp.com/";
 	
 
 
