@@ -1,6 +1,6 @@
 <?php 
 	//define('BASE_URL', 'http://localhost/tienda_virtual/');
-	define ('BASE_URL', 'https://tiendapcbox.herokuapp.com/');
+	define ('BASE_URL', 'https://tiendapcbox.herokuapp.com');
 	
 	//Zona horaria
 	date_default_timezone_set('America/Mexico_City');
@@ -24,6 +24,6 @@
 	define ('NOMBRE_REMITENTE', "Tienda virtual PC-BOX");
 	define ('EMAIL_REMITENTE', "no-reply@empresa.com");
 	define ('NOMBRE_EMPESA',  "PC BOX");
-	define ('WEB_EMPRESA', "https://tiendapcbox.herokuapp.com/");
+	define ('WEB_EMPRESA', "https://tiendapcbox.herokuapp.com");
 	
  ?>
