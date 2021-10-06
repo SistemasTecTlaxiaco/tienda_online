@@ -2727,8 +2727,8 @@ fieldset:disabled a.btn {
 
 .btn-info {    /* here*/
   color: #FFF;
-  background-color: #266cbd;
-  border-color: #266cbd;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .btn-info:hover {
