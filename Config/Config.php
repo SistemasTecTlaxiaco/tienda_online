@@ -26,6 +26,4 @@
 	define ('NOMBRE_EMPESA',  "PC BOX");
 	define ('WEB_EMPRESA', "https://tiendapcbox.herokuapp.com/");
 	
-
-
  ?>
