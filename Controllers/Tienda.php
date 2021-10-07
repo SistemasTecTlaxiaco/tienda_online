@@ -7,6 +7,7 @@
 		public function __construct()
 		{
 			parent::__construct();
+			session_start();
 		}
 
 		public function tienda()
@@ -57,10 +58,47 @@
 
 		public function addCarrito(){
 			if($_POST){
-				//unset($_SESSION['arrCarrito']);exit;
-				
+				unset($_SESSION['arrCarrito']);exit;
+				$arrCarrito = array();
+				//$cantCarrito = 0;
 				$idproducto = openssl_decrypt($_POST['id'], METHODENCRIPT, KEY);
-				
+				$cantidad = $_POST['cant'];
+				if(is_numeric($idproducto) and is_numeric($cantidad)){
+					$arrInfoProducto = $this->getProductoIDT($idproducto);
+					if(!empty($arrInfoProducto)){
+						$arrProducto = array('idproducto' => $idproducto,
+											'producto' => $arrInfoProducto['nombre'],
+											'cantidad' => $cantidad,
+											'precio' => $arrInfoProducto['precio'],
+											'imagen' => $arrInfoProducto['images'][0]['url_image']
+										);
+						if(isset($_SESSION['arrCarrito'])){
+							$on = true;
+							$arrCarrito = $_SESSION['arrCarrito'];
+							for ($pr=0; $pr < count($arrCarrito); $pr++) {
+								if($arrCarrito[$pr]['idproducto'] == $idproducto){
+									$arrCarrito[$pr]['cantidad'] += $cantidad;
+									$on = false;
+								}
+							}
+							if($on){
+								array_push($arrCarrito,$arrProducto);
+							}
+							$_SESSION['arrCarrito'] = $arrCarrito;
+						}else{
+							array_push($arrCarrito, $arrProducto);
+							$_SESSION['arrCarrito'] = $arrCarrito;
+						}
+
+						
+					else{
+						$arrResponse = array("status" => false, "msg" => 'Producto no existente.');
+					}
+				}else{
+					$arrResponse = array("status" => false, "msg" => 'Dato incorrecto.');
+				}
+				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+			}
 			die();
 		}
 
