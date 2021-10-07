@@ -58,9 +58,9 @@
 
 		public function addCarrito(){
 			if($_POST){
-				unset($_SESSION['arrCarrito']);exit;
+				//unset($_SESSION['arrCarrito']);exit;
 				$arrCarrito = array();
-				//$cantCarrito = 0;
+				$cantCarrito = 0;
 				$idproducto = openssl_decrypt($_POST['id'], METHODENCRIPT, KEY);
 				$cantidad = $_POST['cant'];
 				if(is_numeric($idproducto) and is_numeric($cantidad)){
@@ -90,8 +90,18 @@
 							$_SESSION['arrCarrito'] = $arrCarrito;
 						}
 
-						
-					else{
+						foreach ($_SESSION['arrCarrito'] as $pro) {
+							$cantCarrito += $pro['cantidad'];
+						}
+						//$htmlCarrito ="";
+						$htmlCarrito = getFile('Template/Modals/modalCarrito',$_SESSION['arrCarrito']);
+						$arrResponse = array("status" => true, 
+											"msg" => '¡Se agrego al corrito!',
+											"cantCarrito" => $cantCarrito,
+											"htmlCarrito" => $htmlCarrito
+										);
+
+					}else{
 						$arrResponse = array("status" => false, "msg" => 'Producto no existente.');
 					}
 				}else{

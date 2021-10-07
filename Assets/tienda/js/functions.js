@@ -65,9 +65,18 @@ $('.js-addcart-detail').each(function(){
 	    request.onreadystatechange = function(){
 	        if(request.readyState != 4) return;
 	        if(request.status == 200){
-	        
-					swal(nameProduct, "¡Se agrego al corrito!", "success");
-            	
+                let objData = JSON.parse(request.responseText);
+	        	if(objData.status){
+                 document.querySelector("#productosCarrito").innerHTML = objData.htmlCarrito;
+				//document.querySelectorAll(".cantCarrito")[0].setAttribute("data-notify",objData.cantCarrito);
+		            //document.querySelectorAll(".cantCarrito")[1].setAttribute("data-notify",objData.cantCarrito);
+                 swal(nameProduct, "¡Se agrego al corrito!", "success");
+                }else{
+	        		swal("", objData.msg , "error");
+	        	}
+                return false;
+            }  
+        }  	
 	});
 });
 
