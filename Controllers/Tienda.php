@@ -112,5 +112,43 @@
 			die();
 		}
 
+		public function delCarrito(){
+			if($_POST){
+				$arrCarrito = array();
+				$cantCarrito = 0;
+				$subtotal = 0;
+				$idproducto = openssl_decrypt($_POST['id'], METHODENCRIPT, KEY);
+				$option = $_POST['option'];
+				if(is_numeric($idproducto) and ($option == 1 or $option == 2)){
+					$arrCarrito = $_SESSION['arrCarrito'];
+					for ($pr=0; $pr < count($arrCarrito); $pr++) {
+						if($arrCarrito[$pr]['idproducto'] == $idproducto){
+							unset($arrCarrito[$pr]);
+						}
+					}
+					sort($arrCarrito);
+					$_SESSION['arrCarrito'] = $arrCarrito;
+					foreach ($_SESSION['arrCarrito'] as $pro) {
+						$cantCarrito += $pro['cantidad'];
+						$subtotal += $pro['cantidad'] * $pro['precio'];
+					}
+					$htmlCarrito = "";
+					if($option == 1){
+						$htmlCarrito = getFile('Template/Modals/modalCarrito',$_SESSION['arrCarrito']);
+					}
+					$arrResponse = array("status" => true, 
+											"msg" => '¡Producto eliminado!',
+											"cantCarrito" => $cantCarrito,
+											"htmlCarrito" => $htmlCarrito,
+											"subTotal" => SMONEY.formatMoney($subtotal),
+											"total" => SMONEY.formatMoney($subtotal + COSTOENVIO)
+										);
+				}else{
+					$arrResponse = array("status" => false, "msg" => 'Dato incorrecto.');
+				}
+				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);*/
+			}
+			die();
+		}
 	}
  ?>
