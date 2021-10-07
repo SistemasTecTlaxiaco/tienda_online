@@ -1,3 +1,11 @@
+<?php 
+	$cantCarrito = 0;
+	if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){ 
+		foreach($_SESSION['arrCarrito'] as $product) {
+			$cantCarrito += $product['cantidad'];
+		}
+	}
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
