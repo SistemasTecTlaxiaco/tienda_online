@@ -7,7 +7,7 @@
 	date_default_timezone_set('America/Mexico_City');
 
 	//Datos de conexión a Base de Datos
-	const DB_HOST = "";
+	const DB_HOST = "localhost:3307";
 	const DB_NAME = "db_tiendavirtual";
 	const DB_USER = "root";
 	const DB_PASSWORD = "";
@@ -28,6 +28,12 @@
 	
 	const CAT_SLIDER="1,2,3";
 	const CAT_BANNER="4,5,6";
+	
+	//Datos para Encriptar / Desencriptar
+	const KEY = 'abelosh';
+	const METHODENCRIPT = "AES-128-ECB";
+
+
 	
 	
 

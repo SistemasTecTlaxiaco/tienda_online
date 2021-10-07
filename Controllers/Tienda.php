@@ -55,5 +55,14 @@
 			}
 		}
 
+		public function addCarrito(){
+			if($_POST){
+				//unset($_SESSION['arrCarrito']);exit;
+				
+				$idproducto = openssl_decrypt($_POST['id'], METHODENCRIPT, KEY);
+				
+			die();
+		}
+
 	}
  ?>
