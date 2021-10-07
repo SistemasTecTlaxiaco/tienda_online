@@ -146,7 +146,7 @@
 				}else{
 					$arrResponse = array("status" => false, "msg" => 'Dato incorrecto.');
 				}
-				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);*/
+				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
 			die();
 		}
