@@ -28,12 +28,13 @@
 	
 	const CAT_SLIDER="1,2,3";
 	const CAT_BANNER="4,5,6";
-	
+
 	//Datos para Encriptar / Desencriptar
 	const KEY = 'abelosh';
 	const METHODENCRIPT = "AES-128-ECB";
 
-
+	//Envío
+	const COSTOENVIO = 50;
 	
 	
 

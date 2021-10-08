@@ -16,10 +16,11 @@ headerTienda($data);
 		</div>
 	</div>
 <?php 
-/*$subtotal = 0;
+$subtotal = 0;
 $total = 0;
 if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){ 
- ?>		*/
+ ?>	
+    
 	<!-- Shoping Cart -->
 	<form class="bg0 p-t-75 p-b-85" >
 		<div class="container">
@@ -102,7 +103,7 @@ if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){
 
 							<div class="size-209">
 								<span id="subTotalCompra" class="mtext-110 cl2">
-									//<?= SMONEY.formatMoney($subtotal) ?>
+									<?= SMONEY.formatMoney($subtotal) ?>
 								</span>
 							</div>
 
@@ -114,7 +115,7 @@ if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){
 
 							<div class="size-209">
 								<span class="mtext-110 cl2">
-									//<?= SMONEY.formatMoney(COSTOENVIO) ?>
+									<?= SMONEY.formatMoney(COSTOENVIO) ?>
 								</span>
 							</div>
 						</div>
@@ -127,18 +128,18 @@ if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){
 
 							<div class="size-209 p-t-1">
 								<span id="totalCompra" class="mtext-110 cl2">
-									//<?= SMONEY.formatMoney($subtotal + COSTOENVIO) ?>
+									<?= SMONEY.formatMoney($subtotal + COSTOENVIO) ?>
 								</span>
 							</div>
 						</div>
-					//	<a href="<?= base_url() ?>/carrito/procesarpago" id="btnComprar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+						<a href="<?= base_url() ?>/carrito/procesarpago" id="btnComprar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 							Procesar pago
 						</a>
 					</div>
 				</div>
 			</div>
 		</div>
-	</form>
+	</form> 
 <?php }else{ ?>
 <br>
 <div class="container">
