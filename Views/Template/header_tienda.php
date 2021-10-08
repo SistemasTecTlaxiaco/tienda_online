@@ -41,6 +41,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= media()?>/tienda/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= media()?>/tienda/css/main.css">
+	<link rel="stylesheet" type="text/css" href="<?= media(); ?>/css/style.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
