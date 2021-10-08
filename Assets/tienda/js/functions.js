@@ -184,7 +184,6 @@ function fntUpdateCant(pro,cant){
 	    request.onreadystatechange = function(){
 	    	if(request.readyState != 4) return;
 	    	if(request.status == 200){
-                
 	    		let objData = JSON.parse(request.responseText);
 	    		if(objData.status){
 	    			let colSubtotal = document.getElementsByClassName(pro)[0];

@@ -153,9 +153,36 @@
 
 		public function updCarrito(){
 			if($_POST){
-				
+				$arrCarrito = array();
+				$totalProducto = 0;
+				$subtotal = 0;
+				$total = 0;
 				$idproducto = openssl_decrypt($_POST['id'], METHODENCRIPT, KEY);
-				
+				$cantidad = intval($_POST['cantidad']);
+				if(is_numeric($idproducto) and $cantidad > 0){
+					$arrCarrito = $_SESSION['arrCarrito'];
+					for ($p=0; $p < count($arrCarrito); $p++) { 
+						if($arrCarrito[$p]['idproducto'] == $idproducto){
+							$arrCarrito[$p]['cantidad'] = $cantidad;
+							$totalProducto = $arrCarrito[$p]['precio'] * $cantidad;
+							break;
+						}
+					}
+					$_SESSION['arrCarrito'] = $arrCarrito;
+					foreach ($_SESSION['arrCarrito'] as $pro) {
+						$subtotal += $pro['cantidad'] * $pro['precio']; 
+					}
+					$arrResponse = array("status" => true, 
+										"msg" => '¡Producto actualizado!',
+										"totalProducto" => SMONEY.formatMoney($totalProducto),
+										"subTotal" => SMONEY.formatMoney($subtotal),
+										"total" => SMONEY.formatMoney($subtotal + COSTOENVIO)
+									);
+
+				}else{
+					$arrResponse = array("status" => false, "msg" => 'Dato incorrecto.');
+				}
+				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
 			die();
 		}
