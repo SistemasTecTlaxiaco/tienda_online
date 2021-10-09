@@ -17,7 +17,18 @@
 			$data['page_name'] = "carrito";
 			$this->views->getView($this,"carrito",$data); 
 		}
-		
+		public function procesarpago()
+		{
+			if(empty($_SESSION['arrCarrito'])){ 
+				header("Location: ".base_url());
+				die();
+			}
+			$data['page_tag'] = NOMBRE_EMPESA.' - Procesar Pago';
+			$data['page_title'] = 'Procesar Pago';
+			$data['page_name'] = "procesarpago";
+			
+			$this->views->getView($this,"procesarpago",$data); 
+		}
 
 		
 	}

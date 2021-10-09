@@ -1,5 +1,13 @@
 <?php 
 headerTienda($data);
+
+$subtotal = 0;
+$total = 0;
+foreach ($_SESSION['arrCarrito'] as $producto) {
+	$subtotal += $producto['precio'] * $producto['cantidad'];
+}
+$total = $subtotal + COSTOENVIO;
+
 ?>
  <br><br><br>
 <hr>
@@ -15,20 +23,13 @@ headerTienda($data);
 			</span>
 		</div>
 	</div>
-<?php 
-$subtotal = 0;
-$total = 0;
-if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){ 
- ?>	
     
-	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85" method="post" action="<?php echo>">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
 						<div class="wrap-table-shopping-cart">
-							<table id="tblCarrito" class="table-shopping-cart">
+							
 								<tr class="table_head">
 									<th class="column-1">Producto</th>
 									<th class="column-2"></th>
@@ -72,19 +73,7 @@ if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){
 
 							</table>
 						</div>
-						<!--<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-							<div class="flex-w flex-m m-r-20 m-tb-5">
-								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
-									
-								<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-									Apply coupon
-								</div>
-							</div>
-
-							<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-								Update Cart
-							</div>
-						</div>-->
+					
 					</div>
 				</div>
 
@@ -133,20 +122,15 @@ if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){
 							</div>
 						</div>
 						<a type=  id="btnComprar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-							Procesar pago
+							Pagar
 						</a>
 					</div>
 				</div>
 			</div>
 		</div>
-	</form> 
-<?php }else{ ?>
-<br>
-<div class="container">
-	<p>No hay producto en el carrito <a href="<?= base_url() ?>/tienda"> Ver productos</a></p>
-</div>
-<br>
+
+
 <?php 
-	}
+	
 	footerTienda($data);
  ?>
