@@ -167,7 +167,16 @@ $total = $subtotal + COSTOENVIO;
 							<label for="listtipopago">Tipo de pago</label>
 							<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
 								<select id="listtipopago" class="js-select2" name="listtipopago">
-								
+								<?php 
+									if(count($data['tiposPago']) > 0){ 
+										foreach ($data['tiposPago'] as $tipopago) {
+											if($tipopago['idtipopago'] != 1){
+								 ?>
+								 	<option value="<?= $tipopago['idtipopago']?>"><?= $tipopago['tipopago']?></option>
+								<?php
+											}
+										}
+								 } ?>
 								</select>
 								<div class="dropDownSelect2"></div>
 							</div>

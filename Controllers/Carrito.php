@@ -1,9 +1,10 @@
 <?php 
 	require_once("Models/TCategoria.php");
 	require_once("Models/TProducto.php");
+	require_once("Models/TTipoPago.php");
 	
 	class Carrito extends Controllers{
-		use TCategoria, TProducto;
+		use TCategoria, TProducto, TTipoPago;
 		public function __construct()
 		{
 			parent::__construct();
@@ -26,7 +27,7 @@
 			$data['page_tag'] = NOMBRE_EMPESA.' - Procesar Pago';
 			$data['page_title'] = 'Procesar Pago';
 			$data['page_name'] = "procesarpago";
-			
+			$data['tiposPago'] = $this->getTiposPagoT();
 			$this->views->getView($this,"procesarpago",$data); 
 		}
 
