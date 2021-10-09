@@ -93,7 +93,7 @@
 						foreach ($_SESSION['arrCarrito'] as $pro) {
 							$cantCarrito += $pro['cantidad'];
 						}
-						//$htmlCarrito ="";
+						$htmlCarrito ="";
 						$htmlCarrito = getFile('Template/Modals/modalCarrito',$_SESSION['arrCarrito']);
 						$arrResponse = array("status" => true, 
 											"msg" => '¡Se agrego al corrito!',

@@ -41,7 +41,7 @@
     }
     function getFile(string $url, $data)
     {
-        //ob_start();
+        ob_start();
         require_once("Views/{$url}.php");
         $file = ob_get_clean();
         return $file;        
