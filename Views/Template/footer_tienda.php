@@ -145,7 +145,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!--===============================================================================================-->
 	<script src="<?= media()?>/tienda/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <!--===============================================================================================-->
-	<script src="<?= media()?>/tienda/js/main.js"></script>
-	<script src="<?= media()?>/tienda/js/functions.js"></script>
+	<script src="<?= media() ?>/tienda/js/main.js"></script>
+	<!--<script src="<?= media();?>/js/functions_admin.js"></script>-->
+	<script src="<?= media() ?>/js/functions_login.js"></script>
+	<script src="<?= media() ?>/tienda/js/functions.js"></script>
+
 </body>
 </html>
