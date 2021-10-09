@@ -12,7 +12,6 @@
 			parent::__construct();
 			session_start();
 			$this->login = new LoginModel();
-
 		}
 
 		public function tienda()
@@ -28,6 +27,7 @@
 			if(empty($params)){
 				header("Location:".base_url());
 			}else{
+
 				$arrParams = explode(",",$params);
 				$idcategoria = intval($arrParams[0]);
 				$ruta = strClean($arrParams[1]);
@@ -45,7 +45,7 @@
 			if(empty($params)){
 				header("Location:".base_url());
 			}else{
-				$arrParams = explode(',',$params);
+				$arrParams = explode(",",$params);
 				$idproducto = intval($arrParams[0]);
 				$ruta = strClean($arrParams[1]);
 				$infoProducto = $this->getProductoT($idproducto,$ruta);
@@ -237,7 +237,6 @@
 			}
 			die();
 		}
-
 
 	}
  ?>

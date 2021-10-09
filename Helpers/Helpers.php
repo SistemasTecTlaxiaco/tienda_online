@@ -6,8 +6,7 @@
 		return BASE_URL;
 	}
     //Retorla la url del Assets
-    function media()
-    {
+    function media(){
         return BASE_URL."/Assets";
     }
     function headerAdmin($data=""){
@@ -16,7 +15,7 @@
     }
     function footerAdmin($data=""){
         $view_footer = "Views/Template/footer_admin.php";
-        require_once ($view_footer);
+        require_once ($view_footer);        
     }
     function headerTienda($data=""){
         $view_header = "Views/Template/header_tienda.php";
@@ -24,23 +23,20 @@
     }
     function footerTienda($data=""){
         $view_footer = "Views/Template/footer_tienda.php";
-        require_once ($view_footer);
+        require_once ($view_footer);        
     }
 	//Muestra información formateada
-	function dep($data)
-    {
+	function dep($data){
         $format  = print_r('<pre>');
         $format .= print_r($data);
         $format .= print_r('</pre>');
         return $format;
     }
-    function getModal(string $nameModal, $data)
-    {
+    function getModal(string $nameModal, $data){
         $view_modal = "Views/Template/Modals/{$nameModal}.php";
         require_once $view_modal;        
     }
-    function getFile(string $url, $data)
-    {
+    function getFile(string $url, $data){
         ob_start();
         require_once("Views/{$url}.php");
         $file = ob_get_clean();
@@ -48,8 +44,7 @@
     }
 
     //Envio de correos
-    function sendEmail($data,$template)
-    {
+    function sendEmail($data,$template){
         $asunto = $data['asunto'];
         $emailDestino = $data['email'];
         $empresa = NOMBRE_REMITENTE;
@@ -97,10 +92,6 @@
     function deleteFile(string $name){
         unlink('Assets/images/uploads/'.$name);
     }
-
-
-
-
 
     //Elimina exceso de espacios entre palabras
     function strClean($strCadena){

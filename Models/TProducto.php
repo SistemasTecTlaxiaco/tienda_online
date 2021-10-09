@@ -1,15 +1,15 @@
-<?php
+<?php 
 require_once("Libraries/Core/Mysql.php");
 trait TProducto{
 	private $con;
 	private $strCategoria;
 	private $intIdcategoria;
-	private $intIdproducto;
+	private $intIdProducto;
 	private $strProducto;
 	private $cant;
 	private $option;
 	private $strRuta;
-    public function getProductosT(){
+	public function getProductosT(){
 		$this->con = new Mysql();
 		$sql = "SELECT p.idproducto,
 						p.codigo,
@@ -46,6 +46,7 @@ trait TProducto{
 	public function getProductosCategoriaT(int $idcategoria, string $ruta){
 		$this->intIdcategoria = $idcategoria;
 		$this->strRuta = $ruta;
+
 		$this->con = new Mysql();
 		$sql_cat = "SELECT idcategoria,nombre FROM categoria WHERE idcategoria = '{$this->intIdcategoria}'";
 		$request = $this->con->select($sql_cat);
@@ -81,18 +82,17 @@ trait TProducto{
 							$request[$c]['images'] = $arrImg;
 						}
 					}
-					$request=array(
-						'idcategoria' => $this->intIdcategoria,
-						'categoria' => $this->strCategoria,
-						'productos' => $request
-					);
+			$request = array('idcategoria' => $this->intIdcategoria,
+								'categoria' => $this->strCategoria,
+								'productos' => $request
+							);
 		}
 		return $request;
 	}
 
 	public function getProductoT(int $idproducto, string $ruta){
 		$this->con = new Mysql();
-		$this->intIdproducto = $idproducto;
+		$this->intIdProducto = $idproducto;
 		$this->strRuta = $ruta;
 		$sql = "SELECT p.idproducto,
 						p.codigo,
@@ -107,7 +107,7 @@ trait TProducto{
 				FROM producto p 
 				INNER JOIN categoria c
 				ON p.categoriaid = c.idcategoria
-				WHERE p.status != 0 AND p.idproducto = '{$this->intIdproducto}' AND p.ruta='{$this->strRuta}' ";
+				WHERE p.status != 0 AND p.idproducto = '{$this->intIdProducto}' AND p.ruta = '{$this->strRuta}' ";
 				$request = $this->con->select($sql);
 				if(!empty($request)){
 					$intIdProducto = $request['idproducto'];
@@ -119,6 +119,8 @@ trait TProducto{
 						for ($i=0; $i < count($arrImg); $i++) { 
 							$arrImg[$i]['url_image'] = media().'/images/uploads/'.$arrImg[$i]['img'];
 						}
+					}else{
+						$arrImg[0]['url_image'] = media().'/images/uploads/product.png';
 					}
 					$request['images'] = $arrImg;
 				}
@@ -166,9 +168,6 @@ trait TProducto{
 								$arrImg[$i]['url_image'] = media().'/images/uploads/'.$arrImg[$i]['img'];
 							}
 						}
-						else{
-							$arrImg[0]['url_image'] = media().'/images/uploads/product.png';
-						}
 						$request[$c]['images'] = $arrImg;
 					}
 				}
@@ -210,5 +209,4 @@ trait TProducto{
 		return $request;
 	}
 }
-?>
-
+ ?>

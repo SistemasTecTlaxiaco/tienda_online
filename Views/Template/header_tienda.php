@@ -45,12 +45,12 @@
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
-<div id="divLoading" >
+	<div id="divLoading" >
       <div>
         <img src="<?= media(); ?>/images/loading.svg" alt="Loading">
       </div>
     </div>
-	
+
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
@@ -59,7 +59,7 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
-						Bienvenido usuario: nombre usuario
+						Bienvenido usuario: Nombre de usuario
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
@@ -126,7 +126,6 @@
 			</div>	
 		</div>
 
-
 		<!-- Header Mobile -->
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
@@ -140,7 +139,7 @@
 					<i class="zmdi zmdi-search"></i>
 				</div>
 				<?php if($data['page_name'] != "carrito"){ ?>
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="<?= $cantCarrito; ?>">
+				<div class="cantCarrito icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="<?= $cantCarrito; ?>">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 				<?php } ?>
@@ -160,7 +159,7 @@
 			<ul class="topbar-mobile">
 				<li>
 					<div class="left-top-bar">
-						Bienvenido usuario
+						Bienvenido 
 					</div>
 				</li>
 
@@ -184,14 +183,12 @@
 			<ul class="main-menu-m">
 				<li>
 					<a href="<?= base_url(); ?>">Inicio</a>
-					<span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
 				</li>
 
 				<li>
 					<a href="<?= base_url(); ?>/tienda">Tienda</a>
 				</li>
+
 				<li>
 					<a href="<?= base_url(); ?>/carrito">Carrito</a>
 				</li>
@@ -201,7 +198,7 @@
 				</li>
 
 				<li>
-					<a href="<?= base_url(); ?>/contacto">contacto</a>
+					<a href="<?= base_url(); ?>/contacto">Contacto</a>
 				</li>
 			</ul>
 		</div>
