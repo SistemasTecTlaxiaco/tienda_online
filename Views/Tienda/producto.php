@@ -3,6 +3,7 @@ headerTienda($data);
 $arrProducto = $data['producto'];
 $arrProductos = $data['productos'];
 $arrImages = $arrProducto['images']; 
+$rutacategoria = $arrProducto['categoriaid'].'/'.$arrProducto['ruta_categoria'];
  ?>
 <br><br><br>
 <hr>
@@ -13,7 +14,7 @@ $arrImages = $arrProducto['images'];
 				Inicio
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
-			<a href="<?= base_url().'/tienda/categoria/'.$arrProducto['categoria']; ?>" class="stext-109 cl8 hov-cl1 trans-04">
+			<a href="<?= base_url().'/tienda/categoria/'.$rutacategoria; ?>" class="stext-109 cl8 hov-cl1 trans-04">
 				<?= $arrProducto['categoria'] ?>
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>

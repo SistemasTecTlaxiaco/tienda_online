@@ -115,9 +115,9 @@ $('.btn-num-product-up').on('click', function(){
     let idpr = this.getAttribute('idpr');
     $(this).prev().val(numProduct + 1);
     let cant = $(this).prev().val();
-    //if(idpr != null){
+    if(idpr != null){
     	fntUpdateCant(idpr,cant);
-   // }
+    }
 });
 
 //Actualizar producto

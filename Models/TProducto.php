@@ -100,6 +100,7 @@ trait TProducto{
 						p.descripcion,
 						p.categoriaid,
 						c.nombre as categoria,
+						c.ruta as ruta_categoria,
 						p.precio,
 						p.ruta,
 						p.stock
