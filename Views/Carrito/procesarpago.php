@@ -1,6 +1,5 @@
 <?php 
 headerTienda($data);
-
 $subtotal = 0;
 $total = 0;
 foreach ($_SESSION['arrCarrito'] as $producto) {
@@ -23,114 +22,141 @@ $total = $subtotal + COSTOENVIO;
 			</span>
 		</div>
 	</div>
-    
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
-					<div class="m-l-25 m-r--38 m-lr-0-xl">
-						<div class="wrap-table-shopping-cart">
-							
-								<tr class="table_head">
-									<th class="column-1">Producto</th>
-									<th class="column-2"></th>
-									<th class="column-3">Precio</th>
-									<th class="column-4">Cantidad</th>
-									<th class="column-5">Total</th>
-								</tr>
-							<?php 
-								foreach ($_SESSION['arrCarrito'] as $producto) {
-									$totalProducto = $producto['precio'] * $producto['cantidad'];
-									$subtotal += $totalProducto;
-									$idProducto = openssl_encrypt($producto['idproducto'],METHODENCRIPT,KEY);
-								
-							 ?>
-								<tr class="table_row <?= $idProducto ?>">
-									<td class="column-1">
-										<div class="how-itemcart1" idpr="<?= $idProducto ?>" op="2" onclick="fntdelItem(this)" >
-											<img src="<?= $producto['imagen'] ?>" alt="<?= $producto['producto'] ?>">
-										</div>
-									</td>
-									<td class="column-2"><?= $producto['producto'] ?></td>
-									<td class="column-3"><?= SMONEY.formatMoney($producto['precio']) ?></td>
-									<td class="column-4">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"
-											idpr="<?= $idProducto ?>">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="<?= $producto['cantidad'] ?>" idpr="<?= $idProducto ?>">
-
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m"
-											idpr="<?= $idProducto ?>">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-									</td>
-									<td class="column-5"><?= SMONEY.formatMoney($totalProducto) ?></td>
-								</tr>
-							<?php } ?>
-
-							</table>
-						</div>
-					
-					</div>
-				</div>
-
-				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
-					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-						<h4 class="mtext-109 cl2 p-b-30">
-							Totales
-						</h4>
-
-						<div class="flex-w flex-t bor12 p-b-13">
-							<div class="size-208">
-								<span class="stext-110 cl2">
-									Subtotal:
-								</span>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+				<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-l-25 m-r--38 m-lr-0-xl">
+					<div>
+					<?php 
+						if(isset($_SESSION['login'])){
+					?>
+						<div>
+							<label for="tipopago">Dirección de envío</label>
+							<div class="bor8 bg0 m-b-12">
+								<input id="txtDireccion" class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state" placeholder="Dirección de envío">
 							</div>
-
-							<div class="size-209">
-								<span id="subTotalCompra" class="mtext-110 cl2">
-									<?= SMONEY.formatMoney($subtotal) ?>
-								</span>
-							</div>
-
-							<div class="size-208">
-								<span class="stext-110 cl2">
-									Envío:
-								</span>
-							</div>
-
-							<div class="size-209">
-								<span class="mtext-110 cl2">
-									<?= SMONEY.formatMoney(COSTOENVIO) ?>
-								</span>
+							<div class="bor8 bg0 m-b-22">
+								<input id="txtCiudad" class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode" placeholder="Ciudad / Estado">
 							</div>
 						</div>
-						<div class="flex-w flex-t p-t-27 p-b-33">
-							<div class="size-208">
-								<span class="mtext-101 cl2">
-									Total:
-								</span>
-							</div>
+					<?php }else{ ?>
 
-							<div class="size-209 p-t-1">
-								<span id="totalCompra" class="mtext-110 cl2">
-									<?= SMONEY.formatMoney($subtotal + COSTOENVIO) ?>
-								</span>
-							</div>
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+						  <li class="nav-item">
+						    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#login" role="tab" aria-controls="home" aria-selected="true">Iniciar Sesión</a>
+						  </li>
+						  <li class="nav-item">
+						    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#registro" role="tab" aria-controls="profile" aria-selected="false">Crear cuenta</a>
+						  </li>
+						</ul>
+						<div class="tab-content" id="myTabContent">
+						  <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="home-tab">
+						  	<br>
+						  	<form id="formLogin">
+							  <div class="form-group">
+							    <label for="txtEmail">Usuario</label>
+							    <input type="email" class="form-control" id="txtEmail" name="txtEmail">
+							  </div>
+							  <div class="form-group">
+							    <label for="txtPassword">Contraseña</label>
+							    <input type="password" class="form-control" id="txtPassword" name="txtPassword">
+							  </div>
+							  <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+							</form>
+
+						  </div>
+						  <div class="tab-pane fade" id="registro" role="tabpanel" aria-labelledby="profile-tab">
+						  	<br>
+						  	<form id="formRegister"> 
+						 		<div class="row">
+									<div class="col col-md-6 form-group">
+										<label for="txtNombre">Nombres</label>
+										<input type="text" class="form-control valid validText" id="txtNombre" name="txtNombre" required="">
+									</div>
+									<div class="col col-md-6 form-group">
+										<label for="txtApellido">Apellidos</label>
+										<input type="text" class="form-control valid validText" id="txtApellido" name="txtApellido" required="">
+									</div>
+						 		</div>
+						 		<div class="row">
+									<div class="col col-md-6 form-group">
+										<label for="txtTelefono">Teléfono</label>
+										<input type="text" class="form-control valid validNumber" id="txtTelefono" name="txtTelefono" required="" onkeypress="return controlTag(event);">
+									</div>
+									<div class="col col-md-6 form-group">
+										<label for="txtEmailCliente">Email</label>
+										<input type="email" class="form-control valid validEmail" id="txtEmailCliente" name="txtEmailCliente" required="">
+									</div>
+						 		</div>
+								<button type="submit" class="btn btn-primary">Regístrate</button>
+						 	</form>
+						  </div>
 						</div>
-						<a type=  id="btnComprar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-							Pagar
-						</a>
+
+					<?php } ?>
 					</div>
 				</div>
 			</div>
-		</div>
 
+			<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+				<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+					<h4 class="mtext-109 cl2 p-b-30">
+						Resumen
+					</h4>
+
+					<div class="flex-w flex-t bor12 p-b-13">
+						<div class="size-208">
+							<span class="stext-110 cl2">
+								Subtotal:
+							</span>
+						</div>
+
+						<div class="size-209">
+							<span id="subTotalCompra" class="mtext-110 cl2">
+								<?= SMONEY.formatMoney($subtotal) ?>
+							</span>
+						</div>
+
+						<div class="size-208">
+							<span class="stext-110 cl2">
+								Envío:
+							</span>
+						</div>
+
+						<div class="size-209">
+							<span class="mtext-110 cl2">
+								<?= SMONEY.formatMoney(COSTOENVIO) ?>
+							</span>
+						</div>
+					</div>
+					<div class="flex-w flex-t p-t-27 p-b-33">
+						<div class="size-208">
+							<span class="mtext-101 cl2">
+								Total:
+							</span>
+						</div>
+
+						<div class="size-209 p-t-1">
+							<span id="totalCompra" class="mtext-110 cl2">
+								<?= SMONEY.formatMoney($total) ?>
+							</span>
+						</div>
+					</div>
+<?php 
+	if(isset($_SESSION['login'])){
+?>
+					<h4 class="mtext-109 cl2 p-b-30">
+				
+					
+					<button type="submit" id="btnComprar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Pagar</button>
+<?php } ?>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <?php 
-	
 	footerTienda($data);
  ?>
+	
