@@ -1,5 +1,6 @@
 <?php 
 headerTienda($data);
+
 $subtotal = 0;
 $total = 0;
 foreach ($_SESSION['arrCarrito'] as $producto) {
@@ -147,7 +148,36 @@ $total = $subtotal + COSTOENVIO;
 	if(isset($_SESSION['login'])){
 ?>
 					<h4 class="mtext-109 cl2 p-b-30">
-				
+						Método de pago
+					</h4>
+					<div class="divmetodpago">
+						<div>
+							<label for="paypal">
+								<input type="radio" id="paypal" class="methodpago" name="payment-method" checked="" value="Paypal">
+								<img src="<?= media()?>/images/img-paypal.jpg" alt="Icono de PayPal" class="ml-space-sm" width="74" height="20">
+							</label>
+						</div>
+						<div>
+							<label for="contraentrega">
+								<input type="radio" id="contraentrega" class="methodpago" name="payment-method" value="CT">
+								<span>Contra Entrega</span>
+							</label>
+						</div>
+						<div id="divtipopago" class="notblock" >
+							<label for="listtipopago">Tipo de pago</label>
+							<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+								<select id="listtipopago" class="js-select2" name="listtipopago">
+								
+								</select>
+								<div class="dropDownSelect2"></div>
+							</div>
+						</div>
+						<div id="msgpaypal">
+							<p>Para completar la transacción, te enviaremos a los servidores seguros de PayPal.</p>
+						</div>
+					</div>
+					<hr>
+					<br>
 					
 					<button type="submit" id="btnComprar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Pagar</button>
 <?php } ?>
