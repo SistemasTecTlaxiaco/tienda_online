@@ -153,14 +153,21 @@ function fntdelItem(element){
 	        if(request.status == 200){
 	        	let objData = JSON.parse(request.responseText);
 	        	if(objData.status){
-	        		
+	        		if(option == 1){
 			            document.querySelector("#productosCarrito").innerHTML = objData.htmlCarrito;
 			            const cants = document.querySelectorAll(".cantCarrito");
 						cants.forEach(element => {
 							element.setAttribute("data-notify",objData.cantCarrito)
 						});
-	        		
-	        	}else{
+	        		}else{
+	        			element.parentNode.parentNode.remove();
+	        			document.querySelector("#subTotalCompra").innerHTML = objData.subTotal;
+	        			document.querySelector("#totalCompra").innerHTML = objData.total;
+	        			if(document.querySelectorAll("#tblCarrito tr").length == 1){
+	            			window.location.href = base_url;
+	            		}
+	        		}
+				}else{
 	        		swal("", objData.msg , "error");
 	        	}
 	        } 
