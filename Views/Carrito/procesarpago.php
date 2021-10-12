@@ -9,6 +9,13 @@ foreach ($_SESSION['arrCarrito'] as $producto) {
 $total = $subtotal + COSTOENVIO;
 
 ?>
+<script
+    src="https://www.paypal.com/sdk/js?client-id=ATS72wM3WjOfZvUi8-oL-OBMVSXCPznR1DpcFbd7Fey88zlyrDxH4bP4tESkFiDhXmsYopwYCI_fvYtI">
+  </script>
+  <script>
+    paypal.Buttons().render('#paypal-btn-container');
+    // This function displays Smart Payment Buttons on your web page.
+  </script>
  <br><br><br>
 <hr>
 	<!-- breadcrumb -->
@@ -184,6 +191,7 @@ $total = $subtotal + COSTOENVIO;
 						<div id="msgpaypal">
 							<p>Para completar la transacción, te enviaremos a los servidores seguros de PayPal.</p>
 						</div>
+						<div id="paypal-btn-container"></div>
 					</div>
 					<hr>
 					<br>
