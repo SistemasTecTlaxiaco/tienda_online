@@ -154,6 +154,7 @@ $total = $subtotal + COSTOENVIO;
 <?php 
 	if(isset($_SESSION['login'])){
 ?>
+                    <div id="divMetodoPago" class="notblock">
 					<h4 class="mtext-109 cl2 p-b-30">
 						Método de pago
 					</h4>
@@ -187,16 +188,18 @@ $total = $subtotal + COSTOENVIO;
 								</select>
 								<div class="dropDownSelect2"></div>
 							</div>
+							<br>
+							<button type="submit" id="btnComprar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Procesar pedido</button>
 						</div>
-						<div id="msgpaypal">
+						<div id="divpaypal">
+						<div >
 							<p>Para completar la transacción, te enviaremos a los servidores seguros de PayPal.</p>
 						</div>
-						<div id="paypal-btn-container"></div>
+						<br>
+						<div id="paypal-btn-container"></div>	
+						</div>
 					</div>
-					<hr>
-					<br>
-					
-					<button type="submit" id="btnComprar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Pagar</button>
+					</div>										
 <?php } ?>
 				</div>
 			</div>
