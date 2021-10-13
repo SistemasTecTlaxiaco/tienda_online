@@ -10,12 +10,29 @@ $total = $subtotal + COSTOENVIO;
 
 ?>
 <script
-    src="https://www.paypal.com/sdk/js?client-id=ATS72wM3WjOfZvUi8-oL-OBMVSXCPznR1DpcFbd7Fey88zlyrDxH4bP4tESkFiDhXmsYopwYCI_fvYtI">
+    src="https://www.paypal.com/sdk/js?client-id=ATS72wM3WjOfZvUi8-oL-OBMVSXCPznR1DpcFbd7Fey88zlyrDxH4bP4tESkFiDhXmsYopwYCI_fvYtI&currency=<?= CURRENCY ?>">
   </script>
   <script>
-    paypal.Buttons().render('#paypal-btn-container');
-    // This function displays Smart Payment Buttons on your web page.
-  </script>
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: <?= $total;?>
+          },
+		  description: "Compra de articulos en <?= NOMBRE_EMPESA ?> por <?= SMONEY.$total ?>",
+        }]
+      });
+    },
+	onApprove: function(data, actions) {
+      // This function captures the funds from the transaction.
+      return actions.order.capture().then(function(details) {
+        console.log(details);
+      });
+    }
+  }).render('#paypal-btn-container');
+</script>
+
  <br><br><br>
 <hr>
 	<!-- breadcrumb -->

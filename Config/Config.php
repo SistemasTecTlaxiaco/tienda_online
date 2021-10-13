@@ -19,6 +19,7 @@
 
 	//Simbolo de moneda
 	const SMONEY = "$";
+	const CURRENCY = "MXN";
 
 	//Datos envio de correo
 	const NOMBRE_REMITENTE = "Tienda virtual PC-BOX";
