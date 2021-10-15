@@ -10,7 +10,7 @@ $total = $subtotal + COSTOENVIO;
 
 ?>
 <script
-    src="https://www.paypal.com/sdk/js?client-id=ATS72wM3WjOfZvUi8-oL-OBMVSXCPznR1DpcFbd7Fey88zlyrDxH4bP4tESkFiDhXmsYopwYCI_fvYtI&currency=<?= CURRENCY ?>">
+    src="https://www.paypal.com/sdk/js?client-id=<?= IDCLIENTE ?>&currency=<?=CURRENCY ?>">
   </script>
   <script>
   paypal.Buttons({
@@ -27,7 +27,32 @@ $total = $subtotal + COSTOENVIO;
 	onApprove: function(data, actions) {
       // This function captures the funds from the transaction.
       return actions.order.capture().then(function(details) {
-        console.log(details);
+            let base_url = "<?= base_url(); ?>";
+	        let dir = document.querySelector("#txtDireccion").value;
+	        let ciudad = document.querySelector("#txtCiudad").value;
+	        let inttipopago = 1; 
+			let request = (window.XMLHttpRequest) ? 
+	                    new XMLHttpRequest() : 
+	                    new ActiveXObject('Microsoft.XMLHTTP');
+			let ajaxUrl = base_url+'/Tienda/procesarVenta';
+			let formData = new FormData();
+		    formData.append('direccion',dir);    
+		   	formData.append('ciudad',ciudad);
+			formData.append('inttipopago',inttipopago);
+		   	formData.append('datapay',JSON.stringify(details));
+			   request.open("POST",ajaxUrl,true);
+		    request.send(formData);
+			request.onreadystatechange = function(){
+		    	if(request.readyState != 4) return;
+		    	if(request.status == 200){
+		    		let objData = JSON.parse(request.responseText);
+		    		if(objData.status){
+		    			window.location = base_url+"/tienda/confirmarpedido/";
+		    		}else{
+		    			swal("", objData.msg , "error");
+		    		}
+		    	}
+		    }
       });
     }
   }).render('#paypal-btn-container');

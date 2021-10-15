@@ -20,6 +20,11 @@
 	//Simbolo de moneda
 	const SMONEY = "$";
 	const CURRENCY = "MXN";
+	//Api PayPal
+	//SANBOX PAYPAL
+	const IDCLIENTE = "ATS72wM3WjOfZvUi8-oL-OBMVSXCPznR1DpcFbd7Fey88zlyrDxH4bP4tESkFiDhXmsYopwYCI_fvYtI";
+	//LIVE PAYPAL
+	//const IDCLIENTE = "AfU4S4oxwAgOOr9RbobckdPX_PwxN5fTS3QJUVgdW2ll_O0druKAiGZXzDj22qwALAyUL89MRSv3H_N1";
 
 	//Datos envio de correo
 	const NOMBRE_REMITENTE = "Tienda virtual PC-BOX";
