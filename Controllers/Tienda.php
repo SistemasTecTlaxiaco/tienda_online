@@ -248,7 +248,52 @@
 				$status = "Pendiente";
 				$subtotal = 0;
 
-			}else{
+				if(!empty($_SESSION['arrCarrito'])){
+					foreach ($_SESSION['arrCarrito'] as $pro) {
+						$subtotal += $pro['cantidad'] * $pro['precio']; 
+					}
+					$monto = formatMoney($subtotal + COSTOENVIO);
+
+					if(empty($_POST['datapay'])){
+
+					}else{
+						$jsonPaypal = $_POST['datapay'];
+						$objPaypal = json_decode($jsonPaypal);
+						$status = "Aprobado";
+						if(is_object($objPaypal)){
+							$datospaypal = $jsonPaypal;
+							$idtransaccionpaypal = $objPaypal->purchase_units[0]->payments->captures[0]->id;
+							if($objPaypal->status == "COMPLETED"){
+								$totalPaypal = formatMoney($objPaypal->purchase_units[0]->amount->value);
+								if($monto == $totalPaypal){
+									$status = "Completo";
+								}
+
+								//Crear pedido
+								$request_pedido = $this->insertPedido($idtransaccionpaypal, 
+																	$datospaypal, 
+																	$personaid,																
+																	$monto, 
+																	$tipopagoid,
+																	$direccionenvio, 
+																	$status);
+								if($request_pedido > 0 ){
+									
+								}
+
+							}else{
+								$arrResponse = array("status" => false, "msg" => 'No es posible completar el pago con PayPal.');
+							}
+
+						}else{
+							$arrResponse = array("status" => false, "msg" => 'Hubo un error en la transacción.');
+						}
+					}
+
+				}else{
+					$arrResponse = array("status" => false, "msg" => 'No es posible procesar el pedido.');
+				}
+             }else{
 				$arrResponse = array("status" => false, "msg" => 'No es posible procesar el pedido.');
 			}
 			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
