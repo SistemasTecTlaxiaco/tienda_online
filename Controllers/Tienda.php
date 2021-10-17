@@ -293,7 +293,8 @@
 													"msg" => 'Pedido realizado'
 												);
 									$_SESSION['dataorden'] = $arrResponse;
-
+									unset($_SESSION['arrCarrito']);
+									session_regenerate_id(true);
 								}else{
 									$arrResponse = array("status" => false, "msg" => 'No es posible procesar el pedido.');
 								}
@@ -314,6 +315,22 @@
 			}
 			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
             die();
+		}
+		public function confirmarpedido(){
+			if(empty($_SESSION['dataorden'])){
+				header("Location: ".base_url());
+			}else{
+				$dataorden = $_SESSION['dataorden'];
+				$idpedido = openssl_decrypt($dataorden['orden'], METHODENCRIPT, KEY);
+				$transaccion = openssl_decrypt($dataorden['transaccion'], METHODENCRIPT, KEY);
+				$data['page_tag'] = "Confirmar Pedido";
+				$data['page_title'] = "Confirmar Pedido";
+				$data['page_name'] = "confirmarpedido";
+				$data['orden'] = $idpedido;
+				$data['transaccion'] = $transaccion;
+				$this->views->getView($this,"confirmarpedido",$data);
+			}
+			unset($_SESSION['dataorden']);
 		}
 	}
  ?>
