@@ -278,9 +278,25 @@
 																	$direccionenvio, 
 																	$status);
 								if($request_pedido > 0 ){
-									
-								}
+									//Insertamos detalle
+									foreach ($_SESSION['arrCarrito'] as $producto) {
+										$productoid = $producto['idproducto'];
+										$precio = $producto['precio'];
+										$cantidad = $producto['cantidad'];
+										$this->insertDetalle($request_pedido,$productoid,$precio,$cantidad);
+									}
+									$orden = openssl_encrypt($request_pedido, METHODENCRIPT, KEY);
+									$transaccion = openssl_encrypt($idtransaccionpaypal, METHODENCRIPT, KEY);
+									$arrResponse = array("status" => true, 
+													"orden" => $orden, 
+													"transaccion" =>$transaccion,
+													"msg" => 'Pedido realizado'
+												);
+									$_SESSION['dataorden'] = $arrResponse;
 
+								}else{
+									$arrResponse = array("status" => false, "msg" => 'No es posible procesar el pedido.');
+								}
 							}else{
 								$arrResponse = array("status" => false, "msg" => 'No es posible completar el pago con PayPal.');
 							}
