@@ -44,7 +44,7 @@ trait TCliente{
         return $return;
 	}
 
-	public function insertPedido(string $idtransaccionpaypal, string $datospaypal, int $personaid, string $monto, int $tipopagoid
+	public function insertPedido(string $idtransaccionpaypal = NULL, string $datospaypal = NULL, int $personaid, string $monto, int $tipopagoid
 	, string $direccionenvio, string $status){
 		$this->con = new Mysql();
 		$query_insert  = "INSERT INTO pedido(idtransaccionpaypal,datospaypal,personaid,monto,tipopagoid,direccion_envio,status) 
