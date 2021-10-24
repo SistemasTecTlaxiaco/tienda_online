@@ -44,23 +44,22 @@ trait TCliente{
         return $return;
 	}
 
-	public function insertPedido(string $idtransaccionpaypal = NULL, string $datospaypal = NULL, int $personaid, string $monto, int $tipopagoid
-	, string $direccionenvio, string $status){
+	public function insertPedido(string $idtransaccionpaypal = NULL, string $datospaypal = NULL, int $personaid, float $costo_envio, string $monto, int $tipopagoid, string $direccionenvio, string $status){
 		$this->con = new Mysql();
-		$query_insert  = "INSERT INTO pedido(idtransaccionpaypal,datospaypal,personaid,monto,tipopagoid,direccion_envio,status) 
-							  VALUES(?,?,?,?,?,?,?)";
+		$query_insert  = "INSERT INTO pedido(idtransaccionpaypal,datospaypal,personaid,costo_envio,monto,tipopagoid,direccion_envio,status) 
+							  VALUES(?,?,?,?,?,?,?,?)";
 		$arrData = array($idtransaccionpaypal,
-		                    $datospaypal,
-		                    $personaid,
-	                    	$monto,
-		                    $tipopagoid,
-	                     	$direccionenvio,
-	                      	$status
-	                    );
+    						$datospaypal,
+    						$personaid,
+    						$costo_envio,
+    						$monto,
+    						$tipopagoid,
+    						$direccionenvio,
+    						$status
+    					);
 		$request_insert = $this->con->insert($query_insert,$arrData);
-		$return = $request_insert;
-		return $return;								
-
+	    $return = $request_insert;
+	    return $return;
 	}
 
 	public function insertDetalle(int $idpedido, int $productoid, float $precio, int $cantidad){
@@ -68,14 +67,13 @@ trait TCliente{
 		$query_insert  = "INSERT INTO detalle_pedido(pedidoid,productoid,precio,cantidad) 
 							  VALUES(?,?,?,?)";
 		$arrData = array($idpedido,
-		                $productoid,
-		                $precio,
-	                	$cantidad
-	                );
+    					$productoid,
+						$precio,
+						$cantidad
+					);
 		$request_insert = $this->con->insert($query_insert,$arrData);
-		    $return = $request_insert;
-			return $return;
-
+	    $return = $request_insert;
+	    return $return;
 	}
 
 	public function insertDetalleTemp(array $pedido){
@@ -118,6 +116,43 @@ trait TCliente{
 	        	$request_insert = $this->con->insert($query_insert,$arrData);
 			}
 		}
+	}
+
+	public function getPedido(int $idpedido){
+		$this->con = new Mysql();
+		$request = array();
+		$sql = "SELECT p.idpedido,
+							p.referenciacobro,
+							p.idtransaccionpaypal,
+							p.personaid,
+							p.fecha,
+							p.costo_envio,
+							p.monto,
+							p.tipopagoid,
+							t.tipopago,
+							p.direccion_envio,
+							p.status
+					FROM pedido as p
+					INNER JOIN tipopago t
+					ON p.tipopagoid = t.idtipopago
+					WHERE p.idpedido =  $idpedido";
+		$requestPedido = $this->con->select($sql);
+		if(count($requestPedido) > 0){
+			$sql_detalle = "SELECT p.idproducto,
+											p.nombre as producto,
+											d.precio,
+											d.cantidad
+									FROM detalle_pedido d
+									INNER JOIN producto p
+									ON d.productoid = p.idproducto
+									WHERE d.pedidoid = $idpedido
+									";
+			$requestProductos = $this->con->select_all($sql_detalle);
+			$request = array('orden' => $requestPedido,
+							'detalle' => $requestProductos
+							);
+		}
+		return $request;
 	}
 }
 
