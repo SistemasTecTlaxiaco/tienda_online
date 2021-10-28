@@ -25,9 +25,8 @@
 				die();
 			}
 
-			$infoOrden = $this->getPedido(3);
+			$infoOrden = $this->getPedido(5);
 			$dataEmailOrden = array( 'pedido' => $infoOrden);
-
 			$mail = getFile("Template/Email/confirmar_orden",$dataEmailOrden);
 			dep($mail);
 

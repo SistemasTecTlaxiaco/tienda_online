@@ -35,8 +35,8 @@
 	//Datos Empresa
 	const DIRECCION = "Avenida las Américas Zona 13, Oaxaca";
 	const TELEMPRESA = "+(502)78787845";
-	const EMAIL_EMPRESA = "info@abelosh.com";
-	const EMAIL_PEDIDOS = "953143joel@gmail.com";
+	const EMAIL_EMPRESA = "pcbox_store@gmail.com";
+	const EMAIL_PEDIDOS = "pcbox_store@gmail.com";
 	
 	const CAT_SLIDER="1,2,3";
 	const CAT_BANNER="4,5,6";
@@ -46,7 +46,7 @@
 	const METHODENCRIPT = "AES-128-ECB";
 
 	//Envío
-	const COSTOENVIO = 50;
+	const COSTOENVIO = 0;
 	
 	
 
