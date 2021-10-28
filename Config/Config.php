@@ -31,6 +31,12 @@
 	const EMAIL_REMITENTE = "no-reply@empresa.com";
 	const NOMBRE_EMPESA = "PC BOX";
 	const WEB_EMPRESA = "https://tiendapcbox.herokuapp.com/";
+
+	//Datos Empresa
+	const DIRECCION = "Avenida las Américas Zona 13, Oaxaca";
+	const TELEMPRESA = "+(502)78787845";
+	const EMAIL_EMPRESA = "info@abelosh.com";
+	const EMAIL_PEDIDOS = "953143joel@gmail.com";
 	
 	const CAT_SLIDER="1,2,3";
 	const CAT_BANNER="4,5,6";

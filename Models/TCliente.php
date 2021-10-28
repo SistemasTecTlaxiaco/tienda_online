@@ -126,7 +126,6 @@ trait TCliente{
 							p.idtransaccionpaypal,
 							p.personaid,
 							p.fecha,
-							p.costo_envio,
 							p.monto,
 							p.tipopagoid,
 							t.tipopago,

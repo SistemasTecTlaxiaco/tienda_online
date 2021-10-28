@@ -25,6 +25,12 @@
 				die();
 			}
 
+			$infoOrden = $this->getPedido(3);
+			$dataEmailOrden = array( 'pedido' => $infoOrden);
+
+			$mail = getFile("Template/Email/confirmar_orden",$dataEmailOrden);
+			dep($mail);
+
 			$data['page_tag'] = NOMBRE_EMPESA.' - Procesar Pago';
 			$data['page_title'] = 'Procesar Pago';
 			$data['page_name'] = "procesarpago";
