@@ -15,6 +15,9 @@
             <div class="tile-body">Dashboard</div>
             
           </div>
+          <?php
+          echo getToken();
+          ?>
         </div>
       </div>
 </main>

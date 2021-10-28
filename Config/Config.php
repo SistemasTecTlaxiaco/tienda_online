@@ -21,10 +21,14 @@
 	const SMONEY = "$";
 	const CURRENCY = "MXN";
 	//Api PayPal
-	//SANBOX PAYPAL
+	//SANDBOX PAYPAL
+	const URLPAYPAL = "https://api-m.sandbox.paypal.com";
 	const IDCLIENTE = "ATS72wM3WjOfZvUi8-oL-OBMVSXCPznR1DpcFbd7Fey88zlyrDxH4bP4tESkFiDhXmsYopwYCI_fvYtI";
+	const SECRET = "EMDQG74peeJDzc7bUq53-UP_bWQh8-rsOZrBf0xB2i0kunfL6wsH7giEwnlEDkimj4Nx91x58Ff5cPxb";
 	//LIVE PAYPAL
 	//const IDCLIENTE = "AfU4S4oxwAgOOr9RbobckdPX_PwxN5fTS3QJUVgdW2ll_O0druKAiGZXzDj22qwALAyUL89MRSv3H_N1";
+	//const URLPAYPAL = "https://api-m.paypal.com";
+	//const SECRET = "EJwastBF0ibEYzPwNFCJp_cLjPc44aCx4XdXxlq9t1diQ48WtkbXUDOc7KSE95MWPElymVWlGIvqTAZk";
 
 	//Datos envio de correo
 	const NOMBRE_REMITENTE = "Tienda virtual PC-BOX";

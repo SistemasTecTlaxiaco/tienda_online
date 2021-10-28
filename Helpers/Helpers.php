@@ -199,6 +199,25 @@
         $cantidad = number_format($cantidad,2,SPD,SPM);
         return $cantidad;
     }
+
+    function getToken(){
+        $payLogin = curl_init(URLPAYPAL."/v1/oauth2/token");
+        curl_setopt($payLogin, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($payLogin, CURLOPT_RETURNTRANSFER,TRUE);
+        curl_setopt($payLogin, CURLOPT_USERPWD, IDCLIENTE.":".SECRET);
+        curl_setopt($payLogin, CURLOPT_POSTFIELDS, "grant_type=client_credentials");
+        $result = curl_exec($payLogin);
+        $err = curl_error($payLogin);
+
+        if($err){
+            $request = "CURL Error #:" . $err;
+        }else{
+            $objData = json_decode($result);
+            $request = $objData->access_token;
+        }
+       return $request;
+    }
+
     
 
  ?>
