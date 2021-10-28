@@ -46,7 +46,7 @@
 	const METHODENCRIPT = "AES-128-ECB";
 
 	//Envío
-	const COSTOENVIO = 0;
+	const COSTOENVIO = 10;
 	
 	
 
