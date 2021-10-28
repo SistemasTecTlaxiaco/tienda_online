@@ -116,7 +116,7 @@ $detalle = $data['pedido']['detalle'];
 		  <tfoot>
 		  		<tr>
                   <th colspan="3" class="text-right">Subtotal:</th>
-		  			<td class="text-right"><?= SMONEY.' '.$subtotal ?></td>
+		  			<td class="text-right"><?= SMONEY.' '.formatMoney($subtotal) ?></td>
 		  		</tr>
 		  		<tr>
 		  			<th colspan="3" class="text-right">Envío:</th>
