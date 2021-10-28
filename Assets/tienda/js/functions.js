@@ -283,6 +283,18 @@ if(document.querySelector("#txtCiudad")){
 		});
 }	
 
+if(document.querySelector("#condiones")){
+	let opt = document.querySelector("#condiones");
+	opt.addEventListener('click', function(){
+			let opcion = this.checked;	
+			if(opcion){
+				document.querySelector('#divMetodoPago').classList.remove("notblock");	
+			}else{
+				document.querySelector('#divMetodoPago').classList.add("notblock");
+			}  	
+		});
+}	
+
 function fntViewPago(){
 	let direccion = document.querySelector("#txtDireccion").value;
 	let ciudad = document.querySelector("#txtCiudad").value;

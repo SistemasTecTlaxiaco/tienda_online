@@ -57,7 +57,27 @@ $total = $subtotal + COSTOENVIO;
     }
   }).render('#paypal-btn-container');
 </script>
-
+<!-- Modal -->
+<div class="modal fade" id="modalTerminos" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Terminos y Condiciones</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt, corrupti hic aspernatur cumque alias, ipsam omnis iure ipsum, nostrum labore obcaecati natus repellendus consequatur est nemo sapiente dolorem dicta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptas, consectetur iusto delectus quaerat ullam nesciunt! Quae doloribus deserunt qui fugit illo nobis ipsum, accusamus eius perferendis beatae culpa molestias!</p>
+        <br>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Nostrum, ipsa. Corporis ratione consectetur cum ipsa vitae repudiandae sed placeat soluta minus. Ex dicta neque, modi voluptatibus error commodi laudantium nobis!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
  <br><br><br>
 <hr>
 	<!-- breadcrumb -->
@@ -193,10 +213,18 @@ $total = $subtotal + COSTOENVIO;
 							</span>
 						</div>
 					</div>
+					<hr>
 <?php 
 	if(isset($_SESSION['login'])){
 ?>
                     <div id="divMetodoPago" class="notblock">
+					        <div id="divCondiciones">
+							<input type="checkbox" id="condiciones" >
+							<label for="condiciones"> Aceptar </label>
+							<a href="#" data-toggle="modal" data-target="#modalTerminos"> Términos y Condiciones </a>
+	                </div>
+					<div id="optMetodoPago" class="notblock">
+					<hr>
 					<h4 class="mtext-109 cl2 p-b-30">
 						Método de pago
 					</h4>
@@ -241,7 +269,8 @@ $total = $subtotal + COSTOENVIO;
 						<div id="paypal-btn-container"></div>	
 						</div>
 					</div>
-					</div>										
+					</div>
+				</div>										
 <?php } ?>
 				</div>
 			</div>
