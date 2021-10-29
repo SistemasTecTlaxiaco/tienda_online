@@ -16,10 +16,12 @@
             
           </div>
           <?php
-          echo getToken();
 
-          $requestApi = CurlConnectionGet("v2/checkout/orders/01L731638V6964240","application/json");
+          $requestApi = CurlConnectionGet(URLPAYPAL."/v2/checkout/orders/01L731638V6964240","
+          application/json",getTokenPayPal());
           dep($requestApi);
+          $requestPost = CurlConnectionPost(URLPAYPAL."/v2/payments/captures/3A418824P3757402W/refund","application/json",getTokenPaypal());
+          dep($requestPost);
           ?>
         </div>
       </div>

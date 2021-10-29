@@ -223,7 +223,7 @@ $total = $subtotal + COSTOENVIO;
 							<label for="condiciones"> Aceptar </label>
 							<a href="#" data-toggle="modal" data-target="#modalTerminos"> Términos y Condiciones </a>
 	                </div>					
-					<div id="optMetodoPago" class="notblock">
+					<div id="optMetodoPago" >
 					<hr>
 					<h4 class="mtext-109 cl2 p-b-30">
 						Método de pago
