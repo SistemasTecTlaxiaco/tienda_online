@@ -17,6 +17,9 @@
           </div>
           <?php
           echo getToken();
+
+          $requestApi = CurlConnectionGet("v2/checkout/orders/01L731638V6964240","application/json");
+          dep($requestApi);
           ?>
         </div>
       </div>
