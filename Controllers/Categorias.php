@@ -4,7 +4,7 @@
 		{
 			parent::__construct();
 			session_start();
-			session_regenerate_id(true);
+			//session_regenerate_id(true);
 			if(empty($_SESSION['login']))
 			{
 				header('Location: '.base_url().'/login');
@@ -37,6 +37,9 @@
 					$strDescipcion = strClean($_POST['txtDescripcion']);
 					$intStatus = intval($_POST['listStatus']);
 
+					$ruta = strtolower(clear_cadena($strCategoria));
+					$ruta = str_replace(" ","-",$ruta); 
+
                     $foto   	 	= $_FILES['foto'];
 					$nombre_foto 	= $foto['name'];
 					$type 		 	= $foto['type'];
@@ -52,7 +55,7 @@
 					{
 						//Crear
 						if($_SESSION['permisosMod']['w']){
-							$request_cateria = $this->model->inserCategoria($strCategoria, $strDescipcion,$imgPortada,$intStatus);
+							$request_cateria = $this->model->inserCategoria($strCategoria, $strDescipcion,$imgPortada,$ruta,$intStatus);
 							$option = 1;
 						}
 						
@@ -66,7 +69,7 @@
 								}
 							}
 							
-							$request_cateria = $this->model->updateCategoria($intIdcategoria,$strCategoria, $strDescipcion,$imgPortada,$intStatus);
+							$request_cateria = $this->model->updateCategoria($intIdcategoria,$strCategoria, $strDescipcion,$imgPortada,$ruta,$intStatus);
 							$option = 2;
 					}
 

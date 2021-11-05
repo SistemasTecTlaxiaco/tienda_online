@@ -4,7 +4,7 @@
 		{
 			parent::__construct();
 			session_start();
-			session_regenerate_id(true);
+			//session_regenerate_id(true);
 			if(empty($_SESSION['login']))
 			{
 				header('Location: '.base_url().'/login');
@@ -76,6 +76,9 @@
 					$intStatus = intval($_POST['listStatus']);
 					$request_producto = "";
 
+					$ruta = strtolower(clear_cadena($strNombre));
+					$ruta = str_replace(" ","-",$ruta);
+
 					if($idProducto == 0)
 					{
 						$option = 1;
@@ -85,7 +88,8 @@
 																		$strCodigo, 
 																		$intCategoriaId,
 																		$strPrecio, 
-																		$intStock, 
+																		$intStock,
+																		$ruta, 
 																		$intStatus );
 						}
 					}else{
@@ -98,6 +102,7 @@
 																		$intCategoriaId,
 																		$strPrecio, 
 																		$intStock, 
+																		$ruta,
 																		$intStatus);
 						}
 					}
