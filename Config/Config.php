@@ -1,56 +1,58 @@
 <?php 
 	
-	//define("BASE_URL", "http://localhost/tienda_virtual/");
-	const BASE_URL = "http://localhost/tienda_online";
+	//define('BASE_URL', 'http://localhost/tienda_virtual/');
+	define ('BASE_URL', 'https://tiendapcbox.herokuapp.com');
 	
 	//Zona horaria
 	date_default_timezone_set('America/Mexico_City');
 
 	//Datos de conexión a Base de Datos
-	const DB_HOST = "localhost:3307";
-	const DB_NAME = "db_tiendavirtual";
-	const DB_USER = "root";
-	const DB_PASSWORD = "";
-	const DB_CHARSET = "utf8";
+	define ('DB_HOST', 'dfkpczjgmpvkugnb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com');
+	define ('DB_NAME', 'xs74953pb0hvmidl');
+	define ('DB_USER', 'y0k79cxzb1n7lj9r');
+	define ('DB_PASSWORD', 'gk6clc7wdkfdevfw');
+	define ('DB_CHARSET', 'utf8');
+	//define("BASE_URL", "http://localhost/tienda_virtual/");
 
 	//Deliminadores decimal y millar Ej. 24,1989.00
-	const SPD = ".";
-	const SPM = ",";
+	define ('SPD',".");
+	define ('SPM',",");
 
 	//Simbolo de moneda
-	const SMONEY = "$";
-	const CURRENCY = "MXN";
+	define ('SMONEY',"$");
+	define ('CURRENCY',"MXN");
+
 	//Api PayPal
 	//SANDBOX PAYPAL
-	const URLPAYPAL = "https://api-m.sandbox.paypal.com";
-	const IDCLIENTE = "ATS72wM3WjOfZvUi8-oL-OBMVSXCPznR1DpcFbd7Fey88zlyrDxH4bP4tESkFiDhXmsYopwYCI_fvYtI";
-	const SECRET = "EMDQG74peeJDzc7bUq53-UP_bWQh8-rsOZrBf0xB2i0kunfL6wsH7giEwnlEDkimj4Nx91x58Ff5cPxb";
+	define ('URLPAYPAL',"https://api-m.sandbox.paypal.com");
+	define ('IDCLIENTE',"ATS72wM3WjOfZvUi8-oL-OBMVSXCPznR1DpcFbd7Fey88zlyrDxH4bP4tESkFiDhXmsYopwYCI_fvYtI");
+	define ('SECRET',"EMDQG74peeJDzc7bUq53-UP_bWQh8-rsOZrBf0xB2i0kunfL6wsH7giEwnlEDkimj4Nx91x58Ff5cPxb");
 	//LIVE PAYPAL
 	//const IDCLIENTE = "AfU4S4oxwAgOOr9RbobckdPX_PwxN5fTS3QJUVgdW2ll_O0druKAiGZXzDj22qwALAyUL89MRSv3H_N1";
 	//const URLPAYPAL = "https://api-m.paypal.com";
 	//const SECRET = "EJwastBF0ibEYzPwNFCJp_cLjPc44aCx4XdXxlq9t1diQ48WtkbXUDOc7KSE95MWPElymVWlGIvqTAZk";
 
 	//Datos envio de correo
-	const NOMBRE_REMITENTE = "Tienda virtual PC-BOX";
-	const EMAIL_REMITENTE = "no-reply@empresa.com";
-	const NOMBRE_EMPESA = "PC BOX";
-	const WEB_EMPRESA = "https://tiendapcbox.herokuapp.com/";
+	define ('NOMBRE_REMITENTE',"Tienda virtual PC-BOX");
+	define ('EMAIL_REMITENTE',"no-reply@empresa.com");
+	define ('NOMBRE_EMPESA',"PC BOX");
+	define ('WEB_EMPRESA',"https://tiendapcbox.herokuapp.com/");
 
 	//Datos Empresa
-	const DIRECCION = "Avenida las Américas Zona 13, Oaxaca";
-	const TELEMPRESA = "+(502)78787845";
-	const EMAIL_EMPRESA = "pcbox_store@gmail.com";
-	const EMAIL_PEDIDOS = "pcbox_store@gmail.com";
+	define ('DIRECCION',"Avenida las Américas Zona 13, Oaxaca");
+	define ('TELEMPRESA',"+(502)78787845");
+	define ('EMAIL_EMPRESA',"pcbox_store@gmail.com");
+	define ('EMAIL_PEDIDOS',"pcbox_store@gmail.com");
 	
-	const CAT_SLIDER="1,2,3";
-	const CAT_BANNER="4,5,6";
+	define ('CAT_SLIDER',"1,2,3");
+	define ('CAT_BANNER',"4,5,6");
 
 	//Datos para Encriptar / Desencriptar
-	const KEY = 'abelosh';
-	const METHODENCRIPT = "AES-128-ECB";
+	define ('KEY','abelosh';
+	define ('METHODENCRIPT', "AES-128-ECB");
 
 	//Envío
-	const COSTOENVIO = 10;
+	define ('COSTOENVIO', "10");
 	
 	
 
