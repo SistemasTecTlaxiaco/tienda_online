@@ -1,7 +1,7 @@
 <?php 
 	
 	//define('BASE_URL', 'http://localhost/tienda_virtual/');
-	define ('BASE_URL', 'https://tiendapcbox.herokuapp.com');
+	define ('BASE_URL', 'https://tiendapcbox.herokuapp.com/');
 	
 	//Zona horaria
 	date_default_timezone_set('America/Mexico_City');
