@@ -1,4 +1,3 @@
-<p>Mini Framework V1.0 - <a href="https://tiendapcbox.herokuapp.com"></p>
 <?php
 	headerTienda($data);
 	$arrSlider = $data['slider'];
