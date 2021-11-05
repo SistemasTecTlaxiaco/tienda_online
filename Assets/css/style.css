@@ -17,11 +17,11 @@
 	display: none;
 }
 .headerRegister, .header-primary{
-	background: #009688;
+	background: #032953;
 	color: #FFF;
 }
 .headerUpdate{
-	background: #007bff;
+	background: #032953;
 	color: #FFF;
 }
 .textcenter{
@@ -157,7 +157,7 @@
 }
 .btnUploadfile, .btnDeleteImage{
 	border: 0;
-	background-color: #009688;
+	background-color: #032953;
 	text-align: center;
 	padding: 2px 3px;
 	color: #FFF;

@@ -152,4 +152,4 @@
 
 <?php
 	footerTienda($data);
-?>
+<?
