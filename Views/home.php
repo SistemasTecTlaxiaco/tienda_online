@@ -5,8 +5,6 @@
 	$arrProductos = $data['productos'];
 	//dep($arrProductos);
 ?>
-		
-
 	<!-- Slider -->
 	<section class="section-slide">
 		<div class="wrap-slick1">
@@ -152,4 +150,4 @@
 
 <?php
 	footerTienda($data);
-<?
+?>
