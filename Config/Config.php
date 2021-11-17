@@ -48,7 +48,7 @@
 	define ('CAT_BANNER',"4,5,6");
 
 	//Datos para Encriptar / Desencriptar
-	define ('KEY','abelosh';
+	define ('KEY','abelosh');
 	define ('METHODENCRIPT', "AES-128-ECB");
 
 	//Envío
