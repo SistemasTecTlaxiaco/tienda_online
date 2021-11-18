@@ -10,7 +10,7 @@ class Pedidos extends Controllers{
             header('Location: '.base_url().'/login');
             die();
         }
-        getPermisos(5);
+        getPermisos(MPEDIDOS);
     }
 
     public function Pedidos()
@@ -27,7 +27,11 @@ class Pedidos extends Controllers{
 
     public function getPedidos(){
 		if($_SESSION['permisosMod']['r']){
-			$arrData = $this->model->selectPedidos();
+			$idpersona = "";
+			if( $_SESSION['userData']['idrol'] == RCLIENTES ){
+				$idpersona = $_SESSION['userData']['idpersona'];
+			}
+			$arrData = $this->model->selectPedidos($idpersona);
 			//dep($arrData);
 			for ($i=0; $i < count($arrData); $i++) {
 				$btnView = '';

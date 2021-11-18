@@ -22,12 +22,9 @@
 							p.status 
 					FROM pedido p 
 					INNER JOIN tipopago tp
-					ON p.tipopagoid = tp.idtipopago /*$where*/ ";
+					ON p.tipopagoid = tp.idtipopago $where ";
 			$request = $this->select_all($sql);
 			return $request;
-
 		}	
-
-		
 	}
  ?>
