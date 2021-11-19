@@ -67,5 +67,24 @@ class Pedidos extends Controllers{
 		}
 		die();
 	}
+
+	public function orden($idpedido){
+		if(!is_numeric($idpedido)){
+			header("Location:".base_url().'/pedidos');
+		}
+		if(empty($_SESSION['permisosMod']['r'])){
+			header("Location:".base_url().'/dashboard');
+		}
+		$idpersona = "";
+		if( $_SESSION['userData']['idrol'] == RCLIENTES ){
+			$idpersona = $_SESSION['userData']['idpersona'];
+		}
+		
+		$data['page_tag'] = "Pedido - Tienda Virtual";
+		$data['page_title'] = "PEDIDO <small>Tienda Virtual</small>";
+		$data['page_name'] = "pedido";
+		$data['arrPedido'] = $this->model->selectPedido($idpedido,$idpersona);
+		$this->views->getView($this,"orden",$data);
+	}
 }
 ?>
