@@ -86,5 +86,20 @@ class Pedidos extends Controllers{
 		$data['arrPedido'] = $this->model->selectPedido($idpedido,$idpersona);
 		$this->views->getView($this,"orden",$data);
 	}
+
+	public function transaccion($transaccion){
+		if(empty($_SESSION['permisosMod']['r'])){
+			header("Location:".base_url().'/dashboard');
+		}
+		$idpersona = "";
+		if( $_SESSION['userData']['idrol'] == RCLIENTES ){
+			$idpersona = $_SESSION['userData']['idpersona'];
+		}
+		$data['page_tag'] = "Detalles de la transacción - Tienda Virtual";
+		$data['page_title'] = "Detalles de la transacción";
+		$data['page_name'] = "detalle_transaccion";
+		$data['page_functions_js'] = "functions_pedidos.js";
+		$this->views->getView($this,"transaccion",$data);
+	}
 }
 ?>
