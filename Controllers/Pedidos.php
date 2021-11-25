@@ -95,10 +95,13 @@ class Pedidos extends Controllers{
 		if( $_SESSION['userData']['idrol'] == RCLIENTES ){
 			$idpersona = $_SESSION['userData']['idpersona'];
 		}
+		$requestTransaccion = $this->model->selectTransPaypal($transaccion,$idpersona);	
+		//dep($requestTransaccion);exit;
 		$data['page_tag'] = "Detalles de la transacción - Tienda Virtual";
 		$data['page_title'] = "Detalles de la transacción";
 		$data['page_name'] = "detalle_transaccion";
 		$data['page_functions_js'] = "functions_pedidos.js";
+		$data['objTransaccion'] = $requestTransaccion;
 		$this->views->getView($this,"transaccion",$data);
 	}
 }

@@ -76,6 +76,23 @@
 								 );
 			}
 			return $request;
-		} 
+		}
+		
+		public function selectTransPaypal(string $idtransaccion, $idpersona = NULL){
+			$busqueda = "";
+			if($idpersona != NULL){
+				$busqueda = " AND personaid =".$idpersona;
+			}
+			$objTransaccion = array();
+			$sql = "SELECT datospaypal FROM pedido WHERE idtransaccionpaypal = '{$idtransaccion}' ".$busqueda;
+			$requestData = $this->select($sql);
+			if(!empty($requestData)){
+				$objData = json_decode($requestData['datospaypal']);
+				$urlTransaccion = $objData->purchase_units[0]->payments->captures[0]->links[0]->href;
+				$urlOrden = $objData->purchase_units[0]->payments->captures[0]->links[2]->href;
+				$objTransaccion = CurlConnectionGet($urlOrden,"application/json",getTokenPaypal());
+			}
+			return $objTransaccion;
+		}
 	}
  ?>
