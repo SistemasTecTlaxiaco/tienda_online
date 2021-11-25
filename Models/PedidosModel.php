@@ -88,8 +88,9 @@
 			$requestData = $this->select($sql);
 			if(!empty($requestData)){
 				$objData = json_decode($requestData['datospaypal']);
-				$urlTransaccion = $objData->purchase_units[0]->payments->captures[0]->links[0]->href;
-				$urlOrden = $objData->purchase_units[0]->payments->captures[0]->links[2]->href;
+				dep($objData);exit;
+				$urlTransaccion = $objData->links[0]->href;
+				$urlOrden = $objData->links[2]->href;
 				$objTransaccion = CurlConnectionGet($urlOrden,"application/json",getTokenPaypal());
 			}
 			return $objTransaccion;
