@@ -96,7 +96,7 @@ class Pedidos extends Controllers{
 			$idpersona = $_SESSION['userData']['idpersona'];
 		}
 		$requestTransaccion = $this->model->selectTransPaypal($transaccion,$idpersona);	
-		dep($requestTransaccion);exit;
+		//dep($requestTransaccion);exit;
 		$data['page_tag'] = "Detalles de la transacción - Tienda Virtual";
 		$data['page_title'] = "Detalles de la transacción";
 		$data['page_name'] = "detalle_transaccion";
