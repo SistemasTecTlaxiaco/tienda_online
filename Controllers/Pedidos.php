@@ -104,5 +104,24 @@ class Pedidos extends Controllers{
 		$data['objTransaccion'] = $requestTransaccion;
 		$this->views->getView($this,"transaccion",$data);
 	}
+
+	public function getTransaccion(string $transaccion){
+		if($_SESSION['permisosMod']['r'] and $_SESSION['userData']['idrol'] != RCLIENTES){
+			if($transaccion == ""){
+				$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
+			}else{
+				$transaccion = strClean($transaccion);
+				$requestTransaccion = $this->model->selectTransPaypal($transaccion);
+				if(empty($requestTransaccion)){
+					$arrResponse = array("status" => false, "msg" => "Datos no disponibles.");
+				}else{
+					$htmlModal = getFile("Template/Modals/modalReembolso",$requestTransaccion);
+					$arrResponse = array("status" => true, "html" => $htmlModal);
+				}
+			}
+			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+		}
+		die();
+	}
 }
 ?>
