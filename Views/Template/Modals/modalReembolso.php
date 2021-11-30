@@ -29,23 +29,23 @@
           <tbody>
             <tr>
               <td>Transacción:</td>
-              <td></td>
+              <td><?= $idTransaccion ?></td>
             </tr>
             <tr>
               <td>Datos contacto:</td>
-              <td></td>
+              <td> <?= $nombreCliente  ?> <br> <?= $emailCliente  ?> <br> <?= $telCliente  ?> </td>
             </tr>
             <tr>
               <td>Importe total reembolso:</td>
-              <td></td>
+              <td><?= $totalCompra.' '.$moneda ?></td>
             </tr>
             <tr>
               <td>Importe neto reembolso:</td>
-              <td></td>
+              <td><?= $importeNeto.' '.$moneda ?></td>
             </tr>
             <tr>
               <td>Comisión reembolso por PayPal:</td>
-              <td></td>
+              <td><?= $comision.' '.$moneda ?></td>
             </tr>
             <tr>
               <td>Observación:</td>
