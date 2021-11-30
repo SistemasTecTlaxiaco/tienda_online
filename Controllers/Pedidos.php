@@ -123,5 +123,25 @@ class Pedidos extends Controllers{
 		}
 		die();
 	}
+
+	public function setReembolso(){
+		if($_POST){
+			if($_SESSION['permisosMod']['u'] and $_SESSION['userData']['idrol'] != RCLIENTES){
+				//dep($_POST);
+				$transaccion = strClean($_POST['idtransaccion']);
+				$observacion = strClean($_POST['observacion']);
+				$requestTransaccion = $this->model->reembolsoPaypal($transaccion,$observacion);
+				if($requestTransaccion){
+					$arrResponse = array("status" => true, "msg" => "El reembolso se ha procesado.");
+				}else{
+					$arrResponse = array("status" => false, "msg" => "No es posible procesar el reembolso.");
+				}
+			}else{
+				$arrResponse = array("status" => false, "msg" => "No es posible realizar el proceso, consulte al administrador.");
+			}
+			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+		}
+		die();
+	}
 }
 ?>

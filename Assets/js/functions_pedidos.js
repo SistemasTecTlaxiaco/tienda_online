@@ -88,3 +88,52 @@ function fntTransaccion(idtransaccion){
         }
     }
 }
+
+function fntReembolsar(){
+    let idtransaccion = document.querySelector("#idtransaccion").value;
+    let observacion = document.querySelector("#txtObservacion").value;
+    if(idtransaccion == '' || observacion == ''){
+        swal("", "Complete los datos para continuar." , "error");
+        return false;
+    }
+
+    swal({
+        title: "Hacer Reembolso",
+        text: "¿Realmente quiere realizar el reembolso?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, eliminar!",
+        cancelButtonText: "No, cancelar!",
+        closeOnConfirm: true,
+        closeOnCancel: true
+    }, function(isConfirm) { 
+
+        if(isConfirm){ 
+            $('#modalReembolso').modal('hide');
+            divLoading.style.display = "flex";
+            let request = (window.XMLHttpRequest) ? 
+                    new XMLHttpRequest() : 
+                    new ActiveXObject('Microsoft.XMLHTTP');
+            let ajaxUrl = base_url+'/Pedidos/setReembolso';
+            let formData = new FormData();
+            formData.append('idtransaccion',idtransaccion);
+            formData.append('observacion',observacion);
+            request.open("POST",ajaxUrl,true);
+            request.send(formData);
+            request.onreadystatechange = function(){
+                if(request.readyState != 4) return;
+                if(request.status == 200){
+                    let objData = JSON.parse(request.responseText);
+                    if(objData.status){  
+                        window.location.reload();
+                    }else{
+                        swal("Error", objData.msg , "error");
+                    }
+                    divLoading.style.display = "none";
+                    return false;
+                }
+            }
+        }
+
+    });
+}
