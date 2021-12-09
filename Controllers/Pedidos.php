@@ -131,6 +131,8 @@ class Pedidos extends Controllers{
 				$transaccion = strClean($_POST['idtransaccion']);
 				$observacion = strClean($_POST['observacion']);
 				$requestTransaccion = $this->model->reembolsoPaypal($transaccion,$observacion);
+				//dep($requestTransaccion);
+				//exit();
 				if($requestTransaccion){
 					$arrResponse = array("status" => true, "msg" => "El reembolso se ha procesado.");
 				}else{
