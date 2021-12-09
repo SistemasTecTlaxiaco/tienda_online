@@ -155,7 +155,7 @@ function fntEditInfo(element,idpedido){
                 document.querySelector("#divModal").innerHTML = objData.html;
                 $('#modalFormPedido').modal('show');
                 $('select').selectpicker();
-                //fntUpdateInfo();
+                fntUpdateInfo();
             }else{
                 swal("Error", objData.msg , "error");
             }
@@ -163,5 +163,38 @@ function fntEditInfo(element,idpedido){
             return false;
 
         }
+    }
+}
+
+function fntUpdateInfo(){
+    let formUpdatePedido = document.querySelector("#formUpdatePedido");
+    formUpdatePedido.onsubmit = function(e) {
+        e.preventDefault();
+        let transaccion;
+        if(document.querySelector("#txtTransaccion")){
+            transaccion = document.querySelector("#txtTransaccion").value;
+            if(transaccion == ""){
+                swal("", "Complete los datos para continuar." , "error");
+                return false;
+            }
+        }
+
+        let request = (window.XMLHttpRequest) ? 
+                    new XMLHttpRequest() : 
+                    new ActiveXObject('Microsoft.XMLHTTP');
+        let ajaxUrl = base_url+'/Pedidos/setPedido/';
+        divLoading.style.display = "flex";
+        let formData = new FormData(formUpdatePedido);
+        request.open("POST",ajaxUrl,true);
+        request.send(formData);
+        request.onreadystatechange = function(){
+            if(request.readyState != 4) return;
+            if(request.status == 200){
+                console.log(request.responseText);
+                divLoading.style.display = "none";
+                return false;
+            }
+        }
+
     }
 }

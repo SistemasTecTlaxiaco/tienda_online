@@ -163,5 +163,10 @@ class Pedidos extends Controllers{
 		}
 		die();
 	}
+
+	public function setPedido(){
+		dep($_POST);
+		die();
+	}
 }
  ?>
