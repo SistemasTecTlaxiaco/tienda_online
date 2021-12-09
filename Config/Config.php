@@ -65,7 +65,7 @@
 	const RADMINISTRADOR = 1;
 	const RCLIENTES = 7;
 	
-	
+	const STATUS = array('Completo','Aprobado','Cancelado','Reembolsado','Pendiente','Entregado');
 
 
  ?>

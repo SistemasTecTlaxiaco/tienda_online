@@ -1,19 +1,21 @@
-<?php
+<?php 
+require_once("Models/TTipoPago.php"); 
 class Pedidos extends Controllers{
-    public function __construct()
-    {
-        parent::__construct();
-        session_start();
-        //session_regenerate_id(true);
-        if(empty($_SESSION['login']))
-        {
-            header('Location: '.base_url().'/login');
-            die();
-        }
-        getPermisos(MPEDIDOS);
-    }
+	use TTipoPago;
+	public function __construct()
+	{
+		parent::__construct();
+		session_start();
+		//session_regenerate_id(true);
+		if(empty($_SESSION['login']))
+		{
+			header('Location: '.base_url().'/login');
+			die();
+		}
+		getPermisos(MPEDIDOS);
+	}
 
-    public function Pedidos()
+	public function Pedidos()
 	{
 		if(empty($_SESSION['permisosMod']['r'])){
 			header("Location:".base_url().'/dashboard');
@@ -25,7 +27,7 @@ class Pedidos extends Controllers{
 		$this->views->getView($this,"pedidos",$data);
 	}
 
-    public function getPedidos(){
+	public function getPedidos(){
 		if($_SESSION['permisosMod']['r']){
 			$idpersona = "";
 			if( $_SESSION['userData']['idrol'] == RCLIENTES ){
@@ -95,8 +97,7 @@ class Pedidos extends Controllers{
 		if( $_SESSION['userData']['idrol'] == RCLIENTES ){
 			$idpersona = $_SESSION['userData']['idpersona'];
 		}
-		$requestTransaccion = $this->model->selectTransPaypal($transaccion,$idpersona);	
-		//dep($requestTransaccion);exit;
+		$requestTransaccion = $this->model->selectTransPaypal($transaccion,$idpersona);		
 		$data['page_tag'] = "Detalles de la transacción - Tienda Virtual";
 		$data['page_title'] = "Detalles de la transacción";
 		$data['page_name'] = "detalle_transaccion";
@@ -131,8 +132,6 @@ class Pedidos extends Controllers{
 				$transaccion = strClean($_POST['idtransaccion']);
 				$observacion = strClean($_POST['observacion']);
 				$requestTransaccion = $this->model->reembolsoPaypal($transaccion,$observacion);
-				//dep($requestTransaccion);
-				//exit();
 				if($requestTransaccion){
 					$arrResponse = array("status" => true, "msg" => "El reembolso se ha procesado.");
 				}else{
@@ -145,5 +144,24 @@ class Pedidos extends Controllers{
 		}
 		die();
 	}
+
+	public function getPedido(string $pedido){
+		if($_SESSION['permisosMod']['u'] and $_SESSION['userData']['idrol'] != RCLIENTES){
+			if($pedido == ""){
+				$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
+			}else{
+				$requestPedido = $this->model->selectPedido($pedido,"");
+				if(empty($requestPedido)){
+					$arrResponse = array("status" => false, "msg" => "Datos no disponibles.");
+				}else{
+					$requestPedido['tipospago'] = $this->getTiposPagoT();
+					$htmlModal = getFile("Template/Modals/modalPedido",$requestPedido);
+					$arrResponse = array("status" => true, "html" => $htmlModal);
+				}
+			}
+			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+		}
+		die();
+	}
 }
-?>
+ ?>
