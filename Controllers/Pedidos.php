@@ -165,8 +165,45 @@ class Pedidos extends Controllers{
 	}
 
 	public function setPedido(){
-		dep($_POST);
-		die();
+		if($_POST){
+			if($_SESSION['permisosMod']['u'] and $_SESSION['userData']['idrol'] != RCLIENTES){
+
+				$idpedido = !empty($_POST['idpedido']) ? intval($_POST['idpedido']) : "";
+				$estado = !empty($_POST['listEstado']) ? strClean($_POST['listEstado']) : "";
+				$idtipopago =  !empty($_POST['listTipopago']) ? intval($_POST['listTipopago']) : "";
+				$transaccion = !empty($_POST['txtTransaccion']) ? strClean($_POST['txtTransaccion']) : "";
+
+				if($idpedido == ""){
+					$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
+				}else{
+					if($idtipopago == ""){
+						if($estado == ""){
+							$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
+						}else{
+							$requestPedido = $this->model->updatePedido($idpedido,"","",$estado);
+							if($requestPedido){
+								$arrResponse = array("status" => true, "msg" => "Datos actualizados correctamente");
+							}else{
+								$arrResponse = array("status" => false, "msg" => "No es posible actualizar la información.");
+					   }
+				    }
+			      }else{
+					if($transaccion == "" or $idtipopago =="" or $estado == ""){
+						$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
+					}else{
+						$requestPedido = $this->model->updatePedido($idpedido,$transaccion,$idtipopago,$estado);
+						if($requestPedido){
+							$arrResponse = array("status" => true, "msg" => "Datos actualizados correctamente");
+						}else{
+							$arrResponse = array("status" => false, "msg" => "No es posible actualizar la información.");
+						}
+					}
+				}
+			}
+			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+		}
 	}
+	die();
 }
- ?>
+}
+?>

@@ -137,5 +137,19 @@
 			}
 		}
 
+		public function updatePedido(int $idpedido, $transaccion = NULL, $idtipopago = NULL, string $estado){
+			if($transaccion == NULL){
+				$query_insert  = "UPDATE pedido SET status = ?  WHERE idpedido = $idpedido ";
+	        	$arrData = array($estado);
+			}else{
+				$query_insert  = "UPDATE pedido SET referenciacobro = ?, tipopagoid = ?,status = ? WHERE idpedido = $idpedido";
+	        	$arrData = array($transaccion,
+	        					$idtipopago,
+	    						$estado
+	    					);
+		}
+		$request_insert = $this->update($query_insert,$arrData);
+        	return $request_insert;
+	    }
 	}
  ?>
