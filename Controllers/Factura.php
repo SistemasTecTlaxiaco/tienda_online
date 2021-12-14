@@ -1,5 +1,6 @@
 <?php 
-	
+	require 'Libraries/html2pdf/vendor/autoload.php';
+	use Spipu\Html2Pdf\Html2Pdf;
 
 	class Factura extends Controllers{
 		public function __construct()
@@ -11,9 +12,14 @@
 		public function generarFactura($idpedido)
 		{
 			if(is_numeric($idpedido)){
-                $idpersona= "";
-               $data = $this ->model->selectPedido($idpedido,$idpersona);
-               dep($data);
+				$idpersona = "";
+				$data = $this->model->selectPedido($idpedido,$idpersona);
+				
+					ob_end_clean();
+					$html = getFile("Template/Modals/comprobantePDF",$data);
+					$html2pdf = new Html2Pdf();
+					$html2pdf->writeHTML($html);
+					$html2pdf->output('factura-'.$idpedido.'.pdf');				
 			}else{
 				echo "Dato no válido";
 			}
