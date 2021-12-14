@@ -190,7 +190,21 @@ function fntUpdateInfo(){
         request.onreadystatechange = function(){
             if(request.readyState != 4) return;
             if(request.status == 200){
-                console.log(request.responseText);
+                let objData = JSON.parse(request.responseText);
+                if(objData.status){
+                     swal("", objData.msg ,"success");
+                     $('#modalFormPedido').modal('hide');
+                    if(document.querySelector("#txtTransaccion")){
+                        rowTable.cells[1].textContent = document.querySelector("#txtTransaccion").value;
+                        rowTable.cells[4].textContent = document.querySelector("#listTipopago").selectedOptions[0].innerText;
+                        rowTable.cells[5].textContent = document.querySelector("#listEstado").value;
+                    }else{
+                        rowTable.cells[5].textContent = document.querySelector("#listEstado").value;
+                    }
+                }else{
+                    swal("Error", objData.msg , "error");
+                } 
+
                 divLoading.style.display = "none";
                 return false;
             }
