@@ -50,7 +50,7 @@
 		}
 		.tbl-detalle thead th{
 			padding: 5px;
-			background-color: #009688;
+			background-color: #032953;
 			color: #FFF;
 		}
 		.tbl-detalle tbody td{
