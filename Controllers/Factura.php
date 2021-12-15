@@ -20,12 +20,12 @@
 				if(empty($data)){
 					echo "Datos no encontrados";
 				}else{
-
+					$idpedido = $data['orden']['idpedido'];
 					ob_end_clean();
 					$html = getFile("Template/Modals/comprobantePDF",$data);
 					$html2pdf = new Html2Pdf('p','A4','es','true','UTF-8');
 					$html2pdf->writeHTML($html);
-					$html2pdf->output('factura-'.$idpedido.'.pdf');
+					$html2pdf->output('Factura-'.$idpedido.'.pdf');
 				}
 			}else{
 				echo "Dato no válido";
