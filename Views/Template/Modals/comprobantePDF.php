@@ -28,10 +28,37 @@
 		.wd33{
 			width: 33.33%;
 		}
+		.tbl-cliente{
+			border: 1px solid #CCC;
+			border-radius: 10px;
+			padding: 5px;
+		}
+		.wd10{
+			width: 10%;
+		}
+		.wd15{
+			width: 15%;
+		}
+		.wd40{
+			width: 40%;
+		}
+		.wd55{
+			width: 55%;
+		}
+		.tbl-detalle{
+			border-collapse: collapse;
+		}
 		.tbl-detalle thead th{
 			padding: 5px;
 			background-color: #009688;
 			color: #FFF;
+		}
+		.tbl-detalle tbody td{
+			border-bottom: 1px solid #CCC;
+			padding: 5px;
+		}
+		.tbl-detalle tfoot td{
+			padding: 5px;
 		}
 	</style>
 </head>
@@ -55,11 +82,12 @@
 							if($orden['tipopagoid'] == 1){
 						 ?>
 						Método Pago: <?= $orden['tipopago'] ?> <br>
-						Transacción: <?= $orden['idtransaccionpaypal'] ?
+						Transacción: <?= $orden['idtransaccionpaypal'] ?>
 						<?php }else{ ?>
 						Método Pago: Pago contra entrega <br>
 						Tipo Pago: <?= $orden['tipopago'] ?>
 						<?php } ?>
+					</p>
 				</td>
 			</tr>
 		</tbody>
@@ -78,18 +106,11 @@
 				<td><?= $cliente['nombres'].' '.$cliente['apellidos'] ?></td>
 				<td>Dirección:</td>
 				<td><?= $cliente['direccionfiscal'] ?></td>
-				
 			</tr>
 		</tbody>
 	</table>
 	<br>
 	<table class="tbl-detalle">
-	<?php 
-				$subtotal = 0;
-				foreach ($detalle as $producto) {
-					$importe = $producto['precio'] * $producto['cantidad'];
-					$subtotal = $subtotal + $importe;
-			 ?>
 		<thead>
 			<tr>
 				<th class="wd55">Descripción</th>
@@ -99,7 +120,19 @@
 			</tr>
 		</thead>
 		<tbody>
-
+			<?php 
+				$subtotal = 0;
+				foreach ($detalle as $producto) {
+					$importe = $producto['precio'] * $producto['cantidad'];
+					$subtotal = $subtotal + $importe;
+			 ?>
+			<tr>
+				<td><?= $producto['producto'] ?></td>
+				<td class="text-right"><?= SMONEY.' '.formatMoney($producto['precio']) ?></td>
+				<td class="text-center"><?= $producto['cantidad'] ?></td>
+				<td class="text-right"><?= SMONEY.' '.formatMoney($importe) ?></td>
+			</tr>
+			<?php } ?>
 		</tbody>
 		<tfoot>
 			<tr>
