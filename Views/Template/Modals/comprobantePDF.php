@@ -28,7 +28,11 @@
 		.wd33{
 			width: 33.33%;
 		}
-		
+		.tbl-detalle thead th{
+			padding: 5px;
+			background-color: #009688;
+			color: #FFF;
+		}
 	</style>
 </head>
 <body>
@@ -45,12 +49,17 @@
 					Email: <?= EMAIL_EMPRESA  ?></p>
 				</td>
 				<td class="text-right wd33">
-						Método Pago: 
-						Transacción: 
+					<p>No. Orden <strong><?= $orden['idpedido'] ?></strong><br>
+						Fecha: <?= $orden['fecha'] ?>  <br>
+						<?php 
+							if($orden['tipopagoid'] == 1){
+						 ?>
+						Método Pago: <?= $orden['tipopago'] ?> <br>
+						Transacción: <?= $orden['idtransaccionpaypal'] ?
+						<?php }else{ ?>
 						Método Pago: Pago contra entrega <br>
-						Tipo Pago:
-						
-
+						Tipo Pago: <?= $orden['tipopago'] ?>
+						<?php } ?>
 				</td>
 			</tr>
 		</tbody>
@@ -60,18 +69,27 @@
 		<tbody>
 			<tr>
 				<td class="wd10">NIT:</td>
+				<td class="wd40"><?= $cliente['nit'] ?></td>
 				<td class="wd10">Teléfono:</td>
+				<td class="wd40"><?= $cliente['telefono'] ?></td>
 			</tr>
 			<tr>
 				<td>Nombre:</td>
-				
+				<td><?= $cliente['nombres'].' '.$cliente['apellidos'] ?></td>
 				<td>Dirección:</td>
+				<td><?= $cliente['direccionfiscal'] ?></td>
 				
 			</tr>
 		</tbody>
 	</table>
 	<br>
 	<table class="tbl-detalle">
+	<?php 
+				$subtotal = 0;
+				foreach ($detalle as $producto) {
+					$importe = $producto['precio'] * $producto['cantidad'];
+					$subtotal = $subtotal + $importe;
+			 ?>
 		<thead>
 			<tr>
 				<th class="wd55">Descripción</th>
@@ -85,14 +103,16 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="3" >Subtotal:</td>
+				<td colspan="3" class="text-right">Subtotal:</td>
+				<td class="text-right"><?= SMONEY.' '.formatMoney($subtotal) ?></td>
 			</tr>
 			<tr>
-				<td colspan="3" >Envío:</td>
-				
+				<td colspan="3" class="text-right">Envío:</td>
+				<td class="text-right"><?= SMONEY.' '.formatMoney($orden['costo_envio']); ?></td>
 			</tr>
 			<tr>
-				<td colspan="3" >Total:</td>
+				<td colspan="3" class="text-right">Total:</td>
+				<td class="text-right"><?= SMONEY.' '.formatMoney($orden['monto']); ?></td>
 			</tr>
 		</tfoot>
 	</table>
