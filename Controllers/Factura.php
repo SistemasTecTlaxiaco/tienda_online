@@ -1,7 +1,8 @@
 <?php 
-	require 'Libraries/html2pdf/vendor/autoload.php';
-	use Spipu\Html2Pdf\Html2Pdf;
-
+	require 'Libraries/dompdf/vendor/autoload.php';
+	//use Spipu\Html2Pdf\Html2Pdf;
+	use Dompdf\Dompdf ;
+	
 	class Factura extends Controllers{
 		public function __construct()
 		{
@@ -31,9 +32,11 @@
 						$idpedido = $data['orden']['idpedido'];
 						ob_end_clean();
 						$html = getFile("Template/Modals/comprobantePDF",$data);
-						$html2pdf = new Html2Pdf('p','A4','es','true','UTF-8');
-						$html2pdf->writeHTML($html);
-						$html2pdf->output('factura-'.$idpedido.'.pdf');
+						$domepdf = new Dompdf();
+						$domepdf->loadHTML($html);
+						$domepdf->setPaper('letter','portrait','es','true','UTF-8');
+						$domepdf->render();
+						$domepdf->stream('factura-'.$idpedido.'.pdf');
 					}
 				}else{
 					echo "Dato no válido";
