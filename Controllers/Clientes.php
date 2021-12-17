@@ -10,7 +10,7 @@
 			{
 				header('Location: '.base_url().'/login');
 			}
-			getPermisos(3);
+			getPermisos(MCLIENTES);
 			
 		}
 

@@ -1,7 +1,7 @@
 <?php 
 	
 	//define('BASE_URL', 'http://localhost/tienda_virtual/');
-	define ('BASE_URL', 'https://tiendapcbox.herokuapp.com');
+	define ('BASE_URL', 'http://localhost/tienda_online');
 	
 	//Zona horaria
 	date_default_timezone_set('America/Mexico_City');
@@ -61,8 +61,20 @@
 
 	//Envío
 	define ('COSTOENVIO', "10");
+
+	//Modulos
+	const MPEDIDOS = 5;
+	const MCLIENTES = 3; 
+	const MDASHBOARD = 1;
+	const MCATEGORIAS = 6;
+	const MPRODUCTOS = 4;
+	const MUSUARIOS = 2;
+
+	//roles
+	const RADMINISTRADOR = 1;
+	const RCLIENTES = 7;
 	
-	
+	const STATUS = array('Completo','Aprobado','Cancelado','Reembolsado','Pendiente','Entregado');
 
 
  ?>
