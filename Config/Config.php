@@ -65,6 +65,10 @@
 	//Modulos
 	define ('MCLIENTES',"3");
 	define ('MPEDIDOS',"5");
+	define ('MDASHBOARD',"1");
+	define ('MPRODUCTOS',"4");
+	define ('MCATEGORIAS',"6");
+	define ('MUSUARIOS',"2");
 
 	//roles
 	define ('RADMINISTRADOR', "1");
