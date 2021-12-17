@@ -63,18 +63,13 @@
 	define ('COSTOENVIO', "10");
 
 	//Modulos
-	define MPEDIDOS = 5;
-	define MCLIENTES = 3; 
-	define MDASHBOARD = 1;
-	define MCATEGORIAS = 6;
-	define MPRODUCTOS = 4;
-	define MUSUARIOS = 2;
+	define ('MCLIENTES',"3");
+	define ('MPEDIDOS',"5");
 
 	//roles
-	define RADMINISTRADOR = 1;
-	define RCLIENTES = 7;
+	define ('RADMINISTRADOR', "1");
+	define ('RCLIENTES', "7");
 	
-	define STATUS = array('Completo','Aprobado','Cancelado','Reembolsado','Pendiente','Entregado');
-
+	define ('STATUS', "array('Completo','Aprobado','Cancelado','Reembolsado','Pendiente','Entregado'");
 
  ?>
