@@ -15,7 +15,7 @@
 	//define("BASE_URL", "http://localhost/tienda_virtual/")
 */
 	//Datos de conexión a Base de Datos
-	define ('DB_HOST', 'localhost:3307');
+	define ('DB_HOST', 'localhost');
 	define ('DB_NAME', 'db_tiendavirtual');
 	define ('DB_USER', 'root');
 	define ('DB_PASSWORD', '');
