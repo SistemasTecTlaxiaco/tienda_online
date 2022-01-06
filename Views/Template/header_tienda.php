@@ -68,7 +68,7 @@
 							Help & FAQs
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="https://tiendapcbox.herokuapp.com/login" class="flex-c-m trans-04 p-lr-25">
 							Mi cuenta
 						</a>
 
