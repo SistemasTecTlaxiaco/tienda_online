@@ -1,26 +1,29 @@
 <?php 
 	
 	//define('BASE_URL', 'http://localhost/tienda_virtual/');
-	define ('BASE_URL', 'http://localhost/tienda_online');
+	define ('BASE_URL', 'https://tiendapcbox.herokuapp.com');
 	
 	//Zona horaria
 	date_default_timezone_set('America/Mexico_City');
 
-	/*Datos de conexión a Base de Datos
+	//Datos de conexión a Base de Datos
 	define ('DB_HOST', 'dfkpczjgmpvkugnb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com');
 	define ('DB_NAME', 'xs74953pb0hvmidl');
 	define ('DB_USER', 'y0k79cxzb1n7lj9r');
 	define ('DB_PASSWORD', 'gk6clc7wdkfdevfw');
 	define ('DB_CHARSET', 'utf8');
 	//define("BASE_URL", "http://localhost/tienda_virtual/")
-*/
-	//Datos de conexión a Base de Datos
+
+	/*Datos de conexión a Base de Datos
+	define ('DB_HOST', 'localhost');
+  
+	/*Datos de conexión a Base de Datos
 	define ('DB_HOST', 'localhost');
 	define ('DB_NAME', 'db_tiendavirtual');
 	define ('DB_USER', 'root');
 	define ('DB_PASSWORD', '');
 	define ('DB_CHARSET', 'utf8');
-	//define("BASE_URL", "http://localhost/tienda_virtual/")
+	//define("BASE_URL", "http://localhost/tienda_virtual/")*/
 
 	//Deliminadores decimal y millar Ej. 24,1989.00
 	define ('SPD',".");
@@ -63,18 +66,17 @@
 	define ('COSTOENVIO', "10");
 
 	//Modulos
-	const MPEDIDOS = 5;
-	const MCLIENTES = 3; 
-	const MDASHBOARD = 1;
-	const MCATEGORIAS = 6;
-	const MPRODUCTOS = 4;
-	const MUSUARIOS = 2;
+	define ('MCLIENTES',"3");
+	define ('MPEDIDOS',"5");
+	define ('MDASHBOARD',"1");
+	define ('MPRODUCTOS',"4");
+	define ('MCATEGORIAS',"6");
+	define ('MUSUARIOS',"2");
 
 	//roles
-	const RADMINISTRADOR = 1;
-	const RCLIENTES = 7;
+	define ('RADMINISTRADOR', "1");
+	define ('RCLIENTES', "7");
 	
-	const STATUS = array('Completo','Aprobado','Cancelado','Reembolsado','Pendiente','Entregado');
-
+	define ('STATUS', "array('Completo','Aprobado','Cancelado','Reembolsado','Pendiente','Entregado'");
 
  ?>
