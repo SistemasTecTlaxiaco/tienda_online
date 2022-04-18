@@ -1,7 +1,7 @@
 <?php 
 	
 	//define('BASE_URL', 'http://localhost/tienda_virtual/');
-	define ('BASE_URL', 'https://localhost/tienda_online/	');
+	define ('BASE_URL', 'https://localhost/tienda_online');
 	
 	//Zona horaria
 	date_default_timezone_set('America/Mexico_City');
