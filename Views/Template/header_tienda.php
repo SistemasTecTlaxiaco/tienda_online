@@ -42,13 +42,12 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= media()?>/tienda/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= media()?>/tienda/css/main.css">
-	<link rel="stylesheet" type="text/css" href="<?= media(); ?>/css/style.css">
-<!--===============================================================================================-->
+	
 </head>
 <body class="animsition">
 	<div id="divLoading" >
       <div>
-        <img src="<?= media(); ?>/images/loading.svg" alt="Loading">
+        <!--<img src="<?= media(); ?>/images/loading.svg" alt="Loading">-->
       </div>
     </div>
 
@@ -103,7 +102,7 @@
 							</li>
 
 							<li>
-								<a href="<?= base_url(); ?>/nosotros">Nosotros</a>
+								<a href="<?= base_url(); ?>/raumentada">Realidad Aumentada</a>
 							</li>
 
 							<li>
@@ -195,7 +194,7 @@
 				</li>
 
 				<li>
-					<a href="<?= base_url(); ?>/nosotros">Nosotros</a>
+					<a href="<?= base_url(); ?>/raumentada">Realidad Aumentada</a>
 				</li>
 
 				<li>
