@@ -1,16 +1,240 @@
-<!DOCTYPE html>
-<html>  
+<html>
   <head>
-    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script> 
-    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-  </head>   
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
 
-  <body width="25px" height="25px">
-    <a-scene embedded arjs>
-      <a-entity scale=".2 .2 .2"> 
-        <a-entity gltf-model="<?= media().'/modelos/laptop.glb'?>" scale="0.25 0.25 0.25" crossOrigin="anonymous">
+    <script>
+      const showInfo = () => {
+        let y = 0;
+        const profileButton = document.querySelector("#profile-button"); //INFORMACIÓN PRODUCTO
+        const webButton = document.querySelector("#web-button"); //BOTON DE MICROFONO
+        const emailButton = document.querySelector("#email-button"); //BOTON PARA COMPRAR
+        //const locationButton = document.querySelector("#location-button");
+        const text = document.querySelector("#text");
+
+        profileButton.setAttribute("visible", true);
+        setTimeout(() => {
+          webButton.setAttribute("visible", true);
+        }, 450);
+        setTimeout(() => {
+          emailButton.setAttribute("visible", true);
+        }, 900);
+        /*setTimeout(() => {
+          locationButton.setAttribute("visible", true);
+        }, 900);*/
+
+        let currentTab = '';
+        webButton.addEventListener('click', function (evt) {
+          text.setAttribute("value", "https://softmind.tech");
+          currentTab = 'web';
+        });
+        emailButton.addEventListener('click', function (evt) {
+          text.setAttribute("value", "hello@softmind.tech");
+          currentTab = 'email';
+        });
+        profileButton.addEventListener('click', function (evt) {
+          text.setAttribute("value", "AR, VR solutions and consultation");
+          currentTab = 'profile';
+        });
+        /*locationButton.addEventListener('click', function (evt) {
+          console.log("loc");
+          text.setAttribute("value", "Vancouver, Canada | Hong Kong");
+          currentTab = 'location';
+        });*/
+      }
+
+      const showPortfolio = (done) => {
+        const portfolio = document.querySelector("#portfolio-panel");
+        const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
+
+        let y = 0;
+        let currentItem = 0;
+
+        portfolio.setAttribute("visible", true);
+
+        const showPortfolioItem = (item) => {
+          for (let i = 0; i <= 2; i++) {
+            document.querySelector("#portfolio-item" + i).setAttribute("visible", i === item);
+          }
+        }
+        const id = setInterval(() => {
+          y += 0.008;
+          if (y >= 0.6) {
+            clearInterval(id);
+            
+
+            setTimeout(() => {
+              done();
+            }, 500);
+          }
+          portfolio.setAttribute("position", "0 " + y + " -0.01");
+        }, 10);
+      }
+
+      const showAvatar = (onDone) => {
+        const avatar = document.querySelector("#avatar");
+        let z = -0.3;
+        const id = setInterval(() => {
+          z += 0.008;
+          if (z >= 0.3) {
+            clearInterval(id);
+            onDone();
+          }
+          avatar.setAttribute("position", "0 -0.25 " + z);
+        }, 10);
+      }
+
+      AFRAME.registerComponent('mytarget', {
+        init: function () {
+          this.el.addEventListener('targetFound', event => {
+            console.log("target found");
+            showAvatar(() => {
+              setTimeout(() => {
+                showPortfolio(() => {
+                  setTimeout(() => {
+                    showInfo();
+                  }, 300);
+                });
+              }, 300);
+            });
+          });
+          this.el.addEventListener('targetLost', event => {
+            console.log("target found");
+          });
+          //this.el.emit('targetFound');
+        }
+      });
+    </script>
+
+    <style>
+      body {
+        margin: 0;
+      }
+      .example-container {
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+     
+      #example-scanning-overlay {
+	      display: flex;
+	      align-items: center;
+	      justify-content: center;
+	      position: absolute;
+	      left: 0;
+	      right: 0;
+	      top: 0;
+	      bottom: 0;
+	      background: transparent;
+	      z-index: 2;
+      }
+      @media (min-aspect-ratio: 1/1) {
+	      #example-scanning-overlay .inner {
+	        width: 50vh;
+	        height: 50vh;
+	      }
+      }
+      @media (max-aspect-ratio: 1/1) {
+	      #example-scanning-overlay .inner {
+	        width: 80vw;
+	        height: 80vw;
+	      }
+      }
+
+      #example-scanning-overlay .inner {
+	      display: flex;
+	      align-items: center;
+	      justify-content: center;
+	      position: relative;
+
+	      background:
+	      linear-gradient(to right, white 10px, transparent 10px) 0 0,
+	      linear-gradient(to right, white 10px, transparent 10px) 0 100%,
+	      linear-gradient(to left, white 10px, transparent 10px) 100% 0,
+	      linear-gradient(to left, white 10px, transparent 10px) 100% 100%,
+	      linear-gradient(to bottom, white 10px, transparent 10px) 0 0,
+	      linear-gradient(to bottom, white 10px, transparent 10px) 100% 0,
+	      linear-gradient(to top, white 10px, transparent 10px) 0 100%,
+	      linear-gradient(to top, white 10px, transparent 10px) 100% 100%;
+	      background-repeat: no-repeat;
+	      background-size: 40px 40px;
+      }
+
+      #example-scanning-overlay.hidden {
+	      display: none;
+      }
+
+      #example-scanning-overlay img {
+	      opacity: 0.6;
+	      width: 90%;
+	      align-self: center;
+      }
+
+      #example-scanning-overlay .inner .scanline {
+	      position: absolute;
+	      width: 100%;
+	      height: 10px;
+	      background: white;
+	      animation: move 2s linear infinite;
+      }
+      @keyframes move {
+	      0%, 100% { top: 0% }
+	      50% { top: calc(100% - 10px) }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="example-container">
+      <div id="example-scanning-overlay" class="hidden">
+	      <div class="inner">
+	      <img src="https://tiendapcbox.herokuapp.com/Assets/images/card.jpeg"/>
+	      <div class="scanline"></div>
+	    </div>
+    </div>
+
+    <a-scene mindar-image="imageTargetSrc: https://tiendapcbox.herokuapp.com/Assets/images/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <!--<img id="card" src="https://tiendapcbox.herokuapp.com/Assets/images/card.jpeg" />-->
+        <img id="icon-profile" src="https://tiendapcbox.herokuapp.com/Assets/icons/info.png" />
+        <img id="icon-web" src="https://tiendapcbox.herokuapp.com/Assets/icons/micro.png" />
+        <img id="icon-email" src="https://tiendapcbox.herokuapp.com/Assets/icons/link.png" />
+        <!--<img id="icon-location" src="https://tiendapcbox.herokuapp.com/Assets/icons/micro.png" />-->
+        <a-asset-item id="avatarModel" src="https://tiendapcbox.herokuapp.com/Assets/modelos/laptop.glb"></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false" 
+        cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable">
+      </a-camera>
+
+      <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
+
+        <a-gltf-model id="avatar" rotation="0 0 0" position="0 0 0.1" scale="0.05 0.05 0.05" src="#avatarModel" animation-mixer></a-gltf-model>
+
+        <!--<a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>-->
+
+        <a-entity visible=false id="portfolio-panel" position="0 0 -0.01">
+         <!-- <a-text value="BIENVENIDOS" color="blue" align="center" width="2" position="0 0.4 0"></a-text>-->
         </a-entity>
-        <a-marker-camera preset='hiro'></a-marker-camera>
-        </a-scene>
-      </body>
-    </html>
+
+        <a-image visible=false id="web-button" class="clickable" src="#icon-web" alpha-test="0.5" position="-0.14 -0.5 0" height="0.15" width="0.15"
+          animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+        ></a-image>
+        <a-image visible=false id="profile-button" class="clickable" src="#icon-profile" position="-0.42 -0.5 0" height="0.15" width="0.15"
+          animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+        ></a-image>
+        <a-image visible=false id="email-button" class="clickable" src="#icon-email"  position="0.14 -0.5 0" height="0.15" width="0.15"
+          animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+        ></a-image>
+
+        <a-text id="text" class="clickable" value="" color="black" align="center" width="2" position="0 -1 0" geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
+      </a-entity>
+    </a-scene>
+    </div>
+  </body>
+</html>
