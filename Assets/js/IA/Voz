@@ -73,74 +73,101 @@
         /* CREAMOS UN ARREGLO LLAMADO arreglovoz EL CUAL CONTRENDRA TODOS LOS COMANDOS QUE QUERAMOS AGREGAR Y QUE EL SISTEMA RECONOCERA */
         var arreglovoz = ['Hola realidad',
             'realidad deseo comprar',
+            'realidad quiero ver las caracteristicas',
             'Gracias realidad'
         ];
 
-/* INICIALIAMOS LA GRAMATICA Y EL SPECHRECOGNITION */
-var grammar = '#JSGF V1.0; grammar arreglovoz; public <arreglovoz> = ' + arreglovoz.join(' | ') + ' ;'
+        /* INICIALIAMOS LA GRAMATICA Y EL SPECHRECOGNITION */
+        var grammar = '#JSGF V1.0; grammar arreglovoz; public <arreglovoz> = ' + arreglovoz.join(' | ') + ' ;'
 
-    var recognition = new SpeechRecognition();
-    var speechRecognitionList = new SpeechGrammarList();
-    speechRecognitionList.addFromString(grammar, 1);
-    recognition.grammars = speechRecognitionList;
-    recognition.continuous = false;
-    /* IDIOMA A SELECCIONAR EN ESTE CASO ESTA EN ESPAÑOL COLOMBIA PERO SE PUEDEN SELECCIONAR DE LA LISTA QUE GOOGLE
-    TENGA*/
-    recognition.lang = 'es-CO';
-    /* FINALIZA LA SELECCION DE IDIOMA*/
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
+        var recognition = new SpeechRecognition();
+        var speechRecognitionList = new SpeechGrammarList();
+        speechRecognitionList.addFromString(grammar, 1);
+        recognition.grammars = speechRecognitionList;
+        recognition.continuous = false;
+        /* IDIOMA A SELECCIONAR EN ESTE CASO ESTA EN ESPAÑOL COLOMBIA PERO SE PUEDEN SELECCIONAR DE LA LISTA QUE GOOGLE
+        TENGA*/
+        recognition.lang = 'es-CO';
+        /* FINALIZA LA SELECCION DE IDIOMA*/
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
 
-    /* VARIABLE RELACIONADA A LAS LINEAS 405 A 415*/
-    var diagnostic = document.querySelector('.output');
-
-
-
-    /* VARIABLE REALACIONADA CON LA LINEA DE CODIGO 13 y 40*/
-    var hints = document.querySelector('.hints');
+        /* VARIABLE RELACIONADA A LAS LINEAS 405 A 415*/
+        var diagnostic = document.querySelector('.output');
 
 
-    var vozHTML= '';
-    arreglovoz.forEach(function(v, i, a){
-    console.log(v, i);
 
-    });
-    document.onkeydown = function() {
-    recognition.start();
-    console.log('Estoy lista para escuchar.');
-    }
+        /* VARIABLE REALACIONADA CON LA LINEA DE CODIGO 13 y 40*/
+        var hints = document.querySelector('.hints');
 
-    recognition.onresult = function(event) {
-    // La propiedad de resultados SpeechRecognitionEvent devuelve un objeto SpeechRecognitionResultList
-    // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
 
-    // El objeto SpeechRecognitionResultList contiene objetos SpeechRecognitionResult.
-    // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
+        var vozHTML = '';
+        arreglovoz.forEach(function (v, i, a) {
+            console.log(v, i);
 
-    // Tiene un captador para que se pueda acceder como una matriz.
-    // It has a getter so it can be accessed like an array.
+        });
+        document.onkeydown = function () {
+            recognition.start();
+            console.log('Estoy lista para escuchar.');
+        }
 
-    // El primer [0] devuelve el SpeechRecognitionResult en la última posición.
-    // The first [0] returns the SpeechRecognitionResult at the last position.
+        recognition.onresult = function (event) {
+                // La propiedad de resultados SpeechRecognitionEvent devuelve un objeto SpeechRecognitionResultList
+                // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
 
-    // Cada objeto SpeechRecognitionResult contiene objetos SpeechRecognitionAlternative que contienen resultados individuales.
-    // Each SpeechRecognitionResult object contains SpeechRecognitionAlternative objects that contain individual results.
+                // El objeto SpeechRecognitionResultList contiene objetos SpeechRecognitionResult.
+                // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
 
-    // Estos también tienen captadores para que se pueda acceder a ellos como matrices.
-    // These also have getters so they can be accessed like arrays.
+                // Tiene un captador para que se pueda acceder como una matriz.
+                // It has a getter so it can be accessed like an array.
 
-    // El segundo [0] devuelve SpeechRecognitionAlternative en la posición 0.
-    // The second [0] returns the SpeechRecognitionAlternative at position 0.
+                // El primer [0] devuelve el SpeechRecognitionResult en la última posición.
+                // The first [0] returns the SpeechRecognitionResult at the last position.
 
-    // Luego devolvemos la propiedad de transcripción del objeto SpeechRecognitionAlternative
-    // We then return the transcript property of the SpeechRecognitionAlternative object
-    var voz = event.results[0][0].transcript;
-    diagnostic.textContent = 'Dijiste: ' + voz + '.';
+                // Cada objeto SpeechRecognitionResult contiene objetos SpeechRecognitionAlternative que contienen resultados individuales.
+                // Each SpeechRecognitionResult object contains SpeechRecognitionAlternative objects that contain individual results.
 
-    bg = voz;
-    var bg = document.querySelector('caja');
+                // Estos también tienen captadores para que se pueda acceder a ellos como matrices.
+                // These also have getters so they can be accessed like arrays.
 
-    //VISUALIZO EN CONSOLA
-    console.log(bg);
-    console.log(voz);
-    }
+                // El segundo [0] devuelve SpeechRecognitionAlternative en la posición 0.
+                // The second [0] returns the SpeechRecognitionAlternative at position 0.
+
+                // Luego devolvemos la propiedad de transcripción del objeto SpeechRecognitionAlternative
+                // We then return the transcript property of the SpeechRecognitionAlternative object
+                var voz = event.results[0][0].transcript;
+                diagnostic.textContent = 'Dijiste: ' + voz + '.';
+
+                bg = voz;
+                var bg = document.querySelector('caja');
+
+                //VISUALIZO EN CONSOLA
+                console.log(bg);
+                console.log(voz);
+
+                // INTERACCIONES INICIALES PARA HACER MEJOR LA CONVERSACION PERO NO TIENEN NADA QUE VER CON AR
+                if (voz === 'Hola realidad') {
+                    console.log("Hola, estas saludando!");
+                    let utterance = new SpeechSynthesisUtterance(
+                        'Hola, bienvenido. en que puedo ayudarte Te escucho...')
+                    utterance.lang = 'es-MX'
+                    speechSynthesis.speak(utterance)
+                }
+
+
+                if (voz === 'Gracias realidad') {
+                    console.log("Estan dando las gracias");
+                    let utterance = new SpeechSynthesisUtterance('de nada, quieres que te ayude con algo mas?')
+                    utterance.lang = 'es-MX'
+                    speechSynthesis.speak(utterance)
+                }
+
+
+                if (voz === 'realidad eso es todo por ahora') {
+                    console.log("Hola, estas saludando!");
+                    let utterance = new SpeechSynthesisUtterance(
+                        'de nada, siempre es un placer ayudarte. Te invito a que conozcas mas sobre PC BOX')
+                    utterance.lang = 'es-MX'
+                    speechSynthesis.speak(utterance)
+                }
+                // FINALIZAN LAS INTERACCIONES INICIALES
