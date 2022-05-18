@@ -75,3 +75,72 @@
             'realidad deseo comprar',
             'Gracias realidad'
         ];
+
+/* INICIALIAMOS LA GRAMATICA Y EL SPECHRECOGNITION */
+var grammar = '#JSGF V1.0; grammar arreglovoz; public <arreglovoz> = ' + arreglovoz.join(' | ') + ' ;'
+
+    var recognition = new SpeechRecognition();
+    var speechRecognitionList = new SpeechGrammarList();
+    speechRecognitionList.addFromString(grammar, 1);
+    recognition.grammars = speechRecognitionList;
+    recognition.continuous = false;
+    /* IDIOMA A SELECCIONAR EN ESTE CASO ESTA EN ESPAÑOL COLOMBIA PERO SE PUEDEN SELECCIONAR DE LA LISTA QUE GOOGLE
+    TENGA*/
+    recognition.lang = 'es-CO';
+    /* FINALIZA LA SELECCION DE IDIOMA*/
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    /* VARIABLE RELACIONADA A LAS LINEAS 405 A 415*/
+    var diagnostic = document.querySelector('.output');
+
+
+
+    /* VARIABLE REALACIONADA CON LA LINEA DE CODIGO 13 y 40*/
+    var hints = document.querySelector('.hints');
+
+
+    var vozHTML= '';
+    arreglovoz.forEach(function(v, i, a){
+    console.log(v, i);
+
+    });
+    document.onkeydown = function() {
+    recognition.start();
+    console.log('Estoy lista para escuchar.');
+    }
+
+    recognition.onresult = function(event) {
+    // La propiedad de resultados SpeechRecognitionEvent devuelve un objeto SpeechRecognitionResultList
+    // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
+
+    // El objeto SpeechRecognitionResultList contiene objetos SpeechRecognitionResult.
+    // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
+
+    // Tiene un captador para que se pueda acceder como una matriz.
+    // It has a getter so it can be accessed like an array.
+
+    // El primer [0] devuelve el SpeechRecognitionResult en la última posición.
+    // The first [0] returns the SpeechRecognitionResult at the last position.
+
+    // Cada objeto SpeechRecognitionResult contiene objetos SpeechRecognitionAlternative que contienen resultados individuales.
+    // Each SpeechRecognitionResult object contains SpeechRecognitionAlternative objects that contain individual results.
+
+    // Estos también tienen captadores para que se pueda acceder a ellos como matrices.
+    // These also have getters so they can be accessed like arrays.
+
+    // El segundo [0] devuelve SpeechRecognitionAlternative en la posición 0.
+    // The second [0] returns the SpeechRecognitionAlternative at position 0.
+
+    // Luego devolvemos la propiedad de transcripción del objeto SpeechRecognitionAlternative
+    // We then return the transcript property of the SpeechRecognitionAlternative object
+    var voz = event.results[0][0].transcript;
+    diagnostic.textContent = 'Dijiste: ' + voz + '.';
+
+    bg = voz;
+    var bg = document.querySelector('caja');
+
+    //VISUALIZO EN CONSOLA
+    console.log(bg);
+    console.log(voz);
+    }
