@@ -8,22 +8,70 @@
 <!-- FINALIZAN LOS SCRIPTS -->
 
 <!-- INICIALIZAMOS LOS ESTILOS -->
-<style>.hints span {
-  text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
-}
-div {
-  height: 100px;
-  overflow: auto;
-  position: absolute;
-  bottom: 0px;
-  right: 0;
-  left: 0;
-  background-color: rgba(255,255,255,0.2);
-  text-align: center;
-  font-size: 25px;
-  font-family: Verdana;
-  font-family: Vegur, 'PT Sans', Verdana, sans-serif;
-}
+<style>
+    .hints span {
+        text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+    }
+
+    div {
+        height: 100px;
+        overflow: auto;
+        position: absolute;
+        bottom: 0px;
+        right: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.2);
+        text-align: center;
+        font-size: 25px;
+        font-family: Verdana;
+        font-family: Vegur, 'PT Sans', Verdana, sans-serif;
+    }
 </style>
 <!-- FINALIZAMOS LOS ESTILOS -->
-</html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ar.js Augmented reality with Voice Recognition</title>
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+
+    <p class="hints"></p>
+    <div>
+        <p class="output"><em>Realidad Aumentada Empezando desde cero</em></p>
+    </div>
+
+    <!-- CODIGO DE REALIDAD AUMENTADA -->
+    <a-scene embedded arjs="debugUIEnabled: false;" vr-mode-ui="enabled: false">
+        <!-- CODIGO PARA UTILIZAR EL MARCADOR HIRO -->
+        <a-marker-camera preset="hiro">
+
+            <!-- EN ESTE CASO CREO UNA CAJA CON UN ID LLAMADO CAJA -->
+            <a-box id="caja"></a-box>
+            <!-- CREO UNA ENTIDAD CON ID LLAMADA entityID1 Y LA ESCALO -->
+            <a-entity id="entityID1" scale=".30 .30 .30"></a-entity>
+            <!-- CREO UNA ENTIDAD CON ID LLAMADA entityID2 Y LA ESCALO, CAMBIO LA POSICION Y LE DOY UNA ROTACION AL SER UN ELEMENTO 3D-->
+            <a-entity id="entityID2" scale=".05 .05 .05" position="0 0 -1" rotation="0 180 0"></a-entity>
+            <!-- CIERRO EL MARCADOR, DE ESTA MANERA ESTARA, LA CAJA, entityID1 y entityID2 -->
+
+        </a-marker-camera>
+        <!-- CIERRO MI SCENA DE AR -->
+    </a-scene>
+
+    <!-- INICIALIZO EL SCRIPT QUE CONTIENE TODOS LOS COMANDOS -->
+    <script>
+        // ESTE CONTADOR ESTA RELACIONADO CON LA LINEA DE CODIGO 217 Y 225
+        window.contador = 0;
+        //  ESTE CONTADOR ESTA RELACIONADO CON LA LINEA  282 Y 290
+        window.contadorcubogrande = 0;
+
+        /* CREMOS LAS VARIABLES QUE NOS PERMITEN UTILIZAR EL SPEECHRECOGNITION */
+        var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+        var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+        var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+
+        /* CREAMOS UN ARREGLO LLAMADO arreglovoz EL CUAL CONTRENDRA TODOS LOS COMANDOS QUE QUERAMOS AGREGAR Y QUE EL SISTEMA RECONOCERA */
+        var arreglovoz = ['Hola realidad',
+            'realidad deseo comprar',
+            'Gracias realidad'
+        ];
