@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<!-- INICIALIZAMOS LOS SCRIPTS A UTILIZAR -->
+<script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
+<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<!-- FINALIZAN LOS SCRIPTS -->
+
+<!-- INICIALIZAMOS LOS ESTILOS -->
+<style>.hints span {
+  text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+}
+div {
+  height: 100px;
+  overflow: auto;
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.2);
+  text-align: center;
+  font-size: 25px;
+  font-family: Verdana;
+  font-family: Vegur, 'PT Sans', Verdana, sans-serif;
+}
+</style>
+<!-- FINALIZAMOS LOS ESTILOS -->
+</html>
