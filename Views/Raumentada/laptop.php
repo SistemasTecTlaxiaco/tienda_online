@@ -198,6 +198,11 @@
 	    </div>
     </div>
 
+    <p class="hints"></p>
+       <div>
+        <p class="output"><em> </em></p>
+        </div> 
+
     <a-scene mindar-image="imageTargetSrc: https://tiendapcbox.herokuapp.com/Assets/images/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <!--<img id="card" src="https://tiendapcbox.herokuapp.com/Assets/images/card.jpeg" />-->
@@ -235,6 +240,106 @@
         <a-text id="text" class="clickable" value="" color="black" align="center" width="2" position="0 -1 0" geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
       </a-entity>
     </a-scene>
+
+    
+     
+    <script >
+    window.contador=0;
+    window.contadorcubogrande=0;
+/* CREMOS LAS VARIABLES QUE NOS PERMITEN UTILIZAR EL SPEECHRECOGNITION */
+      var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+      var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+      var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+
+/* CREAMOS UN ARREGLO LLAMADO arreglovoz EL CUAL CONTRENDRA TODOS LOS COMANDOS QUE QUERAMOS AGREGAR Y QUE EL SISTEMA RECONOCERA */
+var arreglovoz = [ 'Hola asistente ',
+              'Gracias asistente ',
+              'asistente es todo por ahora',
+              'asistente me puedes decir el precio de la laptop',
+              'asistente Con qué sistema operativo cuenta la laptop'];
+
+/* INICIALIAMOS LA GRAMATICA Y EL SPECHRECOGNITION */
+var grammar = '#JSGF V1.0; grammar arreglovoz; public <arreglovoz> = ' + arreglovoz.join(' | ') + ' ;'
+
+var recognition = new SpeechRecognition();
+var speechRecognitionList = new SpeechGrammarList();
+speechRecognitionList.addFromString(grammar, 1);
+recognition.grammars = speechRecognitionList;
+recognition.continuous = false; 
+/* IDIOMA A SELECCIONAR EN ESTE CASO ESTA EN ESPAÑOL COLOMBIA PERO SE PUEDEN SELECCIONAR DE LA LISTA QUE GOOGLE TENGA*/
+recognition.lang = 'es-CO';
+/* FINALIZA LA SELECCION DE IDIOMA*/
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+/* VARIABLE RELACIONADA A LAS LINEAS 405 A 415*/
+var diagnostic = document.querySelector('#web-button');
+
+/* VARIABLE REALACIONADA CON LA LINEA DE CODIGO 13 y 40*/
+var hints = document.querySelector('.hints');
+
+var vozHTML= '';
+arreglovoz.forEach(function(v, i, a){
+  console.log(v, i);
+  
+});
+
+document.onkeydown = function() {
+ recognition.start();
+ console.log('Estoy lista para escuchar.');
+
+}
+recognition.onresult = function(event) {
+  var voz = event.results[0][0].transcript;
+  diagnostic.textContent = 'Dijiste: ' + voz + '.';
+  bg = voz;
+  var bg = document.querySelector('caja');  
+  //VISUALIZO EN CONSOLA
+  console.log(bg);
+  console.log(voz);
+// INTERACCIONES INICIALES PARA HACER MEJOR LA CONVERSACION PERO NO TIENEN NADA QUE VER CON AR
+if(voz === 'Hola asistente'){
+    console.log("Hola, estas saludando!");
+    let utterance = new SpeechSynthesisUtterance('Hola, Bienvenido a PC BOX ya estoy listo para ayudarte en lo que necesites')
+    utterance.lang = 'es-MX'
+    speechSynthesis.speak(utterance)     
+}
+  if(voz === 'Gracias asistente'){
+    console.log("Estan dando las gracias");
+    let utterance = new SpeechSynthesisUtterance('De nada, quieres que te ayude con algo mas?')
+    utterance.lang = 'es-MX'
+    speechSynthesis.speak(utterance)   
+}
+  if(voz === 'asistente es todo por ahora'){
+    console.log("Hola, estas saludando!");
+    let utterance = new SpeechSynthesisUtterance('De nada, es un gusto proporcionarte informacion sobre tu producto ')
+    utterance.lang = 'es-MX'
+    speechSynthesis.speak(utterance)     
+}
+  if(voz === 'asistente me puedes decir el precio de la laptop'){
+    console.log("Hola, estas saludando!");
+    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de diez mil quinientos pesos')
+    utterance.lang = 'es-MX'
+    speechSynthesis.speak(utterance)     
+}
+  if(voz === 'asistente Con qué sistema operativo cuenta la laptop'){
+    console.log("Hola, estas saludando!");
+    let utterance = new SpeechSynthesisUtterance('La laptop cuenta con el sistema operativo de Windows')
+    utterance.lang = 'es-MX'
+    speechSynthesis.speak(utterance)     
+}
+console.log('Confidence: ' + event.results[0][0].confidence);
+}
+recognition.onspeechend = function() {
+  recognition.stop();
+}
+recognition.onnomatch = function(event) {
+  diagnostic.textContent = "No puedo escucharte claramente, por favor repiteme.";
+}
+recognition.onerror = function(event) {
+  diagnostic.textContent = 'Ocurrio un error al escucharte: ' + event.error;
+}
+ </script>
+
     </div>
   </body>
 </html>
