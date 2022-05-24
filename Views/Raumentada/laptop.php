@@ -11,7 +11,7 @@
       const showInfo = () => {
         let y = 0;
         const profileButton = document.querySelector("#profile-button"); //INFORMACIÓN PRODUCTO
-        const webButton = document.querySelector("#web-button"); //BOTON DE MICROFONO
+        const webButton = document.querySelector("#micro"); //BOTON DE MICROFONO
         const emailButton = document.querySelector("#email-button"); //BOTON PARA COMPRAR
         //const locationButton = document.querySelector("#location-button");
         const text = document.querySelector("#text");
@@ -29,7 +29,7 @@
 
         let currentTab = '';
         webButton.addEventListener('click', function (evt) {
-          text.setAttribute("value", "https://softmind.tech");
+          text.setAttribute();
           currentTab = 'web';
         });
         emailButton.addEventListener('click', function (evt) {
@@ -201,8 +201,8 @@
     <p class="hints"></p>
        <div>
         <p class="output"><em> </em></p>
-        </div> 
-
+    </div>
+   
     <a-scene mindar-image="imageTargetSrc: https://tiendapcbox.herokuapp.com/Assets/images/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <!--<img id="card" src="https://tiendapcbox.herokuapp.com/Assets/images/card.jpeg" />-->
@@ -227,7 +227,7 @@
          <!-- <a-text value="BIENVENIDOS" color="blue" align="center" width="2" position="0 0.4 0"></a-text>-->
         </a-entity>
 
-        <a-image visible=false id="web-button" class="clickable" src="#icon-web" alpha-test="0.5" position="-0.14 -0.5 0" height="0.15" width="0.15"
+        <a-image visible=false id="micro" class="clickable" src="#icon-web" alpha-test="0.5" position="-0.14 -0.5 0" height="0.15" width="0.15"
           animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
         ></a-image>
         <a-image visible=false id="profile-button" class="clickable" src="#icon-profile" position="-0.42 -0.5 0" height="0.15" width="0.15"
@@ -272,10 +272,10 @@ recognition.lang = 'es-CO';
 recognition.interimResults = false;
 recognition.maxAlternatives = 1;
 /* VARIABLE RELACIONADA A LAS LINEAS 405 A 415*/
-var diagnostic = document.querySelector('#web-button');
+var diagnostic = document.querySelector('#text');
 
 /* VARIABLE REALACIONADA CON LA LINEA DE CODIGO 13 y 40*/
-var hints = document.querySelector('.hints');
+var hints = document.querySelector('#micro');
 
 var vozHTML= '';
 arreglovoz.forEach(function(v, i, a){
@@ -283,14 +283,14 @@ arreglovoz.forEach(function(v, i, a){
   
 });
 
-document.onkeydown = function() {
+document.hints.onclick = function() {
  recognition.start();
  console.log('Estoy lista para escuchar.');
 
 }
 recognition.onresult = function(event) {
   var voz = event.results[0][0].transcript;
-  diagnostic.textContent = 'Dijiste: ' + voz + '.';
+  diagnostic.setAttribute('value,' 'Dijiste: ' + voz + '.' );
   bg = voz;
   var bg = document.querySelector('caja');  
   //VISUALIZO EN CONSOLA
@@ -333,10 +333,10 @@ recognition.onspeechend = function() {
   recognition.stop();
 }
 recognition.onnomatch = function(event) {
-  diagnostic.textContent = "No puedo escucharte claramente, por favor repiteme.";
+  diagnostic.setAttribute('value,' 'No puedo escucharte claramente, por favor repiteme.' );
 }
 recognition.onerror = function(event) {
-  diagnostic.textContent = 'Ocurrio un error al escucharte: ' + event.error;
+  diagnostic.setAttribute('value,' 'Ocurrio un error al escucharte: ' + event.error);
 }
  </script>
 
