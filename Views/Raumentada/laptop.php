@@ -2,12 +2,13 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
 
     <script>
+    //MOSTRAR INFORMACION DE INTERACTIVIDAD
       const showInfo = () => {
         let y = 0;
         const profileButton = document.querySelector("#profile-button"); //INFORMACIÓN PRODUCTO
@@ -33,13 +34,15 @@
           currentTab = 'web';
         });
         emailButton.addEventListener('click', function (evt) {
-          text.setAttribute("value", "hello@softmind.tech");
+          window.location.href = "https://tiendapcbox.herokuapp.com/tienda/producto/5/laptop-hp-14-cf2512la-8gb-ram-256gb-pentium-gold-14-pulg-gris-482q9la";
+          text.setAttribute("value", "Estamos preparando su compra, gracias por visitar PC BOX :D");
           currentTab = 'email';
         });
         profileButton.addEventListener('click', function (evt) {
-          text.setAttribute("value", "AR, VR solutions and consultation");
+          text.setAttribute("value", "Laptop HP 14-cf2512la, 8GB RAM, 256GB, Pentium Gold, 14 pulg., Gris, 482Q9LA");
           currentTab = 'profile';
         });
+        
         /*locationButton.addEventListener('click', function (evt) {
           console.log("loc");
           text.setAttribute("value", "Vancouver, Canada | Hong Kong");
@@ -201,8 +204,8 @@
     <p class="hints"></p>
        <div>
         <p class="output"><em> </em></p>
-    </div>
-   
+        </div> 
+
     <a-scene mindar-image="imageTargetSrc: https://tiendapcbox.herokuapp.com/Assets/images/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <!--<img id="card" src="https://tiendapcbox.herokuapp.com/Assets/images/card.jpeg" />-->
@@ -222,8 +225,9 @@
         <a-gltf-model id="avatar" rotation="0 0 0" position="0 0 0.1" scale="0.05 0.05 0.05" src="#avatarModel" animation-mixer></a-gltf-model>
 
         <!--<a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>-->
-
+        
         <a-entity visible=false id="portfolio-panel" position="0 0 -0.01">
+        <a-text id="text" class="clickable" value="" color="black" align="center" width="2" position="0 0.05 0" geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
          <!-- <a-text value="BIENVENIDOS" color="blue" align="center" width="2" position="0 0.4 0"></a-text>-->
         </a-entity>
 
@@ -237,7 +241,7 @@
           animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
         ></a-image>
 
-        <a-text id="text" class="clickable" value="" color="black" align="center" width="2" position="0 -1 0" geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
+        <!--<a-text id="text" class="clickable" value="" color="black" align="center" width="2" position="0 -1 0" geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>-->
       </a-entity>
     </a-scene>
 
