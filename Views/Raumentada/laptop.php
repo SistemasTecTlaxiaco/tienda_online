@@ -201,11 +201,6 @@
 	    </div>
     </div>
 
-    <p class="hints"></p>
-       <div>
-        <p class="output"><em> </em></p>
-        </div> 
-
     <a-scene mindar-image="imageTargetSrc: https://tiendapcbox.herokuapp.com/Assets/images/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <!--<img id="card" src="https://tiendapcbox.herokuapp.com/Assets/images/card.jpeg" />-->
@@ -279,7 +274,7 @@ recognition.maxAlternatives = 1;
 var diagnostic = document.querySelector('#text');
 
 /* VARIABLE REALACIONADA CON LA LINEA DE CODIGO 13 y 40*/
-var hints = document.querySelector('#micro');
+var webButton = document.querySelector('#micro');
 
 var vozHTML= '';
 arreglovoz.forEach(function(v, i, a){
@@ -287,7 +282,7 @@ arreglovoz.forEach(function(v, i, a){
   
 });
 
-document.hints.onclick = function() {
+document.webButton.onclick = function() {
  recognition.start();
  console.log('Estoy lista para escuchar.');
 
