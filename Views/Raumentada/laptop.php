@@ -29,8 +29,8 @@
         }, 900);*/
 
         let currentTab = '';
-        webButton.addEventListener('click', function (evt) {
-          text.setAttribute();
+        document.webButton.addEventListener('click', function (evt) {
+          text.setAttribute('Estoy LISTA para escuchar');
           currentTab = 'web';
         });
         emailButton.addEventListener('click', function (evt) {
