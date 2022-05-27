@@ -283,7 +283,7 @@ window.onload = function() {
 document.getElementById('micro').onclick = micro;
 }
 
-
+}
 recognition.onresult = function(event) {
   var voz = event.results[0][0].transcript;
   diagnostic.setAttribute('value,' 'Dijiste: ' + voz + '.' );
