@@ -2,11 +2,10 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!--<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
     <script>
     //MOSTRAR INFORMACION DE INTERACTIVIDAD
       const showInfo = () => {
@@ -29,10 +28,7 @@
         }, 900);*/
 
         let currentTab = '';
-        document.webButton.addEventListener('click', function (evt) {
-          text.setAttribute('Estoy LISTA para escuchar');
-          currentTab = 'web';
-        });
+      
         emailButton.addEventListener('click', function (evt) {
           window.location.href = "https://tiendapcbox.herokuapp.com/tienda/producto/5/laptop-hp-14-cf2512la-8gb-ram-256gb-pentium-gold-14-pulg-gris-482q9la";
           text.setAttribute("value", "Estamos preparando su compra, gracias por visitar PC BOX :D");
@@ -273,20 +269,20 @@ recognition.maxAlternatives = 1;
 /* VARIABLE RELACIONADA A LAS LINEAS 405 A 415*/
 var diagnostic = document.querySelector('#text');
 
-/* VARIABLE REALACIONADA CON LA LINEA DE CODIGO 13 y 40*/
-var webButton = document.querySelector('#micro');
-
 var vozHTML= '';
 arreglovoz.forEach(function(v, i, a){
   console.log(v, i);
   
 });
 
-document.webButton.onclick = function() {
+window.onload = function() {
+  function micro(){
  recognition.start();
  console.log('Estoy lista para escuchar.');
-
 }
+document.getElementById('micro').onclick = micro;
+
+
 recognition.onresult = function(event) {
   var voz = event.results[0][0].transcript;
   diagnostic.setAttribute('value,' 'Dijiste: ' + voz + '.' );
@@ -332,10 +328,10 @@ recognition.onspeechend = function() {
   recognition.stop();
 }
 recognition.onnomatch = function(event) {
-  diagnostic.setAttribute('value,' 'No puedo escucharte claramente, por favor repiteme.' );
+  diagnostic.setAttribute('value', 'No puedo escucharte claramente, por favor repiteme.' );
 }
 recognition.onerror = function(event) {
-  diagnostic.setAttribute('value,' 'Ocurrio un error al escucharte: ' + event.error);
+  diagnostic.setAttribute('value', 'Ocurrio un error al escucharte: ' + event.error);
 }
  </script>
 
