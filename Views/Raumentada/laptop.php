@@ -238,7 +238,7 @@
 
     
      
-    <script >
+    <script>
     window.contador=0;
     window.contadorcubogrande=0;
 /* CREMOS LAS VARIABLES QUE NOS PERMITEN UTILIZAR EL SPEECHRECOGNITION */
@@ -281,6 +281,7 @@ window.onload = function() {
  console.log('Estoy lista para escuchar.');
 }
 document.getElementById('micro').onclick = micro;
+}
 
 
 recognition.onresult = function(event) {
