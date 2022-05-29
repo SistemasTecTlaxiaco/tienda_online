@@ -246,14 +246,13 @@
       var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
       var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
 
-/* CREAMOS UN ARREGLO LLAMADO arreglovoz EL CUAL CONTRENDRA TODOS LOS COMANDOS QUE QUERAMOS AGREGAR Y QUE EL SISTEMA RECONOCERA */
-var arreglovoz = [ 'Hola asistente ',
-              'Gracias asistente ',
+      var arreglovoz = [ 'Hola asistente',
+              'Gracias asistente',
               'asistente es todo por ahora',
-              'asistente me puedes decir el precio de la laptop',
-              'asistente Con qué sistema operativo cuenta la laptop'];
+              'asistente me puedes decir el precio del teclado',
+              'asistente Cuál es la marca del teclado',
+              'asistente me puedes decir sus características'];
 
-/* INICIALIAMOS LA GRAMATICA Y EL SPECHRECOGNITION */
 var grammar = '#JSGF V1.0; grammar arreglovoz; public <arreglovoz> = ' + arreglovoz.join(' | ') + ' ;'
 
 var recognition = new SpeechRecognition();
@@ -268,7 +267,6 @@ recognition.interimResults = false;
 recognition.maxAlternatives = 1;
 /* VARIABLE RELACIONADA A LAS LINEAS 405 A 415*/
 var diagnostic = document.querySelector('#text');
-
 var vozHTML= '';
 arreglovoz.forEach(function(v, i, a){
   console.log(v, i);
@@ -281,9 +279,8 @@ window.onload = function() {
  console.log('Estoy lista para escuchar.');
 }
 document.getElementById('micro').onclick = micro;
+
 }
-
-
 recognition.onresult = function(event) {
   var voz = event.results[0][0].transcript;
   diagnostic.setAttribute('value', 'Dijiste: ' + voz + '.' );
@@ -311,15 +308,21 @@ if(voz === 'Hola asistente'){
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
-  if(voz === 'asistente me puedes decir el precio de la laptop'){
+if(voz === 'asistente me puedes decir el precio del teclado'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de diez mil quinientos pesos')
+    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de trecientos setenta y tres pesos')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
-  if(voz === 'asistente Con qué sistema operativo cuenta la laptop'){
+  if(voz === 'asistente Cuál es la marca del teclado'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('La laptop cuenta con el sistema operativo de Windows')
+    let utterance = new SpeechSynthesisUtterance('Claro, es un Teclado Dell Kb216 Alámbrico Usb Español 105 Teclas')
+    utterance.lang = 'es-MX'
+    speechSynthesis.speak(utterance)     
+}
+if(voz === 'asistente me puedes decir sus características'){
+    console.log("Hola, estas saludando!");
+    let utterance = new SpeechSynthesisUtterance('El teclado, cuenta con teclas multimedia, una altura de teclado ajustable, con el idioma del teclado español, incluyendo el teclado numérico')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
