@@ -241,19 +241,19 @@
     <script>
     window.contador=0;
     window.contadorcubogrande=0;
-/* CREMOS LAS VARIABLES QUE NOS PERMITEN UTILIZAR EL SPEECHRECOGNITION */
       var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
       var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
       var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
 
-/* CREAMOS UN ARREGLO LLAMADO arreglovoz EL CUAL CONTRENDRA TODOS LOS COMANDOS QUE QUERAMOS AGREGAR Y QUE EL SISTEMA RECONOCERA */
-var arreglovoz = [ 'Hola asistente ',
-              'Gracias asistente ',
+      var arreglovoz = [ 'Hola asistente',
+              'Gracias asistente',
               'asistente es todo por ahora',
               'asistente me puedes decir el precio de la laptop',
-              'asistente Con qué sistema operativo cuenta la laptop'];
+              'asistente Con qué sistema operativo cuenta la laptop',
+              'asistente con Qué procesador cuenta la laptop',
+              'asistente Cuál es su capacidad del disco duro',
+              'asistente me puedes decir el modelo de la laptop'];
 
-/* INICIALIAMOS LA GRAMATICA Y EL SPECHRECOGNITION */
 var grammar = '#JSGF V1.0; grammar arreglovoz; public <arreglovoz> = ' + arreglovoz.join(' | ') + ' ;'
 
 var recognition = new SpeechRecognition();
@@ -268,7 +268,6 @@ recognition.interimResults = false;
 recognition.maxAlternatives = 1;
 /* VARIABLE RELACIONADA A LAS LINEAS 405 A 415*/
 var diagnostic = document.querySelector('#text');
-
 var vozHTML= '';
 arreglovoz.forEach(function(v, i, a){
   console.log(v, i);
@@ -281,8 +280,8 @@ window.onload = function() {
  console.log('Estoy lista para escuchar.');
 }
 document.getElementById('micro').onclick = micro;
-}
 
+}
 recognition.onresult = function(event) {
   var voz = event.results[0][0].transcript;
   diagnostic.setAttribute('value', 'Dijiste: ' + voz + '.' );
@@ -312,13 +311,31 @@ if(voz === 'Hola asistente'){
 }
   if(voz === 'asistente me puedes decir el precio de la laptop'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de diez mil quinientos pesos')
+    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de diez mil novecientos noventa y nueve pesos')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
   if(voz === 'asistente Con qué sistema operativo cuenta la laptop'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('La laptop cuenta con el sistema operativo de Windows')
+    let utterance = new SpeechSynthesisUtterance('La laptop cuenta con el sistema operativo de Windows diez')
+    utterance.lang = 'es-MX'
+    speechSynthesis.speak(utterance)     
+}
+if(voz === 'asistente con Qué procesador cuenta la laptop'){
+    console.log("Hola, estas saludando!");
+    let utterance = new SpeechSynthesisUtterance('Claro, su procesador es Intel Pentium Gold 54 05 U')
+    utterance.lang = 'es-MX'
+    speechSynthesis.speak(utterance)     
+}
+if(voz === 'asistente Cuál es su capacidad del disco duro'){
+    console.log("Hola, estas saludando!");
+    let utterance = new SpeechSynthesisUtterance('Su capacidad es de docientos cincuenta y seis Gigabytes')
+    utterance.lang = 'es-MX'
+    speechSynthesis.speak(utterance)     
+}
+if(voz === 'asistente me puedes decir el modelo de la laptop'){
+    console.log("Hola, estas saludando!");
+    let utterance = new SpeechSynthesisUtterance('El modelo de la laptop es Laptop HP 14-cf2512 l a')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
