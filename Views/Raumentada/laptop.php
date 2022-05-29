@@ -285,7 +285,7 @@ document.getElementById('micro').onclick = micro;
 
 recognition.onresult = function(event) {
   var voz = event.results[0][0].transcript;
-  diagnostic.setAttribute('value,' 'Dijiste: ' + voz + '.' );
+  diagnostic.setAttribute('value', 'Dijiste: ' + voz + '.' );
   bg = voz;
   var bg = document.querySelector('caja');  
   //VISUALIZO EN CONSOLA
