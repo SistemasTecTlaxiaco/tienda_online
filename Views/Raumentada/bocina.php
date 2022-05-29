@@ -246,12 +246,14 @@
       var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
       var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
 
+
 /* CREAMOS UN ARREGLO LLAMADO arreglovoz EL CUAL CONTRENDRA TODOS LOS COMANDOS QUE QUERAMOS AGREGAR Y QUE EL SISTEMA RECONOCERA */
 var arreglovoz = [ 'Hola asistente ',
               'Gracias asistente ',
               'asistente es todo por ahora',
-              'asistente me puedes decir el precio de la laptop',
-              'asistente Con qué sistema operativo cuenta la laptop'];
+              'asistente me puedes decir el precio de la bocina',
+              'asistente Cuál es la marca de la bocina',
+              'asistente me puedes decir sus características'];
 
 /* INICIALIAMOS LA GRAMATICA Y EL SPECHRECOGNITION */
 var grammar = '#JSGF V1.0; grammar arreglovoz; public <arreglovoz> = ' + arreglovoz.join(' | ') + ' ;'
@@ -311,15 +313,21 @@ if(voz === 'Hola asistente'){
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
-  if(voz === 'asistente me puedes decir el precio de la laptop'){
+  if(voz === 'asistente me puedes decir el precio de la bocina'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de diez mil quinientos pesos')
+    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de cuatrocientos noventa y nueve pesos')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
-  if(voz === 'asistente Con qué sistema operativo cuenta la laptop'){
+  if(voz === 'asistente Cuál es la marca de la bocina'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('La laptop cuenta con el sistema operativo de Windows')
+    let utterance = new SpeechSynthesisUtterance('Claro, son Bocinas Techzone TZBOCTWS Inalámbricas')
+    utterance.lang = 'es-MX'
+    speechSynthesis.speak(utterance)     
+}
+if(voz === 'asistente me puedes decir sus características'){
+    console.log("Hola, estas saludando!");
+    let utterance = new SpeechSynthesisUtterance('La bocina, cuenta con una entrada micro, con una Versión Bluetooth: 5.0, con una excelente calidad de audio y un diseño ligero')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
