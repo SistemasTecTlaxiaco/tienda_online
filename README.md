@@ -14,12 +14,25 @@ la comodidad de sus hogares o espacio de trabajo, implementando la realidad aume
 y real de como serán su productos, al igual que para el propietario del establecimiento le permitirá administrar de mejor manera su negocio, 
 implementar canales de distribución, llegando a mas sectores de la población. 
 
- ## OBJETIVOS ESPECIFICOS <img src="https://user-images.githubusercontent.com/72761157/173252632-677d2347-b78b-46af-8480-0029ee18cf42.png" width="45" height="45">
+ ## OBJETIVOS ESPECIFICOS <img src="https://user-images.githubusercontent.com/72761157/173252879-e893934e-3630-4440-a8b2-a27f27081d58.png" width="45" height="45">
 <ul>
 <li> Mostrar en realidad aumentada los productos mas vendidos. </li>
 <li> Mejorar la experiencia del usuario al adquirir un producto, combinando el mundo virtual con el mundo real. </li>
 <li> Con la realidad aumentada el cliente puede obtener mayor información sobre el producto que esta adquiriendo.</li>
 <li> Posicionar a la empresa con esta nueva tecnología.</li>
 </ul>
+
+## JUSTIFICACIÓN <img src="https://user-images.githubusercontent.com/72761157/173252972-2fae0e65-cd9e-4fe6-badd-05cd0ea86d41.png" width="45" height="45">
+Una investigación sobre los productos mas solicitados nos hace referencia a una gran demanda que existe en los productos que ofrecemos, ya que existe un gran éxito en la venta de productos que ofrecemos, como lo son bocinas, computadoras y demás productos. De acuerdo a nuestro estudio de mercado hemos decidido realizar la presentación en realidad aumentada de nuestros tres productos con mayor demanda.  
+
+## REQUISITOS <img src="https://user-images.githubusercontent.com/72761157/173253016-f3d9a79c-c3dd-4cef-b352-b3e34f09378c.png" width="40" height="40">
+<ul>
+<li>Internet</li>
+<li>Navegador Chrome</li>
+<li>Marcador de imagen (Logo de PC BOX)</li>
+<li>Dispositivo Movil</li>
+</ul>
+
+## EQUIPO DE DESARROLLO 💻👨‍💻
 
 
