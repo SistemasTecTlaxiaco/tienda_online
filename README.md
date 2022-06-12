@@ -33,6 +33,12 @@ Una investigación sobre los productos mas solicitados nos hace referencia a una
 <li>Dispositivo Movil</li>
 </ul>
 
+
 ## EQUIPO DE DESARROLLO 💻👨‍💻
 
-
+ | **Nombre** | **Rol** | 
+  |------------|-----|
+  |M. Guadalupe Quiroz| Lider del Proyecto y Analista 🔍 <img src="https://user-images.githubusercontent.com/72761157/173254340-8d8131d5-e68a-434f-bef2-fa4f4e07ed97.png" width="20" height="20">
+  |Julio Cesar Lopez Sanjuan |Programador Front End y Tester  <img src="https://user-images.githubusercontent.com/72761157/173254631-7359465a-51b7-43b8-88d4-4525b1e82451.png" width="20" height="20">🕵
+  |Joel Alonso Bernardino | Programador Back End 👨‍💻 
+  |Yaretzy Pérez Morales | Diseñadora 🖌👨‍🎨
