@@ -39,6 +39,19 @@ Una investigación sobre los productos mas solicitados nos hace referencia a una
  | **Nombre** | **Rol** | 
   |------------|-----|
   |M. Guadalupe Quiroz| Lider del Proyecto y Analista 🔍 <img src="https://user-images.githubusercontent.com/72761157/173254340-8d8131d5-e68a-434f-bef2-fa4f4e07ed97.png" width="20" height="20">
-  |Julio Cesar Lopez Sanjuan |Programador Front End y Tester  <img src="https://user-images.githubusercontent.com/72761157/173254631-7359465a-51b7-43b8-88d4-4525b1e82451.png" width="20" height="20">🕵
-  |Joel Alonso Bernardino | Programador Back End 👨‍💻 
+  |Julio Cesar Lopez Sanjuan |Programador Back End y Tester  <img src="https://user-images.githubusercontent.com/72761157/173254631-7359465a-51b7-43b8-88d4-4525b1e82451.png" width="20" height="20">🕵
+  |Joel Alonso Bernardino | Programador Front End 👨‍💻 
   |Yaretzy Pérez Morales | Diseñadora 🖌👨‍🎨
+  
+  ## LINKS DE LIBRERIAS UTILIZADAS 🔗
+  <ul>
+<li> https://aframe.io/releases/1.2.0/aframe.min.js </li>
+<li> https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js </li>
+<li> https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js</li>
+<li> https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js</li>
+<li> https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js</li>
+</ul>
+
+  ## LINK DE LA APLICACIÓN <img src="https://user-images.githubusercontent.com/72761157/173257136-0f4af9af-0a3f-41d3-913e-0fc1f0162cf8.png" width="45" height="45"> 
+## https://tiendapcbox.herokuapp.com/
+
