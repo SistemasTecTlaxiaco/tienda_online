@@ -297,13 +297,13 @@ recognition.onresult = function(event) {
 // INTERACCIONES INICIALES PARA HACER MEJOR LA CONVERSACION PERO NO TIENEN NADA QUE VER CON AR
 if(voz === 'Hola asistente'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Hola, Bienvenido a PC BOX ya estoy listo para ayudarte en lo que necesites')
+    let utterance = new SpeechSynthesisUtterance('Hola, Bienvenido a PC BOX sera un gusto poder ayudarte en lo que necesites')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
   if(voz === 'Gracias asistente'){
     console.log("Estan dando las gracias");
-    let utterance = new SpeechSynthesisUtterance('De nada, quieres que te ayude con algo mas?')
+    let utterance = new SpeechSynthesisUtterance('De nada, fue un placer, quieres que te ayude con alguna otra cosa?')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)   
 }
@@ -315,19 +315,19 @@ if(voz === 'Hola asistente'){
 }
   if(voz === 'asistente me puedes decir el precio de la bocina'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de cuatrocientos noventa y nueve pesos')
+    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de cuatrocientos noventa y nueve pesos y si haces la compra en este momento tendras un descuento del 15%')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
   if(voz === 'asistente Cuál es la marca de la bocina'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Claro, son Bocinas Techzone TZBOCTWS Inalámbricas')
+    let utterance = new SpeechSynthesisUtterance('Claro, son Bocinas Techzone TZBOCTWS Inalámbricas, una excelente opcion por decides adquirirlo')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
 if(voz === 'asistente me puedes decir sus características'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('La bocina, cuenta con una entrada micro, con una Versión Bluetooth: 5.0, con una excelente calidad de audio y un diseño ligero')
+    let utterance = new SpeechSynthesisUtterance('La bocina, cuenta con una entrada micro, con una Versión Bluetooth: 5.0, con una excelente calidad de audio y un diseño ligero para poder cargarlo dondd sea')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
