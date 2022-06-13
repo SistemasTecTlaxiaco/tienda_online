@@ -292,37 +292,37 @@ recognition.onresult = function(event) {
 // INTERACCIONES INICIALES PARA HACER MEJOR LA CONVERSACION PERO NO TIENEN NADA QUE VER CON AR
 if(voz === 'Hola asistente'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Hola, Bienvenido a PC BOX ya estoy listo para ayudarte en lo que necesites')
+    let utterance = new SpeechSynthesisUtterance('Hola, Bienvenido a PC BOX ya estoy listo para ayudarte en lo que necesites amigo')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
   if(voz === 'Gracias asistente'){
     console.log("Estan dando las gracias");
-    let utterance = new SpeechSynthesisUtterance('De nada, quieres que te ayude con algo mas?')
+    let utterance = new SpeechSynthesisUtterance('De nada, quieres que te ayude con algo mas?, sera un placer')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)   
 }
   if(voz === 'asistente es todo por ahora'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('De nada, es un gusto proporcionarte informacion sobre tu producto ')
+    let utterance = new SpeechSynthesisUtterance('De nada, es un gusto proporcionarte informacion sobre tu producto, tambien puedes revisar la pagina de compra del producto ')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
 if(voz === 'asistente me puedes decir el precio del teclado'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de trecientos setenta y tres pesos')
+    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de trecientos setenta y tres pesos, animate talvez te haga un descuento')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
   if(voz === 'asistente Cuál es la marca del teclado'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Claro, es un Teclado Dell Kb216 Alámbrico Usb Español 105 Teclas')
+    let utterance = new SpeechSynthesisUtterance('Claro, es un Teclado Dell Kb216 Alámbrico Usb Español 105 Teclas, es muy practico no te quedes sin el tuyo')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
 if(voz === 'asistente me puedes decir sus características'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('El teclado, cuenta con teclas multimedia, una altura de teclado ajustable, con el idioma del teclado español, incluyendo el teclado numérico')
+    let utterance = new SpeechSynthesisUtterance('El teclado, cuenta con teclas multimedia, una altura de teclado ajustable, con el idioma del teclado español, incluyendo el teclado numérico, esta super completo')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
@@ -332,7 +332,7 @@ recognition.onspeechend = function() {
   recognition.stop();
 }
 recognition.onnomatch = function(event) {
-  diagnostic.setAttribute('value', 'No puedo escucharte claramente, por favor repiteme.' );
+  diagnostic.setAttribute('value', 'No puedo escucharte claramente, por favor repite lo que dijiste amigo' );
 }
 recognition.onerror = function(event) {
   diagnostic.setAttribute('value', 'Ocurrio un error al escucharte: ' + event.error);
