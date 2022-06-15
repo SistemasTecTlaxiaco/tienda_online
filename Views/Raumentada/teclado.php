@@ -292,19 +292,19 @@ recognition.onresult = function(event) {
 // INTERACCIONES INICIALES PARA HACER MEJOR LA CONVERSACION PERO NO TIENEN NADA QUE VER CON AR
 if(voz === 'Hola asistente'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Hola, Bienvenido a PC BOX ya estoy listo para ayudarte en lo que necesites amigo')
+    let utterance = new SpeechSynthesisUtterance('Hola, Bienvenido a PC BOX ya estoy lista para ayudarte en lo que necesites amigo')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
   if(voz === 'Gracias asistente'){
     console.log("Estan dando las gracias");
-    let utterance = new SpeechSynthesisUtterance('De nada, quieres que te ayude con algo mas?, sera un placer')
+    let utterance = new SpeechSynthesisUtterance('De nada, quieres que te ayude con algo más?, sera un placer')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)   
 }
   if(voz === 'asistente es todo por ahora'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('De nada, es un gusto proporcionarte informacion sobre tu producto, tambien puedes revisar la pagina de compra del producto ')
+    let utterance = new SpeechSynthesisUtterance('De nada, es un gusto proporcionarte información sobre tu producto, tambien puedes revisar la página de compra del producto ')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
