@@ -293,25 +293,25 @@ recognition.onresult = function(event) {
 // INTERACCIONES INICIALES PARA HACER MEJOR LA CONVERSACION PERO NO TIENEN NADA QUE VER CON AR
 if(voz === 'Hola asistente'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Hola, Bienvenido a PC BOX ya estoy listo para ayudarte en lo que necesites')
+    let utterance = new SpeechSynthesisUtterance('Hola, Bienvenido a PC BOX ya estoy lista para ayudarte en lo que necesites')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
   if(voz === 'Gracias asistente'){
     console.log("Estan dando las gracias");
-    let utterance = new SpeechSynthesisUtterance('De nada amigo, gustas que te ayude con algo mas?')
+    let utterance = new SpeechSynthesisUtterance('De nada amigo, gustas que te ayude con algo más?')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)   
 }
   if(voz === 'asistente es todo por ahora'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('De nada, es un gusto proporcionarte informacion sobre tu producto, si gustas puedes redireccionarte a la pagina de compra ')
+    let utterance = new SpeechSynthesisUtterance('De nada, es un gusto proporcionarte información sobre tu producto, si gustas puedes redireccionarte a la página de compra')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
   if(voz === 'asistente me puedes decir el precio de la laptop'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de diez mil novecientos noventa y nueve pesos, si te apresuras pueden encontrar alguna promoción')
+    let utterance = new SpeechSynthesisUtterance('Por supuesto, tiene un costo de diez mil novecientos noventa y nueve pesos, si te apresuras puedes encontrar alguna promoción')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
@@ -323,19 +323,19 @@ if(voz === 'Hola asistente'){
 }
 if(voz === 'asistente con Qué procesador cuenta la laptop'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Claro, su procesador es Intel Pentium Gold 54 05 U, lo mejor en tecnologia para ti')
+    let utterance = new SpeechSynthesisUtterance('Claro, su procesador es Intel Pentium Gold 54 05 U, lo mejor en tecnología para ti')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
 if(voz === 'asistente Cuál es su capacidad del disco duro'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('Su capacidad es de docientos cincuenta y seis Gigabytes, puedes alamcenar mucha información con esa capacidad')
+    let utterance = new SpeechSynthesisUtterance('Su capacidad es de docientos cincuenta y seis Gigabytes, puedes almacenar mucha información con esa capacidad')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
 if(voz === 'asistente me puedes decir el modelo de la laptop'){
     console.log("Hola, estas saludando!");
-    let utterance = new SpeechSynthesisUtterance('El modelo de la laptop es Laptop HP 14-cf2512 l a, de lo mejor en el tecnologia')
+    let utterance = new SpeechSynthesisUtterance('El modelo de la laptop es Laptop HP 14-cf2512 l a, de lo mejor en el tecnología')
     utterance.lang = 'es-MX'
     speechSynthesis.speak(utterance)     
 }
