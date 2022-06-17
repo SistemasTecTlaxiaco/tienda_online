@@ -34,6 +34,9 @@ Una investigación sobre los productos mas solicitados nos hace referencia a una
 <li>Dispositivo Movil</li>
 </ul>
 
+## COMO USAR LA APLICACIÓN?
+
+https://user-images.githubusercontent.com/72761157/174337774-96fb9978-9658-44ca-a4f1-b2ec15a580b7.mp4
 
 ## EQUIPO DE DESARROLLO 💻👨‍💻
 
@@ -61,7 +64,6 @@ Paso 3: Ejecutar: npm i tiendapcbox <br>
 <img src="https://github.com/SistemasTecTlaxiaco/tienda_online/blob/Desarrollo/Assets/images/npm.PNG" width="900" height="150"><br>
 Ejecutar: npm start
 Abrir en el navegador la dirección http://localhost/8000/ 
-
 
   ## LINK DE LA APLICACIÓN <img src="https://user-images.githubusercontent.com/72761157/173257136-0f4af9af-0a3f-41d3-913e-0fc1f0162cf8.png" width="45" height="45"> 
 ## https://tiendapcbox.herokuapp.com/
