@@ -30,7 +30,7 @@ Una investigación sobre los productos mas solicitados nos hace referencia a una
 <li>Internet</li>
 <li>Navegador Chrome</li>
 <li>Marcador de imagen (Logo de PC BOX)</li>
- <img src="https://github.com/SistemasTecTlaxiaco/tienda_online/blob/Desarrollo/Assets/images/card.jpeg" width="500" height="250">
+ <img src="https://github.com/SistemasTecTlaxiaco/tienda_online/blob/Desarrollo/Assets/images/card.jpeg" width="450" height="250">
 <li>Dispositivo Movil</li>
 </ul>
 
@@ -55,8 +55,10 @@ Una investigación sobre los productos mas solicitados nos hace referencia a una
 
 ## INSTALACION LOCAL 
 Requisito: Node.js instalado <br>
+Crear nuevo directorio <br>
+Ejecutar terminal dentro del directorio <br>
 Ejecutar: Npm i tiendapcbox <br>
-<img src="https://github.com/SistemasTecTlaxiaco/tienda_online/blob/Desarrollo/Assets/images/npm.PNG" width="700" height="150"><br>
+<img src="https://github.com/SistemasTecTlaxiaco/tienda_online/blob/Desarrollo/Assets/images/npm.PNG" width="900" height="150"><br>
 Ejecutar: npm start
 Abrir en el navegador la dirección http://localhost/8000/ 
 
