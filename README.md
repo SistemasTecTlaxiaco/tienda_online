@@ -53,11 +53,11 @@ Una investigación sobre los productos mas solicitados nos hace referencia a una
 <li> https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js</li>
 </ul>
 
-## INSTALACION LOCAL 
+## INSTALACIÓN LOCAL 💻
 Requisito: Node.js instalado <br>
-Crear nuevo directorio <br>
-Ejecutar terminal dentro del directorio <br>
-Ejecutar: Npm i tiendapcbox <br>
+Paso 1: Crear nuevo directorio <br>
+Paso 2: Ejecutar terminal dentro del directorio <br>
+Paso 3: Ejecutar: npm i tiendapcbox <br>
 <img src="https://github.com/SistemasTecTlaxiaco/tienda_online/blob/Desarrollo/Assets/images/npm.PNG" width="900" height="150"><br>
 Ejecutar: npm start
 Abrir en el navegador la dirección http://localhost/8000/ 
