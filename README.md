@@ -30,6 +30,7 @@ Una investigación sobre los productos mas solicitados nos hace referencia a una
 <li>Internet</li>
 <li>Navegador Chrome</li>
 <li>Marcador de imagen (Logo de PC BOX)</li>
+ <img src="https://github.com/SistemasTecTlaxiaco/tienda_online/blob/Desarrollo/Assets/images/card.jpeg" width="100" height="40">
 <li>Dispositivo Movil</li>
 </ul>
 
@@ -51,6 +52,14 @@ Una investigación sobre los productos mas solicitados nos hace referencia a una
 <li> https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js</li>
 <li> https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js</li>
 </ul>
+
+## INSTALACION LOCAL 
+Requisito: Node.js instalado
+Ejecutar: Npm i tiendapcbox
+<img src="https://github.com/SistemasTecTlaxiaco/tienda_online/blob/Desarrollo/Assets/images/npm.PNG" width="100" height="40">
+Ejecutar: npm start
+Abrir en el navegador la dirección http://localhost/8000/ 
+
 
   ## LINK DE LA APLICACIÓN <img src="https://user-images.githubusercontent.com/72761157/173257136-0f4af9af-0a3f-41d3-913e-0fc1f0162cf8.png" width="45" height="45"> 
 ## https://tiendapcbox.herokuapp.com/
